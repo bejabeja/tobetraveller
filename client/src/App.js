@@ -20,6 +20,7 @@ function App() {
   const axiosFetchData = async(processing, apiUrl) => {
     await axios.get(`${apiUrl}/places`)
     .then(res => {
+      console.info(res.data)
       if(processing){
         setPlaceData(res.data)
       }
