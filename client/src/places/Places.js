@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import './Places.css'
 
 const Places = () => {
-
 
 const [selectData, setSelectData] = useState([])
 
@@ -29,15 +29,15 @@ const [selectData, setSelectData] = useState([])
 
 
   return (
-    <div>
-        <h3>Places</h3>
+    <section className='section-places'>
+        <h3>ToBeTraveller</h3>
         {selectData?.map((place, index) => (
           <div key={index}>
             <p>{place.cityName}</p>
             <p>{place.countryName}</p>
           </div>
         ))}             
-</div>
+    </section>
   )
 }
 
