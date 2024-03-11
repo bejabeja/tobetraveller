@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
-function App() {
-  const [placeData, setPlaceData] = useState([]);
+const App = () => {
+  const [name, setName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [error, setError] = useState('')
+  const [selectData, setSelectData] = useState([])
+  const [selectValue, setSelectValue] = useState('')
+
 
 
   useEffect(() => {
-    let apiUrl = process.env.REACT_APP_API_URL;
+    let apiUrl = process.env.API_URL || 'http://localhost:3001/api';
 
     let processing = true 
     axiosFetchData(processing, apiUrl)
@@ -17,40 +21,55 @@ function App() {
     }
   }, [])
 
+
   const axiosFetchData = async(processing, apiUrl) => {
-    await axios.get(`${apiUrl}/places`)
+    await axios.get(`${apiUrl}/users`)
     .then(res => {
-      console.info(res.data)
       if(processing){
-        setPlaceData(res.data)
+        setSelectData(res.data)
       }
     })
     .catch(err => console.log(err))
   }
 
+  const SelectDropdown = () => {
+    return (
+      <select value={selectValue} onChange={(e) => setSelectValue(e.target.value)}>
+        {
+          selectData?.map((user, index) => (
+            <option value={user.email} key={index}> {user.email}</option>
+          ))
+        }
+      </select>
+    )
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(!email){
+      setError(<p>'Need to introduce an email'</p>)
+     }else{setError('')}
+
+     setError('')
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {placeData ? (
-          <div>
-          {placeData.map((item) => (
-            <div key={item.id}>
-              <p>{item.id}</p>
-              <p>{item.cityName}</p>
-              <p>{item.countryName}</p>
-            </div>
-          ))}
-        </div>
-          
-        ) : (
-          <div>
-            Loading...
-          </div>
-        )}
-      </header>
-    </div>
-  );
+    <section className='section'>
+        <h1>Loading...</h1>
+        <form className='loggin--form' action='/api/contact-form'>
+            <label>Name</label>
+            <input type='text' id='name' name='name' value={name} onChange={(e)=>setName(e.target.value)}></input>
+
+      
+
+            <label>How did you hear about us?</label>
+            <SelectDropdown></SelectDropdown>
+           
+            {error}
+            <button type='submit' onClick={handleSubmit}>Login</button>
+        </form>
+    </section>
+  )
 }
 
-export default App;
+export default App
