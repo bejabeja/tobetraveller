@@ -3,21 +3,44 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    let apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+    let apiUrl = process.env.REACT_APP_API_URL;
 
-    fetch(`${apiUrl}/api`)
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
+
+    fetch(`${apiUrl}/places`)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
+      .then(res => {
+        setData(res);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });   
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
+        {!data ? (
+          <p>Loading...</p>
+        ) : (
+          <div>
+            {data.map((item) => (
+              <div key={item.id}>
+                <p>{item.id}</p>
+                <p>{item.cityName}</p>
+                <p>{item.countryName}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </header>
     </div>
   );

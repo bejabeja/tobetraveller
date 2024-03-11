@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const router = require('./routes/router')
 
 const app = express();
 app.use(express.json())
@@ -15,11 +16,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server Mimi!" });
-  });
-
+app.use('/api', router)
   
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
