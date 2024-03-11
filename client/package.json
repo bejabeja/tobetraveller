@@ -17,7 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3001/api",
+  "proxy": "https://tobetraveller-api.vercel.app/api",
   "eslintConfig": {
     "extends": [
       "react-app",

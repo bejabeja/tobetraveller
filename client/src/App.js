@@ -26,17 +26,20 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        {!data ? (
-          <p>Loading...</p>
+        {data ? (
+          <div>
+          {data.map((item) => (
+            <div key={item.id}>
+              <p>{item.id}</p>
+              <p>{item.cityName}</p>
+              <p>{item.countryName}</p>
+            </div>
+          ))}
+        </div>
+          
         ) : (
           <div>
-            {data.map((item) => (
-              <div key={item.id}>
-                <p>{item.id}</p>
-                <p>{item.cityName}</p>
-                <p>{item.countryName}</p>
-              </div>
-            ))}
+            Loading...
           </div>
         )}
       </header>
