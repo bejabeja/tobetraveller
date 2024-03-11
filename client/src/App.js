@@ -44,6 +44,20 @@ const App = () => {
     )
   }
 
+  const Places = ({ selectData }) => {
+    return (
+      <div>
+        {selectData?.map((user, index) => (
+          <div key={index}>
+            <p>{user.email}</p>
+            <p>{user.name}</p>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if(!email){
@@ -60,7 +74,8 @@ const App = () => {
             <label>Name</label>
             <input type='text' id='name' name='name' value={name} onChange={(e)=>setName(e.target.value)}></input>
 
-      
+            <label>Places</label>
+            <Places selectData={selectData}></Places>
 
             <label>How did you hear about us?</label>
             <SelectDropdown></SelectDropdown>
