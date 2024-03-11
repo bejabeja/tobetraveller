@@ -1,25 +1,27 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/users', (req, res) => {
-    const userData = 
+router.get('/places', (req, res) => {
+    const placesData = 
     [
         {
-            "id" : 1,
-            "name" : "Mimi",
-            "lasName" : "ouwww",
-            "email" : "test1@gmail.com",
-            "password" : "password"
+            "id": 1,
+            "cityName": 'Gold Coast',
+            "countryName": 'Australia',
         },
         {
-            "id" : 2,
-            "name" : "Test",
-            "lastName" : "hihihi",
-            "email" : "test2@gmail.com",
-            "password" : "password"
+            "id": 2,
+            "cityName": 'Melbourne',
+            "countryName": 'Australia',
+        },
+        {
+            "id": 3,
+            "cityName": 'Sidney',
+            "countryName": 'Australia',
         }
     ]
-    res.send(userData)
+    
+    res.send(placesData)
 })
 
 module.exports = router
