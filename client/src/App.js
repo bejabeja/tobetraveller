@@ -19,9 +19,7 @@ function App() {
       .then(res => {
         setData(res);
       })
-      .catch(error => {
-        console.error('Error:', error);
-      });   
+      .catch(err => console.log(err)) 
   }, []);
 
   return (
