@@ -12,10 +12,10 @@ const Navbar = () => {
         <nav className='navbar-list'>
           <ul className='navbar-links'>
             <li><a href="/"><HomeIcon></HomeIcon></a></li>
-            <li><a href="/"><TravelIcon></TravelIcon></a></li>
-            <li><a href="/"><WeatherIcon></WeatherIcon></a></li>
-            <li><a href="/"><ShareIcon></ShareIcon></a></li>
-            <li><a href="/"><ProfileIcon></ProfileIcon></a></li>
+            <li><a href="/discover"><TravelIcon></TravelIcon></a></li>
+            <li><a href="/weather"><WeatherIcon></WeatherIcon></a></li>
+            <li><a href="/share"><ShareIcon></ShareIcon></a></li>
+            <li><a href="/profile"><ProfileIcon></ProfileIcon></a></li>
           </ul>
         </nav>
       </div>

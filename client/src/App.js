@@ -1,14 +1,21 @@
 import React from 'react'
-import './App.css'
-import Navbar from './navbar/Navbar'
-import MainContent from './components/MainContent'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Home from './pages/Home'
+import Places from './components/places/Places'
+
 
 const App = () => {
   return (
-    <div className='app-container'>
-      <Navbar></Navbar>
-      <MainContent></MainContent>      
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/discover' element={<Places />} />
+        <Route path='/weather' element={<Places />} />
+        <Route path='/share' element={<Places />} />
+        <Route path='/profile' element={<Places />} />
+
+      </Routes>
+    </BrowserRouter>
   )
 }
 

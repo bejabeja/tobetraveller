@@ -1,21 +1,24 @@
 import React, {useState} from 'react'
-import Places from '../places/Places'
-import './MainContent.css'
+import Places from '../components/places/Places'
+import './Home.css'
+import Layout from '../layout/Layout'
 
-const MainContent = () => {
-    const [searchTravel, setSearchTravel] = useState(false)
+const Home = () => {
 
-    const handleButton = () => {
-        setSearchTravel(true)
-    }
+const [searchTravel, setSearchTravel] = useState(false)
 
-    const Button = ({ onClick, text, className }) => {
-        return (
-          <button onClick={onClick} className={className}>{text} </button>
-        );
-      };
-  return (
-    <div className='app--main-content scrollable-div'>
+const handleButton = () => {
+    setSearchTravel(true)
+}
+
+const Button = ({ onClick, text, className }) => {
+    return (
+        <button onClick={onClick} className={className}>{text} </button>
+    );
+};
+
+return (
+    <Layout>
         {!searchTravel &&
             <div className='tittle-group'>
                 <h1 className='title--h1'>Travel Smarter, Dream Bigger</h1>
@@ -31,8 +34,8 @@ const MainContent = () => {
             <Places></Places>
         </> }
         
-      </div>
+    </Layout>
   )
 }
 
-export default MainContent
+export default Home

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import './Places.css'
+import Layout from '../../layout/Layout'
 
 const Places = () => {
 
@@ -29,15 +30,17 @@ const [selectData, setSelectData] = useState([])
 
 
   return (
-    <section className='section-places'>
-        <h3>ToBeTraveller</h3>
-        {selectData?.map((place, index) => (
-          <div key={index}>
-            <p>{place.cityName}</p>
-            <p>{place.countryName}</p>
-          </div>
-        ))}             
-    </section>
+    <Layout>
+      <div className='section-places'>
+          <h3>ToBeTraveller</h3>
+          {selectData?.map((place, index) => (
+            <div key={index}>
+              <p>{place.cityName}</p>
+              <p>{place.countryName}</p>
+            </div>
+          ))}             
+      </div>
+    </Layout>
   )
 }
 
