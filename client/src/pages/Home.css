@@ -19,6 +19,7 @@
     font-size: 2rem; 
     cursor: pointer; 
     border-radius: 2rem;
+    text-decoration: none;
 }
 
 .primary-button:hover {

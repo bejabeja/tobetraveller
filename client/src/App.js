@@ -1,7 +1,10 @@
 import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
-import Places from './components/places/Places'
+import Weather from './pages/Weather'
+import Share from './pages/Share'
+import Discover from './pages/Discover'
+import Profile from './pages/Profile'
 
 
 const App = () => {
@@ -9,10 +12,10 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/discover' element={<Places />} />
-        <Route path='/weather' element={<Places />} />
-        <Route path='/share' element={<Places />} />
-        <Route path='/profile' element={<Places />} />
+        <Route path='/discover' element={<Discover />} />
+        <Route path='/weather' element={<Weather />} />
+        <Route path='/share' element={<Share />} />
+        <Route path='/profile' element={<Profile />} />
 
       </Routes>
     </BrowserRouter>

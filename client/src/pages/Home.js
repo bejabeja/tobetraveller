@@ -1,38 +1,25 @@
-import React, {useState} from 'react'
-import Places from '../components/places/Places'
+import React from 'react'
 import './Home.css'
 import Layout from '../layout/Layout'
 
 const Home = () => {
 
-const [searchTravel, setSearchTravel] = useState(false)
-
-const handleButton = () => {
-    setSearchTravel(true)
-}
-
-const Button = ({ onClick, text, className }) => {
+const ButtonLink = ({ href, text, className }) => {
     return (
-        <button onClick={onClick} className={className}>{text} </button>
+        <a href={href} className={className}>{text} </a>
     );
 };
 
 return (
     <Layout>
-        {!searchTravel &&
-            <div className='tittle-group'>
-                <h1 className='title--h1'>Travel Smarter, Dream Bigger</h1>
-                <h2 className='title--h2'>Your Journey Begins Here</h2>
-                <Button className='primary-button' onClick={handleButton} text='Start'> </Button>
-            </div>
-        }
+     
+        <div className='tittle-group'>
+            <h1 className='title--h1'>Travel Smarter, Dream Bigger</h1>
+            <h2 className='title--h2'>Your Journey Begins Here</h2>
+            <ButtonLink href='/discover' className='primary-button'  text='Start'> </ButtonLink>
+        </div>  
         
-        
-        {searchTravel &&
-        <>
-            <Places></Places>
-            <Places></Places>
-        </> }
+    
         
     </Layout>
   )
