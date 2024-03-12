@@ -17,9 +17,24 @@
     list-style: none;
     gap: 2.5rem;
     padding: 0;
+    align-items: center;
+    font-size: 0.65rem;
   }
   
   .navbar-links > li > a {
-    text-decoration: none;
-    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1pz solid #eee;
+    padding: 4px;
+    height: 32px;
+    width: 32px;
+    border-radius: 6px;
+    transition: all .3s ease;
+  }
+
+  .navbar-links > li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1 solid #777;
+    border-radius: 2rem;
   }
