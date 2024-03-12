@@ -1,0 +1,52 @@
+
+.app--main-content {
+    padding: 2rem 2rem 0 2rem;
+    width: 100%;
+    height: 80vh;
+    background: fixed rgba(0, 0, 0, 0.6);
+    border-radius: 1.5rem;
+    /* backdrop-filter: blur(5px); */
+}
+
+.scrollable-div {
+    overflow-y: scroll; 
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scrollable-div::-webkit-scrollbar {
+    display: none; 
+}
+
+.tittle-group {
+    text-align: center;
+}
+.title--h1 {
+    font-size: 5rem;
+    /* border: 1px solid white; */
+    /* border-radius: 1rem; */
+    padding: 1rem;
+}
+
+.title--h2 {
+    font-size: 3rem;
+    /* border: 1px solid white; */
+    /* border-radius: 1rem; */
+    padding: 1rem;
+}
+
+
+.primary-button {
+    background-color: rgba(74,78,83, 0.5); 
+    border: none; 
+    color: white; 
+    padding: 0.5rem 5rem; 
+    font-size: 2rem; 
+    cursor: pointer; 
+    border-radius: 2rem;
+}
+
+.primary-button:hover {
+    background-color: rgb(74,78,83); 
+}
+  
