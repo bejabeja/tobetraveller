@@ -10,19 +10,3 @@
     font-size: 3rem;
     padding: 1rem;
 }
-
-.primary-button {
-    background-color: rgba(74,78,83, 0.5); 
-    border: none; 
-    color: white; 
-    padding: 0.5rem 5rem; 
-    font-size: 2rem; 
-    cursor: pointer; 
-    border-radius: 2rem;
-    text-decoration: none;
-}
-
-.primary-button:hover {
-    background-color: rgb(74,78,83); 
-}
-  

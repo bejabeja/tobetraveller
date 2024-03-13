@@ -19,6 +19,8 @@
     padding: 0;
     align-items: center;
     font-size: 0.65rem;
+    transition: all .3s ease;
+
   }
   
   .navbar-links > li > a {
@@ -30,11 +32,14 @@
     height: 32px;
     width: 32px;
     border-radius: 6px;
-    transition: all .3s ease;
   }
 
-  .navbar-links > li:hover {
-    background: rgba(255, 255, 255, 0.2);
+  .navbar-links > li {
+    transition: .5s ease;
     border: 1 solid #777;
     border-radius: 2rem;
+  }
+  .navbar-links > li:hover {
+    background: rgba(255, 255, 255, 0.2);
+
   }
