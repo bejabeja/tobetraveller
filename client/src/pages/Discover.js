@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import './Discover.css'
 import Layout from '../layout/Layout'
+import Card from '../components/Card'
 
 const Discover = () => {
     const [selectData, setSelectData] = useState([])
@@ -27,16 +28,12 @@ const Discover = () => {
       .catch(err => console.log(err))
     }
   
-  
     return (
       <Layout>
-        <div className='section-places'>
-            <h3>ToBeTraveller</h3>
+        <div className='section-discover'>
             {selectData?.map((place, index) => (
-              <div key={index}>
-                <p>{place.cityName}</p>
-                <p>{place.countryName}</p>
-              </div>
+                <Card key={index} id={place.id} countryName={place.countryName} cityName={place.cityName} countryText={place.cityName}></Card>
+                
             ))}             
         </div>
       </Layout>

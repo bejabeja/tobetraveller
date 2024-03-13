@@ -12,7 +12,6 @@
   }
   
   .app--main-content {
-    padding: 2rem 2rem 0 2rem;
     width: 100%;
     height: 80vh;
     background: fixed rgba(0, 0, 0, 0.6);
@@ -31,10 +30,10 @@
 }
 
 
-  @media (min-width: 767px) {
-    .app-container {
-      height: 80%;
-      margin-top: 5rem;
-      margin-bottom: 5rem;
-    }
+@media (min-width: 767px) {
+  .app-container {
+    height: 80%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
   }
+}

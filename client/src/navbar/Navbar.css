@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: row;
     list-style: none;
-    gap: 2.5rem;
+    gap: .5rem;
     padding: 0;
     align-items: center;
     font-size: 0.65rem;
@@ -42,4 +42,13 @@
   .navbar-links > li:hover {
     background: rgba(255, 255, 255, 0.2);
 
+  }
+
+
+  @media screen and (min-width: 500px){
+       
+    .navbar-links {
+      gap: 2.5rem;
+    }
+  
   }
