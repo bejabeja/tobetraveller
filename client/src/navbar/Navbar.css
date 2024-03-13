@@ -34,14 +34,19 @@
     border-radius: 6px;
   }
 
-  .navbar-links > li {
+  .navbar-link {
     transition: .5s ease;
     border: 1 solid #777;
     border-radius: 2rem;
   }
-  .navbar-links > li:hover {
+  .navbar-link:hover {
     background: rgba(255, 255, 255, 0.2);
+  }
 
+  .navbar-link--active{
+    background: rgba(255, 255, 255, 0.2);
+    border: 1 solid #777;
+    border-radius: 2rem;
   }
 
 
