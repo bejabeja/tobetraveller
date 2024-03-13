@@ -8,8 +8,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
 
-  background-image: url("./img/background-img.webp");
+  background-image: url("img/background-img.webp");
   /* background: burlywood; */
+  /* background: rgba(143,179,226, 0.5); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
