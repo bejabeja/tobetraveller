@@ -33,12 +33,16 @@ code {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
+
+/* Globals*/
+
+/* Button */
 .primary-button {
   background-color: rgba(74,78,83, 0.5); 
   border: none; 
   color: white; 
   padding: 0.5rem 5rem; 
-  font-size: 2rem; 
+  font-size: 1.5rem; 
   cursor: pointer; 
   border-radius: 2rem;
   text-decoration: none;
@@ -49,3 +53,9 @@ code {
   background-color: rgb(74,78,83); 
 }
 
+@media (min-width: 667px) {
+  .primary-button {
+    font-size: 2rem; 
+  }
+  
+}
