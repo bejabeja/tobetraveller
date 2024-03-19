@@ -12,6 +12,8 @@
     "plugins": ["react", "react-hooks"],
     "rules": {
         "space-before-function-paren": "off",
-        "multiline-ternary": "off"
+        "multiline-ternary": "off",
+        "react/prop-types": "warn",
+        "no-unused-vars": "warn"
     }
 }  
