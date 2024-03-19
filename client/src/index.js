@@ -5,8 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const img = new Image();
-img.src = "/background-img.webp";
+
 root.render(
   <React.StrictMode>
     

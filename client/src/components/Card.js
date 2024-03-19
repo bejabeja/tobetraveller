@@ -1,8 +1,9 @@
 import React from 'react'
-import ButtonLink from './ButtonLink'
 import './Components.css'
 
-const Card = ({image, id, countryName, cityName, countryText}) => {
+const Card = ({image, id, countryName, cityName, countryText, countryCode}) => {
+
+  // const countryFlag = `https://flagcdn.com/${countryCode}.svg` ?? 'placeholder.svg';
   return (
     <a href='/discover?id={id}' className='card'>
         <img src='placeholder.svg' alt='country card' className='card--img'></img>
