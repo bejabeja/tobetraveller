@@ -9,14 +9,14 @@ const client = require('./database')
 router.post('/signup', async (req, res) => {
     const { username, name, password } = req.body;
 
-    if (!username || !name || !password) {
-        return res.status(400).json(
-            jsonResponse(
-                400,
-                { error: "Fields are required" }
-            )
-        );
-    }
+    // if (!username || !name || !password) {
+    //     return res.status(400).json(
+    //         jsonResponse(
+    //             400,
+    //             { error: "Fields are required" }
+    //         )
+    //     );
+    // }
 
     // const existingUser = await client.query('SELECT * FROM users WHERE username = $1', [username]);
     // if (existingUser.rows.length > 0) {
