@@ -14,16 +14,16 @@ const SignUp = ({ onLogin }) => {
     const auth = useAuth()
     const goTo = useNavigate();
 
-    let apiUrl = process.env.REACT_APP_API_URL;
-
     if (auth.isAuthenticated) {
         return <Navigate to='/dashboard'></Navigate>
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        console.log(process.env.REACT_APP_API_URL)
+        alert(process.env.REACT_APP_API_URL)
         try {
-            const response = await fetch(`${apiUrl}/signup`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/signup`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
