@@ -1,8 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const { jsonResponse } = require('../lib/jsonResponse');
+const { Pool } = require('pg');
+require('dotenv/config');
 
-router.post('/signup', (req, res) => {
+const client = new Pool({
+    connectionString: process.env.POSTGRES_URL,
+});
+
+
+client.connect()
+    .then(() => console.log('Connected to PostgreSQL database'))
+    .catch(error => console.error('Error connecting to PostgreSQL database:', error));
+
+router.post('/signup', async (req, res) => {
     const { username, name, password } = req.body;
     if (!username || !name || !password) {
         return res.status(400).json(
@@ -12,12 +23,17 @@ router.post('/signup', (req, res) => {
             )
         );
     }
-    res.status(200).json(
-        jsonResponse(
-            200,
-            { message: "User created successfully" }
-        )
-    );
+
+
+    try {
+        await client.query('CREATE TABLE IF NOT EXISTS users (user_id SERIAL PRIMARY KEY, name VARCHAR(255), username VARCHAR(255), password VARCHAR(255))');
+        await client.query('INSERT INTO users (name, username, password) VALUES ($1, $2, $3)', [name, username, password]);
+        const result = await client.query('SELECT * FROM users');
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error('Error executing PostgreSQL query:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 router.post('/login', (req, res) => {
@@ -36,7 +52,7 @@ router.post('/login', (req, res) => {
     const user = {
         id: '1',
         name: 'Mimi',
-        username: 'mirabaix'
+        username: 'mii'
     }
 
 
