@@ -1,24 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Weather from './pages/Weather';
-import Share from './pages/Share';
-import Discover from './pages/Discover';
-import Profile from './pages/Profile';
-import Layout from './layout/Layout';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import ProtectedRoute from './components/ProtectedRoute';
+import Dashboard from './pages/Dashboard';
 
 const App = () => {
   return (
     <Router>
-      <Layout>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/discover" element={<Discover />} />
-          <Route path="/weather" element={<Weather />} />
-          <Route path="/share" element={<Share />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-      </Layout>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/" element={<ProtectedRoute />}  >
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+      </Routes>
     </Router>
   );
 };
