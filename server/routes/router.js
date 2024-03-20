@@ -36,6 +36,7 @@ router.post('/signup', async (req, res) => {
         console.error('Error executing PostgreSQL query:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
+    
 });
 
 router.post('/login', (req, res) => {
