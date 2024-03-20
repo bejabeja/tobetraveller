@@ -9,15 +9,14 @@ const client = require('./database')
 router.post('/signup', async (req, res) => {
     const { username, name, password } = req.body;
 
-    res.json({ message: 'Data received successfully', username, name, password });
-    // if (!username || !name || !password) {
-    //     return res.status(400).json(
-    //         jsonResponse(
-    //             400,
-    //             { error: "Fields are required" }
-    //         )
-    //     );
-    // }
+    if (!username || !name || !password) {
+        return res.status(400).json(
+            jsonResponse(
+                400,
+                { error: "Fields are required" }
+            )
+        );
+    }
 
     // const existingUser = await client.query('SELECT * FROM users WHERE username = $1', [username]);
     // if (existingUser.rows.length > 0) {
@@ -36,6 +35,8 @@ router.post('/signup', async (req, res) => {
         await client.query('INSERT INTO users (name, username, password) VALUES ($1, $2, $3)', [name, username, hashedPassword]);
         const result = await client.query('SELECT * FROM users');
         res.status(200).json(result.rows);
+        res.json({ message: 'Data received successfully', username, name, password });
+
     } catch (error) {
         console.error('Error executing PostgreSQL query:', error);
         res.status(500).json({ error: 'Internal Server Error' });
