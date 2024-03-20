@@ -1,17 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { jsonResponse } = require('../lib/jsonResponse');
-const { Pool } = require('pg');
-require('dotenv/config');
+const bcrypt = require('bcrypt');
+const client = require('./database')
 
-const client = new Pool({
-    connectionString: process.env.POSTGRES_URL,
-});
-
-
-client.connect()
-    .then(() => console.log('Connected to PostgreSQL database'))
-    .catch(error => console.error('Error connecting to PostgreSQL database:', error));
 
 router.post('/signup', async (req, res) => {
     const { username, name, password } = req.body;
@@ -24,10 +16,20 @@ router.post('/signup', async (req, res) => {
         );
     }
 
+    const existingUser = await client.query('SELECT * FROM users WHERE username = $1', [username]);
+    if (existingUser.rows.length > 0) {
+        return res.status(400).json(
+            jsonResponse(
+                400,
+                { error: 'User name already exist' }
+            )
+        )
+    }
 
     try {
-        await client.query('CREATE TABLE IF NOT EXISTS users (user_id SERIAL PRIMARY KEY, name VARCHAR(255), username VARCHAR(255), password VARCHAR(255))');
-        await client.query('INSERT INTO users (name, username, password) VALUES ($1, $2, $3)', [name, username, password]);
+        const hashedPassword = await bcrypt.hash(password, 10);
+        await client.query('CREATE TABLE IF NOT EXISTS users (user_id SERIAL PRIMARY KEY, name VARCHAR(255), username VARCHAR(255) UNIQUE, password VARCHAR(255))');
+        await client.query('INSERT INTO users (name, username, password) VALUES ($1, $2, $3)', [name, username, hashedPassword]);
         const result = await client.query('SELECT * FROM users');
         res.status(200).json(result.rows);
     } catch (error) {
