@@ -5,6 +5,7 @@ const router = require('./routes/router')
 require('dotenv').config();
 
 const app = express();
+
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -17,9 +18,12 @@ const corsOptions = {
 
 
 app.use(cors(corsOptions))
-app.use('/api', router)
 
-console.log(corsOptions)
+app.use('/api/signup', require('./routes/signup'));
+app.use('/api/login', require('./routes/login'));
+
+app.use('/api', router);
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
