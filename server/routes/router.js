@@ -9,31 +9,31 @@ const client = require('./database')
 router.post('/signup', async (req, res) => {
     const { username, name, password } = req.body;
 
-    // if (!username || !name || !password) {
-    //     return res.status(400).json(
-    //         jsonResponse(
-    //             400,
-    //             { error: "Fields are required" }
-    //         )
-    //     );
-    // }
+    if (!username || !name || !password) {
+        return res.status(400).json(
+            jsonResponse(
+                400,
+                { error: "Fields are required" }
+            )
+        );
+    }
 
-    // const existingUser = await client.query('SELECT * FROM users WHERE username = $1', [username]);
-    // if (existingUser.rows.length > 0) {
-    //     return res.status(400).json(
-    //         jsonResponse(
-    //             400,
-    //             { error: 'User name already exist' }
-    //         )
-    //     )
+    const existingUser = await client.query('SELECT * FROM users WHERE username = $1', [username]);
+    if (existingUser.rows.length > 0) {
+        return res.status(400).json(
+            jsonResponse(
+                400,
+                { error: 'User name already exist' }
+            )
+        )
 
-    // }
+    }
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         await client.query('CREATE TABLE IF NOT EXISTS users (user_id SERIAL PRIMARY KEY, name VARCHAR(255), username VARCHAR(255) UNIQUE, password VARCHAR(255))');
         await client.query('INSERT INTO users (name, username, password) VALUES ($1, $2, $3)', [name, username, hashedPassword]);
-        // const result = await client.query('SELECT * FROM users');
+        // await client.query('SELECT * FROM users');
         // res.status(200).json(result.rows);
         res.json({ message: 'Data received successfully', username, name, password });
 
