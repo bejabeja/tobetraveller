@@ -14,7 +14,7 @@ const SignUp = ({ onLogin }) => {
     const auth = useAuth()
     const goTo = useNavigate();
 
-    let apiUrl = process.env.API_URL || 'http://localhost:3001/api';
+    let apiUrl = process.env.REACT_APP_API_URL;
 
     if (auth.isAuthenticated) {
         return <Navigate to='/dashboard'></Navigate>
