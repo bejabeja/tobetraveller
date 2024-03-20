@@ -26,20 +26,21 @@ router.post('/signup', async (req, res) => {
                 { error: 'User name already exist' }
             )
         )
-
     }
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         await client.query('CREATE TABLE IF NOT EXISTS users (user_id SERIAL PRIMARY KEY, name VARCHAR(255), username VARCHAR(255) UNIQUE, password VARCHAR(255))');
         await client.query('INSERT INTO users (name, username, password) VALUES ($1, $2, $3)', [name, username, hashedPassword]);
-        // await client.query('SELECT * FROM users');
-        // res.status(200).json(result.rows);
-        res.json({ message: 'Data received successfully', username, name, password });
-
+        return res.status(200).json(
+            jsonResponse(
+                200,
+                { message: 'User successfully created' }
+            )
+        );
     } catch (error) {
         console.error('Error executing PostgreSQL query:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        return res.status(500).json({ error: 'Internal Server Error' });
     }
 
 });

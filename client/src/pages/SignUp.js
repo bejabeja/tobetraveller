@@ -36,18 +36,18 @@ const SignUp = ({ onLogin }) => {
 
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, postData)
-            console.log(response.data)
-            // if (response.status === 200) {
-            //     console.log("User created successfully")
-            //     setErrorResponse('')
-            //     goTo('/')
-            // } else {
-            //     console.log("Something went wrong")
-            //     setErrorResponse(response.data.error || 'An error occurred')
-            // }
+            // console.log(response);
+            if (response.status === 200) {
+                console.log("User created successfully")
+                setErrorResponse('')
+                goTo('/')
+            } else {
+                console.log("Something went wrong")
+                setErrorResponse(response.data.error || 'An error occurred')
+            }
         } catch (error) {
             console.log("Network error:", error)
-            // setErrorResponse('Network error. Please try again later.')
+            setErrorResponse('Network error. Please try again later.')
         }
     }
 
