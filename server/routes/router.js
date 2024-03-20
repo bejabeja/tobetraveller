@@ -18,12 +18,14 @@ router.post('/signup', async (req, res) => {
 
     const existingUser = await client.query('SELECT * FROM users WHERE username = $1', [username]);
     if (existingUser.rows.length > 0) {
+        res.header('Access-Control-Allow-Origin', '*');
         return res.status(400).json(
             jsonResponse(
                 400,
                 { error: 'User name already exist' }
             )
         )
+
     }
 
     try {
@@ -31,12 +33,13 @@ router.post('/signup', async (req, res) => {
         await client.query('CREATE TABLE IF NOT EXISTS users (user_id SERIAL PRIMARY KEY, name VARCHAR(255), username VARCHAR(255) UNIQUE, password VARCHAR(255))');
         await client.query('INSERT INTO users (name, username, password) VALUES ($1, $2, $3)', [name, username, hashedPassword]);
         const result = await client.query('SELECT * FROM users');
+        res.header('Access-Control-Allow-Origin', '*');
         res.status(200).json(result.rows);
     } catch (error) {
         console.error('Error executing PostgreSQL query:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-    
+
 });
 
 router.post('/login', (req, res) => {
