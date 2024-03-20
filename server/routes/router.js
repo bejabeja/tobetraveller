@@ -33,8 +33,8 @@ router.post('/signup', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         await client.query('CREATE TABLE IF NOT EXISTS users (user_id SERIAL PRIMARY KEY, name VARCHAR(255), username VARCHAR(255) UNIQUE, password VARCHAR(255))');
         await client.query('INSERT INTO users (name, username, password) VALUES ($1, $2, $3)', [name, username, hashedPassword]);
-        const result = await client.query('SELECT * FROM users');
-        res.status(200).json(result.rows);
+        // const result = await client.query('SELECT * FROM users');
+        // res.status(200).json(result.rows);
         res.json({ message: 'Data received successfully', username, name, password });
 
     } catch (error) {
