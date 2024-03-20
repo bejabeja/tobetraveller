@@ -9,7 +9,6 @@ app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-console.log(process.env.CORS_ORIGIN)
 const corsOptions = {
   origin: '*',
   credentials: true,

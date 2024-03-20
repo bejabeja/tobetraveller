@@ -3,6 +3,7 @@ import Layout from '../layout/Layout';
 import './Login.css'
 import { useAuth } from '../auth/AuthProvider';
 import { Navigate, useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 const SignUp = ({ onLogin }) => {
     const [name, setName] = useState('')
@@ -17,39 +18,38 @@ const SignUp = ({ onLogin }) => {
     if (auth.isAuthenticated) {
         return <Navigate to='/dashboard'></Navigate>
     }
+
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        console.log(process.env.REACT_APP_API_URL)
         alert(process.env.REACT_APP_API_URL)
-        try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/signup`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
-                },
-                body: JSON.stringify({
-                    name,
-                    username,
-                    password
-                })
-            })
+        axiosPostData()
+    };
 
-            if (response.ok) {
+
+    const axiosPostData = async () => {
+        const postData = {
+            username: username,
+            name: name,
+            password: password
+        }
+
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, postData)
+            console.log(response)
+            if (response.statusText === 'OK') {
                 console.log("User created succesfully")
                 setErrorResponse('')
                 goTo('/')
             } else {
                 console.log("Something went wrong")
-                const json = await response.json()
-                setErrorResponse(json.body.error)
+                const json = await response
+                setErrorResponse(json.status)
             }
         } catch (error) {
             console.log(error)
         }
-    };
+    }
 
     return (
         <Layout>
