@@ -14,6 +14,8 @@ const SignUp = ({ onLogin }) => {
     const auth = useAuth()
     const goTo = useNavigate();
 
+    let apiUrl = process.env.API_URL || 'http://localhost:3001/api';
+
     if (auth.isAuthenticated) {
         return <Navigate to='/dashboard'></Navigate>
     }
@@ -21,7 +23,7 @@ const SignUp = ({ onLogin }) => {
         e.preventDefault()
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/signup`, {
+            const response = await fetch(`${apiUrl}/signup`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
