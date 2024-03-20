@@ -22,7 +22,6 @@ const SignUp = ({ onLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        alert(process.env.REACT_APP_API_URL)
         axiosPostData()
     };
 
@@ -36,7 +35,6 @@ const SignUp = ({ onLogin }) => {
 
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, postData)
-            // console.log(response);
             if (response.status === 200) {
                 console.log("User created successfully")
                 setErrorResponse('')

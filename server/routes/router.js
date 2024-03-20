@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { jsonResponse } = require('../lib/jsonResponse');
 const bcrypt = require('bcrypt');
-const client = require('./database')
-
+const client = require('./database');
+const { generateAccesToken, generateRefreshToken } = require('../auth/generateTokens');
 
 
 router.post('/signup', async (req, res) => {
@@ -30,7 +30,6 @@ router.post('/signup', async (req, res) => {
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        await client.query('CREATE TABLE IF NOT EXISTS users (user_id SERIAL PRIMARY KEY, name VARCHAR(255), username VARCHAR(255) UNIQUE, password VARCHAR(255))');
         await client.query('INSERT INTO users (name, username, password) VALUES ($1, $2, $3)', [name, username, hashedPassword]);
         return res.status(200).json(
             jsonResponse(
@@ -45,8 +44,20 @@ router.post('/signup', async (req, res) => {
 
 });
 
-router.post('/login', (req, res) => {
+async function refreshTokenS(user) {
+    const refreshTokenS = generateRefreshToken(user);
+    try {
+        await client.query('INSERT INTO tokens (refresh_token) VALUES ($1)', [refreshTokenS]);
+        return refreshTokenS;
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+router.post('/login', async (req, res) => {
     const { username, password } = req.body;
+
     if (!username || !password) {
         return res.status(400).json(
             jsonResponse(
@@ -56,23 +67,43 @@ router.post('/login', (req, res) => {
         )
     }
 
-    const accesToken = "acces_token";
-    const refreshToken = "refresh_token";
-    const user = {
-        id: '1',
-        name: 'Mimi',
-        username: 'mii'
-    }
+    const findUserName = await client.query('SELECT * FROM users WHERE username=$1', [username])
+    console.log(findUserName.rows[0])
 
+    if (findUserName.rows.length > 0) {
+        const user = findUserName.rows[0]
+        const matchPassword = await bcrypt.compare(password, user.password)
 
-    res.status(200).json(
-        jsonResponse(
-            200,
-            { user, accesToken, refreshToken }
+        if (matchPassword) {
+            const accesToken = generateAccesToken(user);
+            const refreshToken = await refreshTokenS(user);
+
+            res.status(200).json(
+                jsonResponse(
+                    200,
+                    { user, accesToken, refreshToken }
+                )
+            )
+
+        } else {
+            return res.status(400).json(
+                jsonResponse(
+                    400,
+                    { error: 'User or password incorrect' }
+                )
+            )
+        }
+    } else {
+        return res.status(400).json(
+            jsonResponse(
+                400,
+                { error: 'User not found' }
+            )
         )
-    )
-
+    }
 });
+
+
 
 router.get('/user', (req, res) => {
     res.send('Hello world');
