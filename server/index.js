@@ -12,16 +12,15 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const corsOptions = {
   origin: '*',
   credentials: true,
-  optionSuccessStatus: 200,
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  exposedHeaders: ['Access-Control-Allow-Headers']
-}
+  optionsSuccessStatus: 200
+};
+
 
 app.use(cors(corsOptions))
 app.use('/api', router)
 
 console.log(corsOptions)
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });

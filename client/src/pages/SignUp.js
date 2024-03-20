@@ -33,21 +33,21 @@ const SignUp = ({ onLogin }) => {
             name: name,
             password: password
         }
-
+    
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, postData)
             console.log(response)
-            if (response.statusText === 'OK') {
-                console.log("User created succesfully")
+            if (response.status === 200) {
+                console.log("User created successfully")
                 setErrorResponse('')
-                goTo('/')
+                goTo('/') 
             } else {
                 console.log("Something went wrong")
-                const json = await response
-                setErrorResponse(json.status)
+                setErrorResponse(response.data.error || 'An error occurred') 
             }
         } catch (error) {
-            console.log(error)
+            console.log("Network error:", error)
+            setErrorResponse('Network error. Please try again later.') 
         }
     }
 
