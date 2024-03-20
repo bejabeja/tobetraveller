@@ -35,7 +35,10 @@ const SignUp = ({ onLogin }) => {
         }
 
         try {
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, postData)
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, postData,{ headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
+            }})
             console.log(response)
             if (response.statusText === 'OK') {
                 console.log("User created succesfully")
