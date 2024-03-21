@@ -35,7 +35,14 @@ const Login = ({ onLogin }) => {
             if (response.ok) {
                 console.log("Login succesful")
                 setErrorResponse('')
-                goTo('/')
+                const json = await response.json()
+                console.log(json)
+
+                if (json.body.accesToken && json.body.refreshToken) {
+                    auth.saveUser(json)
+                    goTo('/dashboard')
+                }
+
             } else {
                 console.log("Something went wrong")
                 const json = await response.json()
