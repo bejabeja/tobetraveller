@@ -5,10 +5,6 @@ router.get('/user', (req, res) => {
     res.send('Hello world');
 });
 
-router.get('/refresh-token', (req, res) => {
-    res.send('Hello world');
-});
-
 router.get('/signout', (req, res) => {
     res.send('Hello world');
 });
