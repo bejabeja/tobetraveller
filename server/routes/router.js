@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/user', (req, res) => {
-    res.send('Hello world');
-});
-
 router.get('/signout', (req, res) => {
     res.send('Hello world');
 });

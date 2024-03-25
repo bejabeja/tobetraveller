@@ -26,7 +26,7 @@ async function createUsersTable() {
         console.log('Table "users" created successfully');
     } catch (error) {
         console.error('Error creating users table:', error);
-    } 
+    }
 }
 
 
@@ -48,7 +48,7 @@ async function createTokensTable() {
         console.log('Table "tokens" created successfully');
     } catch (error) {
         console.error('Error creating tokens table:', error);
-    } 
+    }
 }
 
 

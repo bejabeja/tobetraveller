@@ -1,7 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const router = require('./routes/router')
+const router = require('./routes/router');
+const authenticate = require('./auth/authenticate');
 require('dotenv').config();
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(cors(corsOptions))
 app.use('/api/signup', require('./routes/signup'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/refresh-token', require('./routes/refreshToken'));
+app.use('/api/user', authenticate, require('./routes/user')); //ruta protegida
 
 app.use('/api', router);
 

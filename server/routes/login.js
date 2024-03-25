@@ -3,7 +3,7 @@ const router = express.Router();
 const { jsonResponse } = require('../lib/jsonResponse');
 const bcrypt = require('bcrypt');
 const client = require('./database');
-const { generateAccesToken, generateRefreshToken } = require('../auth/generateTokens');
+const { generateAccessToken, generateRefreshToken } = require('../auth/generateTokens');
 
 async function refreshTokenS(user) {
     const refreshTokenS = generateRefreshToken(user);
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
         const matchPassword = await bcrypt.compare(password, user.password)
 
         if (matchPassword) {
-            const accesToken = generateAccesToken(user);
+            const accesToken = generateAccessToken(user);
             const refreshToken = await refreshTokenS(user);
 
             res.status(200).json(

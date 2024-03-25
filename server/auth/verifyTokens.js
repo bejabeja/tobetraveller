@@ -6,7 +6,12 @@ function verifyAccessTokens(token) {
 
 
 function verifyRefreshTokens(token) {
-    return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET)
+    try {
+        return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+    } catch (error) {
+        console.error('Error verifying refresh token:', error.message);
+        return null;
+    }
 }
 
 module.exports = { verifyAccessTokens, verifyRefreshTokens }

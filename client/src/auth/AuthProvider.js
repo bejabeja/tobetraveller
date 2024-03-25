@@ -13,7 +13,9 @@ export function AuthProvider({ children }) {
     const [accesToken, setAccesToken] = useState('')
     const [user, setUser] = useState('')
 
-    useEffect(() => { }, [])
+    useEffect(() => {
+        checkAuth()
+    }, [])
 
     async function requestNewAccessToken(refreshToken) {
         try {
@@ -25,12 +27,13 @@ export function AuthProvider({ children }) {
                 }
             })
 
+
             if (response.ok) {
-                const json = await response.json
+                const json = await response.json()
                 if (json.error) {
                     throw new Error(json.error)
                 }
-                return json.body.accesToken
+                return json.accessToken
             } else {
                 throw new Error(response.statusText)
             }
@@ -74,7 +77,7 @@ export function AuthProvider({ children }) {
         } else {
             const token = getRefreshToken()
             if (token) {
-                const newAccesToken = requestNewAccessToken(token)
+                const newAccesToken = await requestNewAccessToken(token)
                 if (newAccesToken) {
                     const userInfo = await getUserInfo(newAccesToken)
                     if (userInfo) {
@@ -99,10 +102,10 @@ export function AuthProvider({ children }) {
     }
 
     function getRefreshToken() {
-        const token = localStorage.getItem('token')
-        if (token) {
-            const { refreshToken } = JSON.parse(token)
-            return refreshToken
+        const tokenData = localStorage.getItem('token')
+        if (tokenData) {
+            const token = JSON.parse(tokenData)
+            return token
         }
         return null
     }
