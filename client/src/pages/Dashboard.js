@@ -26,8 +26,11 @@ const Dashboard = () => {
     }
     return (
         <DashboardLayout>
-            <div>Dashboard de {auth.getUser()?.name || ''}</div>
-            <a href="#" onClick={handleSignout}> Sign out</a>
+            <section className="section">
+                <div>Dashboard de {auth.getUser()?.name || ''}</div>
+                <a href="#" onClick={handleSignout}> Sign out</a>
+            </section>
+
         </DashboardLayout>
     )
 };
