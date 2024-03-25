@@ -5,7 +5,9 @@ const AuthContext = createContext({
     isAuthenticated: false,
     getAccesToken: () => { },
     saveUser: (userData) => { },
-    getRefreshToken: () => { }
+    getRefreshToken: () => { },
+    getUser: () => { },
+    signOut: () => { }
 })
 
 export function AuthProvider({ children }) {
@@ -14,6 +16,11 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useState('')
 
     useEffect(() => {
+        // const storedToken = localStorage.getItem('token');
+        // if (storedToken) {
+        //     setIsAuthenticated(true);
+        //     setAccesToken(storedToken);
+        // }
         checkAuth()
     }, [])
 
@@ -55,11 +62,11 @@ export function AuthProvider({ children }) {
             })
 
             if (response.ok) {
-                const json = await response.json
+                const json = await response.json()
                 if (json.error) {
                     throw new Error(json.error)
                 }
-                return json
+                return json.body
             } else {
                 throw new Error(response.statusText)
             }
@@ -71,9 +78,11 @@ export function AuthProvider({ children }) {
     }
 
     async function checkAuth() {
-
         if (accesToken) { //si el usuario esta autenticado, si hay un accestoken en memoria
-            console.log('')
+            const userInfo = await getUserInfo(accesToken)
+            if (userInfo) {
+                saveSessionInfo(userInfo, accesToken, getRefreshToken())
+            }
         } else {
             const token = getRefreshToken()
             if (token) {
@@ -84,9 +93,15 @@ export function AuthProvider({ children }) {
                         saveSessionInfo(userInfo, newAccesToken, token)
                     }
                 }
-                console.log('')
             }
         }
+    }
+
+    function signOut() {
+        setIsAuthenticated(false)
+        setAccesToken('')
+        setUser(undefined)
+        localStorage.removeItem('token')
     }
 
     function saveSessionInfo(userInfo, accesToken, refreshToken) {
@@ -111,11 +126,19 @@ export function AuthProvider({ children }) {
     }
 
     function saveUser(userData) {
-        saveSessionInfo(userData.body.user, userData.body.accesToken, userData.body.refreshToken)
+        saveSessionInfo(
+            userData.body.user,
+            userData.body.accesToken,
+            userData.body.refreshToken
+        )
+    }
+
+    function getUser() {
+        return user
     }
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, getAccesToken, saveUser, getRefreshToken }}>
+        <AuthContext.Provider value={{ isAuthenticated, getAccesToken, saveUser, getRefreshToken, getUser, signOut }}>
             {children}
         </AuthContext.Provider>
     )

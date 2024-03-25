@@ -2,7 +2,7 @@ const { jsonResponse } = require('../lib/jsonResponse');
 
 const router = require('express').Router();
 
-router.get('/', (res, req) => {
+router.get('/', (req, res) => {
     res.status(200).json(
         jsonResponse(
             200,
