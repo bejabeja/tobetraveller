@@ -52,36 +52,38 @@ const SignUp = () => {
 
     return (
         <DashboardLayout>
-            <form className='form--auth'>
-                <h1 className='form--auth__title'>Signup</h1>
-                {errorResponse && <div className='errorMessage'>{errorResponse}</div>}
-                <div className='form--auth__input-group'>
-                    <label>Name</label>
-                    <input
-                        type='text'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    ></input>
-                </div>
-                <div className='form--auth__input-group'>
-                    <label>Username</label>
-                    <input
-                        type='text'
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    ></input>
-                </div>
-                <div className='form--auth__input-group'>
-                    <label>Password</label>
-                    <input
-                        type='password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    ></input>
-                </div>
-                <ButtonLink onClick={handleSubmit} className='primary-button' text='Create user'></ButtonLink>
-                <Link to='/login' className='form--auth__link'>Already have an account?</Link>
-            </form>
+            <section className='section'>
+                <form className='form--auth'>
+                    <h1 className='form--auth__title'>Signup</h1>
+                    {errorResponse && <div className='errorMessage'>{errorResponse}</div>}
+                    <div className='form--auth__input-group'>
+                        <label>Name</label>
+                        <input
+                            type='text'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        ></input>
+                    </div>
+                    <div className='form--auth__input-group'>
+                        <label>Username</label>
+                        <input
+                            type='text'
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        ></input>
+                    </div>
+                    <div className='form--auth__input-group'>
+                        <label>Password</label>
+                        <input
+                            type='password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        ></input>
+                    </div>
+                    <ButtonLink onClick={handleSubmit} className='primary-button' text='Create user'></ButtonLink>
+                    <Link to='/login' className='form--auth__link'>Already have an account?</Link>
+                </form>
+            </section>
         </DashboardLayout>
     );
 };
