@@ -13,7 +13,7 @@ const Navbar = () => {
     <div className='app-navbar'>
       <nav className='navbar-list'>
         <ul className='navbar-links'>
-          <li className={location.pathname === '/' ? 'navbar-link--active' : 'navbar-link'}>
+          <li className={location.pathname === '/dashboard' ? 'navbar-link--active' : 'navbar-link'}>
             <Link to="/dashboard"><HomeIcon></HomeIcon></Link>
           </li>
           <li className={location.pathname === '/discover' ? 'navbar-link--active' : 'navbar-link'}>
@@ -25,9 +25,9 @@ const Navbar = () => {
           <li className={location.pathname === '/share' ? 'navbar-link--active' : 'navbar-link'}>
             <Link to="/share"><ShareIcon></ShareIcon></Link>
           </li>
-          <Link className={location.pathname === '/profile' ? 'navbar-link--active' : 'navbar-link'}>
+          <li className={location.pathname === '/profile' ? 'navbar-link--active' : 'navbar-link'}>
             <Link to="/profile"><ProfileIcon></ProfileIcon></Link>
-          </Link>
+          </li>
         </ul>
       </nav>
     </div>

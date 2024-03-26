@@ -47,6 +47,7 @@
     background: rgba(255, 255, 255, 0.2);
     border: 1 solid #777;
     border-radius: 2rem;
+    pointer-events: none;
   }
 
 
