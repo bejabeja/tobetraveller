@@ -1,5 +1,5 @@
 import React from 'react'
-import './Layout.css'
+import './DashboardLayout.css'
 import Navbar from '../navbar/Navbar'
 
 const DashboardLayout = ({ children }) => {
