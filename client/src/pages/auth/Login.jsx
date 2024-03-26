@@ -3,7 +3,7 @@ import DashboardLayout from '../../layout/DashboardLayout';
 import './Login.css'
 import { useAuth } from '../../auth/AuthProvider';
 import { useLocation, useNavigate, Navigate } from 'react-router-dom';
-
+import ButtonLink from '../../components/ButtonLink'
 
 const Login = () => {
     const [username, setUsername] = useState('')
@@ -56,18 +56,31 @@ const Login = () => {
 
     return (
         <DashboardLayout>
-            <form onSubmit={handleLogin} className='section--loggin'>
-                {errorResponse && <div className='errorMessage'>{errorResponse}</div>}
+            <section className='section'>
+                <form className='form--auth'>
+                    <h1 className='form--auth__title'>Login</h1>
 
-                <h1>Login</h1>
-                <label>Username</label>
-                <input type='text' value={username} onChange={(e) => setUsername(e.target.value)}></input>
+                    {errorResponse && <div className='errorMessage'>{errorResponse}</div>}
+                    <div className='form--auth__input-group'>
+                        <label>Username</label>
+                        <input
+                            type='text'
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        ></input>
+                    </div>
+                    <div className='form--auth__input-group'>
+                        <label>Password</label>
+                        <input
+                            type='password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        ></input>
+                    </div>
 
-                <label>Password</label>
-                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
-
-                <button >Login</button>
-            </form>
+                    <ButtonLink onClick={handleLogin} className='primary-button' text='Login'></ButtonLink>
+                </form>
+            </section>
         </DashboardLayout>
     );
 };

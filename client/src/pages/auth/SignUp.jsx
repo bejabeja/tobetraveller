@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import DashboardLayout from '../../layout/DashboardLayout';
-import './Login.css'
+import './Login.css';
 import { useAuth } from '../../auth/AuthProvider';
 import { Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
+import ButtonLink from '../../components/ButtonLink';
 
 const SignUp = () => {
     const [name, setName] = useState('')
@@ -51,21 +52,34 @@ const SignUp = () => {
 
     return (
         <DashboardLayout>
-            <form className='section--loggin' onSubmit={handleSubmit}>
-                <h1>Signup</h1>
+            <form className='form--auth'>
+                <h1 className='form--auth__title'>Signup</h1>
                 {errorResponse && <div className='errorMessage'>{errorResponse}</div>}
-                <label>Name</label>
-                <input type='text'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}></input>
-
-                <label>Username</label>
-                <input type='text' value={username} onChange={(e) => setUsername(e.target.value)}></input>
-
-                <label>Password</label>
-                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
-
-                <button>Create user</button>
+                <div className='form--auth__input-group'>
+                    <label>Name</label>
+                    <input
+                        type='text'
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    ></input>
+                </div>
+                <div className='form--auth__input-group'>
+                    <label>Username</label>
+                    <input
+                        type='text'
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    ></input>
+                </div>
+                <div className='form--auth__input-group'>
+                    <label>Password</label>
+                    <input
+                        type='password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    ></input>
+                </div>
+                <ButtonLink onClick={handleSubmit} className='primary-button' text='Create user'></ButtonLink>
             </form>
         </DashboardLayout>
     );

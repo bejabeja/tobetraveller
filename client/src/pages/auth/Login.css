@@ -1,7 +1,79 @@
-.section--loggin {
-    margin-top: 10px;
+.form--auth {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 2rem 2rem 0 2rem;    
+    margin: 0 auto;
+    border-radius: 8px;
+    max-width: 80%;
+    width: 100%;
+    text-align: center;
+    align-items: center;
 }
+
+.form--auth__title {
+    font-size: 2rem;
+}
+
+.form--auth__input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+}
+
+.form--auth__input-group > label {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.form--auth__input-group > input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.primary-button {
+    font-size: 1.5rem;
+}
+
+
+@media (min-width: 667px) {
+
+    .form--auth {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem 2rem 0 2rem;    
+        margin: 0 auto;
+        border-radius: 8px;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .form--auth__title {
+        font-size: 2rem;
+    }
+    
+    .form--auth__input-group {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 100%;
+    }
+    
+    .form--auth__input-group > label {
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    
+    .form--auth__input-group > input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+  }
