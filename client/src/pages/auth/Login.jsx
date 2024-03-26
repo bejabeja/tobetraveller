@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DashboardLayout from '../../layout/DashboardLayout';
 import './Login.css'
 import { useAuth } from '../../auth/AuthProvider';
-import { useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
 import ButtonLink from '../../components/ButtonLink'
 
 const Login = () => {
@@ -79,6 +79,9 @@ const Login = () => {
                     </div>
 
                     <ButtonLink onClick={handleLogin} className='primary-button' text='Login'></ButtonLink>
+
+                    <Link to='/signup' className='form--auth__link'>Not a member yet?</Link>
+
                 </form>
             </section>
         </DashboardLayout>

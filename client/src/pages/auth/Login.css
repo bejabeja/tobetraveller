@@ -37,6 +37,9 @@
     font-size: 1.5rem;
 }
 
+.form--auth__link {
+    color: #fff;
+}
 
 @media (min-width: 667px) {
 

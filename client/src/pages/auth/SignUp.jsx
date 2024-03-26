@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DashboardLayout from '../../layout/DashboardLayout';
 import './Login.css';
 import { useAuth } from '../../auth/AuthProvider';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ButtonLink from '../../components/ButtonLink';
 
@@ -80,6 +80,7 @@ const SignUp = () => {
                     ></input>
                 </div>
                 <ButtonLink onClick={handleSubmit} className='primary-button' text='Create user'></ButtonLink>
+                <Link to='/login' className='form--auth__link'>Already have an account?</Link>
             </form>
         </DashboardLayout>
     );
