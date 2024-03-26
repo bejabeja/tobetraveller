@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import DashboardLayout from '../layout/DashboardLayout';
+import DashboardLayout from '../../layout/DashboardLayout';
 import './Login.css'
-import { useAuth } from '../auth/AuthProvider';
+import { useAuth } from '../../auth/AuthProvider';
 import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 
 
