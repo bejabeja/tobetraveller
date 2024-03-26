@@ -1,5 +1,4 @@
 import React from "react";
-import DashboardLayout from "../layout/DashboardLayout";
 import { useAuth } from "../auth/AuthProvider";
 
 const Dashboard = () => {
@@ -25,13 +24,10 @@ const Dashboard = () => {
         }
     }
     return (
-        <DashboardLayout>
-            <section className="section">
-                <div>Dashboard de {auth.getUser()?.name || ''}</div>
-                <a href="#" onClick={handleSignout}> Sign out</a>
-            </section>
-
-        </DashboardLayout>
+        <section className="section">
+            <div>Dashboard de {auth.getUser()?.name || ''}</div>
+            <a href="#" onClick={handleSignout}> Sign out</a>
+        </section>
     )
 };
 

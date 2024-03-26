@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import Layout from '../layout/Layout';
 import './Login.css'
 import { useAuth } from '../auth/AuthProvider';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 
 
-const Login = ({ onLogin }) => {
+const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errorResponse, setErrorResponse] = useState('')
 
     const auth = useAuth()
     const goTo = useNavigate()
+    const { state } = useLocation()
 
     if (auth.isAuthenticated) {
-        return <Navigate to='/dashboard'></Navigate>
+        return <Navigate to='/'></Navigate>
     }
 
     const handleLogin = async (e) => {
@@ -40,7 +41,7 @@ const Login = ({ onLogin }) => {
 
                 if (json.body.accesToken && json.body.refreshToken) {
                     auth.saveUser(json)
-                    goTo('/dashboard')
+                    goTo(state?.pathname ?? '/')
                 }
 
             } else {

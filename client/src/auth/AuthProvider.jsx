@@ -16,11 +16,6 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useState('')
 
     useEffect(() => {
-        // const storedToken = localStorage.getItem('token');
-        // if (storedToken) {
-        //     setIsAuthenticated(true);
-        //     setAccesToken(storedToken);
-        // }
         checkAuth()
     }, [])
 

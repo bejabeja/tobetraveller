@@ -5,7 +5,7 @@ import { useAuth } from '../auth/AuthProvider';
 import { Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
-const SignUp = ({ onLogin }) => {
+const SignUp = () => {
     const [name, setName] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -16,7 +16,7 @@ const SignUp = ({ onLogin }) => {
     const goTo = useNavigate();
 
     if (auth.isAuthenticated) {
-        return <Navigate to='/dashboard'></Navigate>
+        return <Navigate to='/'></Navigate>
     }
 
 
@@ -38,7 +38,7 @@ const SignUp = ({ onLogin }) => {
             if (response.status === 200) {
                 console.log("User created successfully")
                 setErrorResponse('')
-                goTo('/')
+                goTo('/login')
             } else {
                 console.log("Something went wrong")
                 setErrorResponse(response.data.error || 'An error occurred')
