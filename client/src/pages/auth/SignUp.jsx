@@ -12,7 +12,6 @@ const SignUp = () => {
     const [password, setPassword] = useState('')
     const [errorResponse, setErrorResponse] = useState('')
 
-
     const auth = useAuth()
     const goTo = useNavigate();
 

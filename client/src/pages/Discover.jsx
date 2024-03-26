@@ -8,18 +8,16 @@ const Discover = () => {
   const [selectData, setSelectData] = useState([])
 
   useEffect(() => {
-    let apiUrl = process.env.API_URL || 'http://localhost:3001/api';
-
     let processing = true
-    axiosFetchData(processing, apiUrl)
+    axiosFetchData(processing)
     return () => {
       processing = false
     }
   }, [])
 
 
-  const axiosFetchData = async (processing, apiUrl) => {
-    await axios.get(`${apiUrl}/places`)
+  const axiosFetchData = async (processing) => {
+    await axios.get(`${process.env.REACT_APP_API_URL}/places`)
       .then(res => {
         if (processing) {
           setSelectData(res.data)

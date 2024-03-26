@@ -68,5 +68,5 @@ code {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem 2rem 0 2rem;
+  padding: 2rem;
 }
