@@ -19,12 +19,12 @@ const Navbar = () => {
           <li className={location.pathname === '/discover' ? 'navbar-link--active' : 'navbar-link'}>
             <Link to="/discover"><TravelIcon></TravelIcon></Link>
           </li>
-          <li className={location.pathname === '/weather' ? 'navbar-link--active' : 'navbar-link'}>
+          {/* <li className={location.pathname === '/weather' ? 'navbar-link--active' : 'navbar-link'}>
             <Link to="/weather"><WeatherIcon></WeatherIcon></Link>
           </li>
           <li className={location.pathname === '/share' ? 'navbar-link--active' : 'navbar-link'}>
             <Link to="/share"><ShareIcon></ShareIcon></Link>
-          </li>
+          </li> */}
           <li className={location.pathname === '/profile' ? 'navbar-link--active' : 'navbar-link'}>
             <Link to="/profile"><ProfileIcon></ProfileIcon></Link>
           </li>

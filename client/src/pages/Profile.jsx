@@ -1,8 +1,12 @@
 import React from 'react'
+import SignoutButton from '../components/SignoutButton'
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <section className='section'>
+      <div>Profile</div>
+      <SignoutButton></SignoutButton>
+    </section>
   )
 }
 

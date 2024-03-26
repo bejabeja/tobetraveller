@@ -7,16 +7,20 @@ import Discover from './pages/Discover';
 import Place from './pages/Place';
 import NotFound from './pages/NotFound';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
+
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/discover" element={<Discover />} />
       <Route path="/discover/:name" element={<ProtectedRoute><Place /></ProtectedRoute>} />
-      <Route path="/discover" element={<ProtectedRoute><Discover /></ProtectedRoute>} />
-      <Route path='*' element={<NotFound />}></Route>
+      <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path='*' element={<NotFound />}></Route>
     </Routes>
   );
 };

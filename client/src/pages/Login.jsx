@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Layout from '../layout/Layout';
+import DashboardLayout from '../layout/DashboardLayout';
 import './Login.css'
 import { useAuth } from '../auth/AuthProvider';
 import { useLocation, useNavigate, Navigate } from 'react-router-dom';
@@ -55,7 +55,7 @@ const Login = () => {
     };
 
     return (
-        <Layout>
+        <DashboardLayout>
             <form onSubmit={handleLogin} className='section--loggin'>
                 {errorResponse && <div className='errorMessage'>{errorResponse}</div>}
 
@@ -68,7 +68,7 @@ const Login = () => {
 
                 <button >Login</button>
             </form>
-        </Layout>
+        </DashboardLayout>
     );
 };
 

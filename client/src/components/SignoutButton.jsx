@@ -1,8 +1,11 @@
 import React from "react";
 import { useAuth } from "../auth/AuthProvider";
+import ButtonLink from "./ButtonLink";
+import { useNavigate } from "react-router-dom";
 
-const Dashboard = () => {
+const SignoutButton = () => {
     const auth = useAuth();
+    const navigate = useNavigate()
 
     async function handleSignout(e) {
         e.preventDefault()
@@ -18,17 +21,15 @@ const Dashboard = () => {
 
             if (response.ok) {
                 auth.signOut()
+                navigate('/login')
             }
         } catch (error) {
             console.log(error)
         }
     }
     return (
-        <section className="section">
-            <div>Dashboard de {auth.getUser()?.name || ''}</div>
-            <a href="#" onClick={handleSignout}> Sign out</a>
-        </section>
+        <ButtonLink onClick={handleSignout} text='Signout' className='primary-button' />
     )
 };
 
-export default Dashboard;
+export default SignoutButton;

@@ -29,12 +29,13 @@ const Discover = () => {
   }
 
   return (
-    <section className='section-discover section'>
-      {selectData?.map((place, index) => (
-        <Card key={index} id={place.id} countryName={place.countryName} cityName={place.cityName} countryText={place.countryText} countryCode={place.countryCode}></Card>
-      ))}
-    </section>
-
+    <DashboardLayout>
+      <section className='section-discover section'>
+        {selectData?.map((place, index) => (
+          <Card key={index} id={place.id} countryName={place.countryName} cityName={place.cityName} countryText={place.countryText} countryCode={place.countryCode}></Card>
+        ))}
+      </section>
+    </DashboardLayout>
   )
 }
 

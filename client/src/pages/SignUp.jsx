@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Layout from '../layout/Layout';
+import DashboardLayout from '../layout/DashboardLayout';
 import './Login.css'
 import { useAuth } from '../auth/AuthProvider';
 import { Navigate, useNavigate } from 'react-router-dom';
@@ -50,7 +50,7 @@ const SignUp = () => {
     }
 
     return (
-        <Layout>
+        <DashboardLayout>
             <form className='section--loggin' onSubmit={handleSubmit}>
                 <h1>Signup</h1>
                 {errorResponse && <div className='errorMessage'>{errorResponse}</div>}
@@ -67,7 +67,7 @@ const SignUp = () => {
 
                 <button>Create user</button>
             </form>
-        </Layout>
+        </DashboardLayout>
     );
 };
 

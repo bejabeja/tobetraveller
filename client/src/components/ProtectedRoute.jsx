@@ -6,6 +6,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 export default function ProtectedRoute({ children }) {
     const auth = useAuth();
     const location = useLocation()
+
     if (!auth.isAuthenticated) {
         return <Navigate to="/login" state={location} />
     }

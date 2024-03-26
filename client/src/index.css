@@ -48,6 +48,7 @@ code {
   border-radius: 2rem;
   text-decoration: none;
   transition: 0.3s;
+  width: fit-content;
 }
 
 .primary-button:hover {
