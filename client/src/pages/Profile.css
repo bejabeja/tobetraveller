@@ -1,0 +1,73 @@
+.section--profile {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile--buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    transition: border-bottom-color 0.3s;
+}
+
+.input-container input:focus {
+    border-bottom-color: yellow;
+}
+
+.input-container label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #888;
+    font-size: 16px;
+    transition: top 0.3s, font-size 0.3s;
+}
+
+.input-container.has-value label,
+.input-container input:focus + label {
+    top: -20px;
+    font-size: 12px;
+    color: yellow;
+}
+
+.primary-button:hover{
+    background-color: yellow;
+    color: black;
+}
+
+.primary-button:active {
+    background-color: rgb(74, 78, 83);
+    color: #fff;
+}
+
+.trip-active-button {
+    background-color: yellow;
+    color: black;
+}
+
+@media (min-width: 667px) {
+    .profile--buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+    }
+}
