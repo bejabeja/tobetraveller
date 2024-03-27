@@ -13,6 +13,8 @@ const Login = () => {
     const auth = useAuth()
     const goTo = useNavigate()
     const { state } = useLocation()
+    const inputErrorClass = errorResponse ? 'form--auth__input-group-input input-error' : 'form--auth__input-group-input'
+
 
     if (auth.isAuthenticated) {
         return <Navigate to='/'></Navigate>
@@ -20,6 +22,7 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault()
+        setErrorResponse('')
 
         try {
             const response = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
@@ -54,19 +57,29 @@ const Login = () => {
         }
     };
 
+    console.log(inputErrorClass)
+
     return (
         <DashboardLayout>
             <section className='section'>
                 <form className='form--auth'>
                     <h1 className='form--auth__title'>Login</h1>
 
-                    {errorResponse && <div className='errorMessage'>{errorResponse}</div>}
+                    {errorResponse &&
+                        <div className='form--auth__errorMessage'>
+                            <h3>Please correct the following</h3>
+                            <div>
+                                {errorResponse}
+                            </div>
+                        </div>
+                    }
                     <div className='form--auth__input-group'>
                         <label>Username</label>
                         <input
                             type='text'
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => { setUsername(e.target.value) }}
+                            className={inputErrorClass}
                         ></input>
                     </div>
                     <div className='form--auth__input-group'>
@@ -75,6 +88,7 @@ const Login = () => {
                             type='password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            className={inputErrorClass}
                         ></input>
                     </div>
 
