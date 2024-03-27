@@ -5,15 +5,18 @@ import { useAuth } from '../../auth/AuthProvider';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ButtonLink from '../../components/ButtonLink';
+import SpinnerLoader from '../../components/SpinnerLoader';
 
 const SignUp = () => {
-    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errorResponse, setErrorResponse] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const auth = useAuth()
     const goTo = useNavigate();
+    const inputErrorClass = errorResponse ? 'form--auth__input-group-input input-error' : 'form--auth__input-group-input'
 
     if (auth.isAuthenticated) {
         return <Navigate to='/'></Navigate>
@@ -22,14 +25,26 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        axiosPostData()
+
+        setErrorResponse('')
+        setLoading(true)
+        setTimeout(async () => {
+            try {
+                await axiosPostData()
+            } catch (error) {
+                console.log(error)
+            }
+
+            setLoading(false)
+        }, 2000)
+
     };
 
 
     const axiosPostData = async () => {
         const postData = {
             username: username,
-            name: name,
+            email: email,
             password: password
         }
 
@@ -41,11 +56,11 @@ const SignUp = () => {
                 goTo('/login')
             } else {
                 console.log("Something went wrong")
-                setErrorResponse(response.data.error || 'An error occurred')
+                setErrorResponse(response.data.error)
             }
         } catch (error) {
-            console.log("Network error:", error)
-            setErrorResponse('Network error. Please try again later.')
+            console.log("Network error:", error.response.data.body.error)
+            setErrorResponse(error.response.data.body.error)
         }
     }
 
@@ -54,32 +69,40 @@ const SignUp = () => {
             <section className='section'>
                 <form className='form--auth'>
                     <h1 className='form--auth__title'>Signup</h1>
-                    {errorResponse && <div className='errorMessage'>{errorResponse}</div>}
-                    <div className='form--auth__input-group'>
-                        <label>Name</label>
-                        <input
-                            type='text'
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        ></input>
-                    </div>
-                    <div className='form--auth__input-group'>
-                        <label>Username</label>
-                        <input
-                            type='text'
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                        ></input>
-                    </div>
-                    <div className='form--auth__input-group'>
-                        <label>Password</label>
-                        <input
-                            type='password'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        ></input>
-                    </div>
-                    <ButtonLink onClick={handleSubmit} className='primary-button' text='Create user'></ButtonLink>
+                    {loading ?
+                        <SpinnerLoader />
+                        : <>
+                            {errorResponse && <div className='form--auth__errorMessage'>{errorResponse}</div>}
+                            <div className='form--auth__input-group'>
+                                <label>Username</label>
+                                <input
+                                    type='text'
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    className={inputErrorClass}
+                                ></input>
+                            </div>
+                            <div className='form--auth__input-group'>
+                                <label>Email</label>
+                                <input
+                                    type='email'
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className={inputErrorClass}
+                                ></input>
+                            </div>
+                            <div className='form--auth__input-group'>
+                                <label>Password</label>
+                                <input
+                                    type='password'
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className={inputErrorClass}
+                                ></input>
+                            </div>
+                            <ButtonLink onClick={handleSubmit} className='primary-button' text='Create user'></ButtonLink>
+                        </>
+                    }
                     <Link to='/login' className='form--auth__link'>Already have an account?</Link>
                 </form>
             </section>

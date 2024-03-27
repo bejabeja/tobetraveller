@@ -62,8 +62,6 @@ const Login = () => {
 
     };
 
-    console.log(inputErrorClass)
-
     return (
         <DashboardLayout>
             <section className='section'>

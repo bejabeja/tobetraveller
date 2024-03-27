@@ -9,7 +9,7 @@ const Profile = () => {
 
   return (
     <section className='section'>
-      <div>Hello {user.name},</div>
+      <div>Hello {user.username},</div>
       <div>How are you today? Tell me more about your next travel</div>
       <SignoutButton></SignoutButton>
     </section>

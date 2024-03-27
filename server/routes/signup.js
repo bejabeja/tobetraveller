@@ -6,13 +6,29 @@ const client = require('./database');
 
 
 router.post('/', async (req, res) => {
-    const { username, name, password } = req.body;
-
-    if (!username || !name || !password) {
+    const { username, email, password } = req.body;
+    if (!username || !email || !password) {
         return res.status(400).json(
             jsonResponse(
                 400,
                 { error: "Fields are required" }
+            )
+        );
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    console.log('emailllllll')
+    console.log(emailPattern)
+
+    console.log(emailPattern.test(email))
+
+    if (!emailPattern.test(email)) {
+
+        console.log('im in')
+        return res.status(400).json(
+            jsonResponse(
+                400,
+                { error: "Introduce a valid email" }
             )
         );
     }
@@ -22,14 +38,14 @@ router.post('/', async (req, res) => {
         return res.status(400).json(
             jsonResponse(
                 400,
-                { error: 'User name already exist' }
+                { error: 'Username already exist' }
             )
         )
     }
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        await client.query('INSERT INTO users (name, username, password) VALUES ($1, $2, $3)', [name, username, hashedPassword]);
+        await client.query('INSERT INTO users (email, username, password) VALUES ($1, $2, $3)', [email, username, hashedPassword]);
         return res.status(200).json(
             jsonResponse(
                 200,

@@ -15,7 +15,7 @@ async function createUsersTable() {
         const query = `
                 CREATE TABLE IF NOT EXISTS users (
                     user_id SERIAL PRIMARY KEY, 
-                    name VARCHAR(255), 
+                    email VARCHAR(255), 
                     username VARCHAR(255) UNIQUE, 
                     password VARCHAR(255)
                 )
