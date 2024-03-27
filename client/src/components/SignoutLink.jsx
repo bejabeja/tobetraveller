@@ -1,9 +1,8 @@
 import React from "react";
 import { useAuth } from "../auth/AuthProvider";
-import ButtonLink from "./ButtonLink";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const SignoutButton = () => {
+const SignoutLink = ({ children }) => {
     const auth = useAuth();
     const navigate = useNavigate()
 
@@ -28,8 +27,8 @@ const SignoutButton = () => {
         }
     }
     return (
-        <ButtonLink onClick={handleSignout} text='Signout' className='primary-button' />
+        <Link to='/login' onClick={handleSignout} > {children} </Link>
     )
 };
 
-export default SignoutButton;
+export default SignoutLink;

@@ -1,14 +1,20 @@
 import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 import HomeIcon from '../icons/HomeIcon'
 import TravelIcon from '../icons/TravelIcon'
 import WeatherIcon from '../icons/WeatherIcon'
 import ProfileIcon from '../icons/ProfileIcon'
 import ShareIcon from '../icons/ShareIcon'
-import { Link, useLocation } from 'react-router-dom'
+import LogOutIcon from '../icons/LogOutIcon'
+import SignoutLink from '../components/SignoutLink'
+import { useAuth } from '../auth/AuthProvider'
 
 const Navbar = () => {
   const location = useLocation()
+  const { isAuthenticated } = useAuth();
+
+
   return (
     <div className='app-navbar'>
       <nav className='navbar-list'>
@@ -28,6 +34,11 @@ const Navbar = () => {
           <li className={location.pathname === '/profile' ? 'navbar-link--active' : 'navbar-link'}>
             <Link to="/profile"><ProfileIcon></ProfileIcon></Link>
           </li>
+          {isAuthenticated &&
+            <li className='navbar-link'>
+              <SignoutLink> <LogOutIcon></LogOutIcon> </SignoutLink>
+            </li>
+          }
         </ul>
       </nav>
     </div>
