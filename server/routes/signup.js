@@ -16,23 +16,6 @@ router.post('/', async (req, res) => {
         );
     }
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    console.log('emailllllll')
-    console.log(emailPattern)
-
-    console.log(emailPattern.test(email))
-
-    if (!emailPattern.test(email)) {
-
-        console.log('im in')
-        return res.status(400).json(
-            jsonResponse(
-                400,
-                { error: "Introduce a valid email" }
-            )
-        );
-    }
-
     const existingUser = await client.query('SELECT * FROM users WHERE username = $1', [username]);
     if (existingUser.rows.length > 0) {
         return res.status(400).json(
@@ -41,6 +24,16 @@ router.post('/', async (req, res) => {
                 { error: 'Username already exist' }
             )
         )
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        return res.status(400).json(
+            jsonResponse(
+                400,
+                { error: "Introduce a valid email" }
+            )
+        );
     }
 
     try {

@@ -11,6 +11,8 @@ const SignUp = () => {
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [repeatPassword, setRepeatPassword] = useState('')
+
     const [errorResponse, setErrorResponse] = useState('')
     const [loading, setLoading] = useState(false)
 
@@ -27,6 +29,12 @@ const SignUp = () => {
         e.preventDefault()
 
         setErrorResponse('')
+
+        if (password !== repeatPassword) {
+            setErrorResponse('Passwords do not match');
+            return;
+        }
+
         setLoading(true)
         setTimeout(async () => {
             try {
@@ -97,6 +105,15 @@ const SignUp = () => {
                                     type='password'
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
+                                    className={inputErrorClass}
+                                ></input>
+                            </div>
+                            <div className='form--auth__input-group'>
+                                <label>Repeat Password</label>
+                                <input
+                                    type='password'
+                                    value={repeatPassword}
+                                    onChange={(e) => setRepeatPassword(e.target.value)}
                                     className={inputErrorClass}
                                 ></input>
                             </div>
