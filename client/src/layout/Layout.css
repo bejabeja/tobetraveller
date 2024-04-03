@@ -1,0 +1,29 @@
+.main-app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 80%;
+    height: 100%;
+    margin-bottom: 3rem;
+    gap: 1rem;
+  }
+
+.scrollable-div {
+    overflow-y: scroll; 
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scrollable-div::-webkit-scrollbar {
+    display: none; 
+}
+
+
+@media (min-width: 767px) {
+  .main-app-container {
+    height: 100%;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+  }
+}

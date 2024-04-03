@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Discover.css'
 import Card from '../components/Card'
-import DashboardLayout from '../layout/DashboardLayout'
+import Layout from '../layout/Layout'
 
 const Discover = () => {
   const [selectData, setSelectData] = useState([])
@@ -27,13 +27,13 @@ const Discover = () => {
   }
 
   return (
-    <DashboardLayout>
+    <Layout>
       <section className='section-discover section'>
         {selectData?.map((place, index) => (
           <Card key={index} id={place.id} countryName={place.countryName} cityName={place.cityName} countryText={place.countryText} countryCode={place.countryCode}></Card>
         ))}
       </section>
-    </DashboardLayout>
+    </Layout>
   )
 }
 

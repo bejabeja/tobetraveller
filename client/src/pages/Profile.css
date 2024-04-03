@@ -1,7 +1,6 @@
 .section--profile {
     text-align: center;
-    width: 80%;
-    margin: 0 auto;
+    align-items: center;
 }
 
 .profile--buttons {
@@ -11,10 +10,18 @@
     gap: 2rem;
 }
 
+.form-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 0 auto;
+    border-radius: 8px;
+    width: 100%;
+    align-items: center;
+}
+
 .input-container {
     position: relative;
-    margin-bottom: 40px;
-    margin-top: 40px;
 }
 
 .input-container input {
@@ -64,6 +71,18 @@
 }
 
 @media (min-width: 667px) {
+
+    .form-profile {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+        margin: 0 auto;
+        border-radius: 8px;
+        max-width: 80%;
+        width: 100%;
+        align-items: center;
+    }
     .profile--buttons {
         display: flex;
         flex-direction: row;

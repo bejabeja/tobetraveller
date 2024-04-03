@@ -8,7 +8,9 @@ import Place from './pages/Place';
 import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
-import DashboardLayout from './layout/DashboardLayout';
+import Layout from './layout/Layout';
+
+import CreateTrip from './pages/trip/CreateTrip';
 
 
 const App = () => {
@@ -18,8 +20,10 @@ const App = () => {
       <Route path="/discover" element={<Discover />} />
       <Route path="/discover/:name" element={<ProtectedRoute><Place /></ProtectedRoute>} />
       <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-      {/* <Route path="/profile" element={<DashboardLayout><Profile /></DashboardLayout>} /> */}
+      <Route path="/trip/create/:placeToGo/:travelDays" element={<ProtectedRoute><CreateTrip /></ProtectedRoute>} />
 
+      {/* <Route path="/profile" element={<Layout><Profile /></Layout>} /> */}
+      {/* <Route path="/trip/create/:placeToGo/:travelDays" element={<Layout><CreateTrip /> </Layout>} /> */}
 
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />

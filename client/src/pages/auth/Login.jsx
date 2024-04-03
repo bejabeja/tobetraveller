@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DashboardLayout from '../../layout/DashboardLayout';
+import DashboardLayout from '../../layout/Layout';
 import './Login.css'
 import { useAuth } from '../../auth/AuthProvider';
 import { useLocation, useNavigate, Navigate, Link } from 'react-router-dom';

@@ -1,3 +1,10 @@
+.newtrip--form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
 .form--auth {
     display: flex;
     flex-direction: column;

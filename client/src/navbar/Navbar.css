@@ -1,7 +1,8 @@
 
 .app-navbar {
     height: fit-content;
-    background: fixed rgba(0, 0, 0, 0.5);
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 2em;
     display: flex;
     align-items: center;

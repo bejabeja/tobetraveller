@@ -7,8 +7,10 @@ import './Profile.css'
 const Profile = () => {
   const [newTrip, setNewTrip] = useState(false)
   const [allTrips, setAllTrips] = useState(false)
-  const [placeToGo, setPlaceToGo] = useState('')
-  const [travelDays, setTravelDays] = useState(null)
+  const [createTrip, setCreateTrip] = useState(false)
+
+  const [tripInfo, setTripInfo] = useState({ placeToGo: '', travelDays: '' })
+  const { placeToGo, travelDays } = tripInfo
 
 
 
@@ -28,7 +30,7 @@ const Profile = () => {
   }
 
   return (
-    <section className='section section--profile'>
+    <section className='section--profile section'>
       <div>Hello traveller {user.username}, how are you today?</div>
       {/* <div>How are you today? </div> */}
       {/* <div>Tell me more about your travel</div> */}
@@ -46,33 +48,52 @@ const Profile = () => {
       </div>
 
       {newTrip &&
-        <form>
+        <div className='newtrip--form'>
+          <form className='form-profile'>
 
-          <div className={`input-container ${placeToGo ? 'has-value' : ''}`}>
-            <input
-              type="text"
-              id="input"
-              value={placeToGo}
-              onChange={(e) => { setPlaceToGo(e.target.value) }}
-              required
-            />
-            <label htmlFor="input">Where to go?</label>
-          </div>
+            <div className={`input-container ${placeToGo ? 'has-value' : ''}`}>
+              <input
+                type="text"
+                id="input"
+                value={placeToGo}
+                onChange={(e) => { setTripInfo({ ...tripInfo, placeToGo: e.target.value }) }}
+                required
+              />
+              <label htmlFor="input">Where to go?</label>
+            </div>
 
-          <div className={`input-container ${travelDays ? 'has-value' : ''}`}>
-            <input
-              type="text"
-              id="input"
-              value={travelDays}
-              onChange={(e) => { setTravelDays(e.target.value) }}
-              required
-            />
-            <label htmlFor="input">How many days?</label>
-          </div>
-        </form>
+            <div className={`input-container ${travelDays ? 'has-value' : ''}`}>
+              <input
+                type="text"
+                id="input"
+                value={travelDays}
+                onChange={(e) => { setTripInfo({ ...tripInfo, travelDays: e.target.value }) }}
+                required
+              />
+              <label htmlFor="input">How many days?</label>
+            </div>
+
+
+          </form>
+          {placeToGo && travelDays &&
+            <ButtonLink
+              href={`/trip/create/${placeToGo}/${travelDays}`}
+              className={`primary-button`}
+              text='Create trip'
+            ></ButtonLink>
+
+          }
+        </div>
       }
-    </section>
+
+
+
+    </section >
   )
 }
+
+
+
+
 
 export default Profile

@@ -56,18 +56,20 @@ code {
   background-color: rgb(74,78,83); 
 }
 
+
+.section{
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+
 @media (min-width: 667px) {
   .primary-button {
     padding: 0.5rem 5rem; 
     font-size: 2rem; 
   }
-  
-}
-
-.section{
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 2rem;
 }
