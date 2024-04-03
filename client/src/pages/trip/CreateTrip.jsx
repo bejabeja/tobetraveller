@@ -1,10 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import './CreateTrip.css'
 
 const CreateTrip = (props) => {
-    console.log('props')
-    console.log(props)
-
 
     const { placeToGo, travelDays } = useParams();
 
@@ -13,9 +11,9 @@ const CreateTrip = (props) => {
         for (let i = 1; i <= travelDays; i++) {
             days.push(
                 <div key={i}>
-                    dia {1}
+                    <h2>Day {i}</h2>
                     <form>
-                        
+
                     </form>
                 </div>
             )
@@ -25,11 +23,15 @@ const CreateTrip = (props) => {
 
     return (
         <section className='section'>
-            <h1>{placeToGo ?? 'h'}</h1>
-            <h3>{travelDays ?? 'o'}</h3>
+            <div className="create-trip--header">
+                <h3 className="create-trip--travelDays"> {travelDays} days in </h3>
+                <h1 className="create-trip--placeToGo"> {placeToGo}</h1>
+            </div>
+
             {
                 travelDays > 0 &&
-                <div>
+                <div className="create-trip--itinerary">
+                    <h1>Itinerary</h1>
                     {
                         renderTripDays()
                     }

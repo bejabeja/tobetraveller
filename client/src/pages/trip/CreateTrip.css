@@ -1,0 +1,17 @@
+.create-trip--header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.create-trip--placeToGo {
+    font-size: 7.5vw;
+    margin: 0;
+}
+
+.create-trip--travelDays {
+    font-size: 2.5vw;
+    margin: 0;
+
+}

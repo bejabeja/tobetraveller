@@ -10,7 +10,7 @@ const Home = () => {
       <section className='tittle-group section'>
         <h1 className='title--h1'>Travel Smarter, Dream Bigger</h1>
         <h2 className='title--h2'>Your Journey Begins Here</h2>
-        <ButtonLink href='/discover' className='primary-button' text='Start'> </ButtonLink>
+        <ButtonLink href='/discover' className='main--button' text='Start'> </ButtonLink>
       </section>
     </ Layout>
   )

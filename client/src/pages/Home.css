@@ -27,12 +27,16 @@
 
 @media (min-width: 667px) {
     .title--h1 {
-        font-size: 5rem;
-        padding: 1rem;
+        /* font-size: 5rem;*/
+        font-size: 7.5vw; 
+        line-height: 1;
+        font-weight: 900;
+        margin-bottom: 0;
     }
     
     .title--h2 {
         font-size: 3rem;
         padding: 1rem;
     }
+    
 }

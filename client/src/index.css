@@ -56,6 +56,23 @@ code {
   background-color: rgb(74,78,83); 
 }
 
+.main--button {
+  /* background-color: rgba(0,0,0);  */
+  border: 1px solid #fff; 
+  color: white; 
+  padding: 0.5rem 3rem; 
+  font-size: 1.5rem; 
+  cursor: pointer; 
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: 1s ease-in-out;
+  width: fit-content;
+}
+
+.main--button:hover {
+  background-color: #fff; 
+  color: black;
+}
 
 .section{
   margin-top: 45px;
@@ -71,5 +88,10 @@ code {
   .primary-button {
     padding: 0.5rem 5rem; 
     font-size: 2rem; 
+  }
+
+  .main--button {
+    font-size: 2vw; 
+    padding: 0.5rem 5rem; 
   }
 }
