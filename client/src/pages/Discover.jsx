@@ -8,11 +8,7 @@ const Discover = () => {
   const [selectData, setSelectData] = useState([])
 
   useEffect(() => {
-    let processing = true
-    getPlaces(processing).then((places) => setSelectData(places))
-    return () => {
-      processing = false
-    }
+    getPlaces().then((places) => setSelectData(places))
   }, [])
 
 
