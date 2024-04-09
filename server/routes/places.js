@@ -1,7 +1,6 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 
-router.get('/places', (req, res) => {
+router.get('/', (req, res) => {
     const citiesData =
     {
         "cities": [
@@ -218,7 +217,7 @@ router.get('/places', (req, res) => {
 
 
 
-    res.send(citiesData)
+    res.send(citiesData);
 })
 
 module.exports = router

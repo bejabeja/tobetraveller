@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const router = require('./routes/router');
 const authenticate = require('./auth/authenticate');
 require('dotenv').config();
 
@@ -25,8 +24,8 @@ app.use('/api/login', require('./routes/login'));
 app.use('/api/refresh-token', require('./routes/refreshToken'));
 app.use('/api/user', authenticate, require('./routes/user')); //ruta protegida
 app.use('/api/signout', require('./routes/signout'))
+app.use('/api/places', require('./routes/places'))
 
-app.use('/api', router);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
