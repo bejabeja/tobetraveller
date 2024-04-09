@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding: 0rem 2rem 0 2rem;    
+    padding: 0rem 2rem 0 2rem;
     margin: 0 auto;
     border-radius: 8px;
     max-width: 80%;
@@ -30,7 +30,7 @@
     width: 100%;
 }
 
-.form--auth__input-group > label {
+.form--auth__input-group>label {
     font-weight: bold;
     margin-bottom: 1rem;
 }
@@ -63,10 +63,10 @@
     padding: 1rem;
 }
 
-.form--auth__errorMessage > h3{
+.form--auth__errorMessage>h3 {
     font-size: 1rem;
     margin: 0;
-    margin-bottom: 1rem;    
+    margin-bottom: 1rem;
 }
 
 @media (min-width: 667px) {
@@ -74,7 +74,7 @@
     .form--auth {
         margin-top: 10px;
         gap: 2rem;
-        padding: 2rem 2rem 0 2rem;    
+        padding: 2rem 2rem 0 2rem;
         max-width: 400px;
     }
 

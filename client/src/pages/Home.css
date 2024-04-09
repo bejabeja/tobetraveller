@@ -6,7 +6,7 @@
 .title--h1 {
     font-size: 2.5rem;
     line-height: 1;
-    margin: 0;;
+    margin: 0;
 }
 
 .title--h2 {
@@ -19,7 +19,7 @@
     .title--h1 {
         font-size: 3.5rem;
     }
-    
+
     .title--h2 {
         font-size: 1.5rem;
     }
@@ -29,9 +29,9 @@
     .title--h1 {
         font-size: 4.5rem;
     }
-    
+
     .title--h2 {
         font-size: 2.5em;
     }
-    
-} 
+
+}

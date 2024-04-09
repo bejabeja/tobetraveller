@@ -41,14 +41,14 @@ button,
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  color: var(--white-color); 
+  color: var(--white-color);
   background-color: #1a1a1a;
   border-color: var(--main-color);
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.25s;
 }
-  
+
 button:hover,
 .main--button:hover {
   background-color: var(--main-color);

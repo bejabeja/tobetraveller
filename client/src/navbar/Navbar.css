@@ -1,68 +1,68 @@
-
 .app-navbar {
-    height: fit-content;
-    position: fixed;
-    top: 16px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 2rem;
-    backdrop-filter: blur(8px);
-  }
-  
+  height: fit-content;
+  position: fixed;
+  top: 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  backdrop-filter: blur(8px);
+}
+
+.navbar-links {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: .5rem;
+  padding: 0;
+  align-items: center;
+  font-size: 0.65rem;
+  transition: all .3s ease;
+
+}
+
+.navbar-links>li>a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1pz solid var(--white-color);
+  padding: 4px;
+  height: 32px;
+  width: 32px;
+  border-radius: 6px;
+}
+
+.navbar-link {
+  transition: .5s ease;
+  border: 1 solid #777;
+  border-radius: 2rem;
+}
+
+.navbar-link:hover {
+  /* background: rgba(255, 255, 255, 0.2); */
+  background: var(--main-color);
+}
+
+.navbar-link--active {
+  /* background: rgba(255, 255, 255, 0.2); */
+  background: var(--main-color);
+  border: 1 solid #777;
+  border-radius: 2rem;
+  pointer-events: none;
+}
+
+.navbar-link>* {
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+
+@media screen and (min-width: 500px) {
+
   .navbar-links {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    gap: .5rem;
-    padding: 0;
-    align-items: center;
-    font-size: 0.65rem;
-    transition: all .3s ease;
-
-  }
-  
-  .navbar-links > li > a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1pz solid #eee;
-    padding: 4px;
-    height: 32px;
-    width: 32px;
-    border-radius: 6px;
+    gap: 2.5rem;
   }
 
-  .navbar-link {
-    transition: .5s ease;
-    border: 1 solid #777;
-    border-radius: 2rem;
-  }
-  .navbar-link:hover {
-    /* background: rgba(255, 255, 255, 0.2); */
-    background: var(--main-color);
-  }
-
-  .navbar-link--active{
-    /* background: rgba(255, 255, 255, 0.2); */
-    background: var(--main-color);
-    border: 1 solid #777;
-    border-radius: 2rem;
-    pointer-events: none;
-  }
-
-  .navbar-link > * {
-    color: var(--white-color);
-    text-decoration: none;
-  }
-
-
-  @media screen and (min-width: 500px){
-       
-    .navbar-links {
-      gap: 2.5rem;
-    }
-  
-  }
+}
