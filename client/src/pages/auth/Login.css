@@ -50,7 +50,7 @@
 }
 
 .form--auth__link:hover {
-    color: #646cff;
+    color: var(--main-color);
 }
 
 .form--auth__errorMessage {
