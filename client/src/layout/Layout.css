@@ -3,16 +3,8 @@
     flex-direction: column;
     align-items: center;
     margin: auto;
-    width: 80%;
     height: 100%;
-    margin-bottom: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
     gap: 1rem;
   }
-
-@media (min-width: 767px) {
-  .main-app-container {
-    margin-top: 1rem;
-    margin-bottom: 5rem;
-    
-  }
-}

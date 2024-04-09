@@ -15,11 +15,11 @@ const Discover = () => {
     <Layout>
       <main className='products'>
         <ul>
-          {citiesData?.map((place, index) => (
+          {citiesData?.map((place) => (
 
             <>
               <li key={place.id}>
-                <div>
+                <div className='product-content'>
                   <img
                     src={place.cityThumbnail}
                     alt={place.cityName}
@@ -30,7 +30,7 @@ const Discover = () => {
                   </div>
                 </div>
                 <div>
-                  <button>Button
+                  <button>GO
                     {/* {isFav ? <RemoveFromFavIcon></RemoveFromFavIcon> : <AddToFavIcon></AddToFavIcon>} */}
                   </button>
                 </div>

@@ -64,47 +64,44 @@ const Login = () => {
 
     return (
         <Layout>
-            <section className='section'>
-
-                <form className='form--auth'>
-                    <h1 className='form--auth__title'>Login</h1>
-                    {loading ? <SpinnerLoader /> :
-                        <>
-                            {errorResponse &&
-                                <div className='form--auth__errorMessage'>
-                                    <h3>Please correct the following</h3>
-                                    <div>
-                                        {errorResponse}
-                                    </div>
+            <form className='form--auth'>
+                <h1 className='form--auth__title'>Login</h1>
+                {loading ? <SpinnerLoader /> :
+                    <>
+                        {errorResponse &&
+                            <div className='form--auth__errorMessage'>
+                                <h3>Please correct the following</h3>
+                                <div>
+                                    {errorResponse}
                                 </div>
-                            }
-                            <div className='form--auth__input-group'>
-                                <label>Username</label>
-                                <input
-                                    type='text'
-                                    value={username}
-                                    onChange={(e) => { setUsername(e.target.value) }}
-                                    className={inputErrorClass}
-                                ></input>
                             </div>
-                            <div className='form--auth__input-group'>
-                                <label>Password</label>
-                                <input
-                                    type='password'
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    className={inputErrorClass}
-                                ></input>
-                            </div>
+                        }
+                        <div className='form--auth__input-group'>
+                            <label>Username</label>
+                            <input
+                                type='text'
+                                value={username}
+                                onChange={(e) => { setUsername(e.target.value) }}
+                                className={inputErrorClass}
+                            ></input>
+                        </div>
+                        <div className='form--auth__input-group'>
+                            <label>Password</label>
+                            <input
+                                type='password'
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className={inputErrorClass}
+                            ></input>
+                        </div>
 
-                            <ButtonLink onClick={handleLogin} className='main--button' text='Login'></ButtonLink>
-                        </>
-                    }
+                        <ButtonLink onClick={handleLogin} className='main--button' text='Login'></ButtonLink>
+                    </>
+                }
 
-                    <Link to='/signup' className='form--auth__link'>Not a member yet?</Link>
+                <Link to='/signup' className='form--auth__link'>Not a member yet?</Link>
 
-                </form>
-            </section>
+            </form>
         </Layout>
     );
 };

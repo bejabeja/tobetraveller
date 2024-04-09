@@ -42,11 +42,11 @@
 }
 
 .input-error {
-    border: 2px solid rgba(179, 63, 64, 0.8);
+    border: 2px solid var(--error-color);
 }
 
 .form--auth__link {
-    color: #fff;
+    color: var(--white-color);
 }
 
 .form--auth__link:hover {
@@ -54,7 +54,7 @@
 }
 
 .form--auth__errorMessage {
-    background-color: rgba(179, 63, 64, 0.8);
+    background-color: var(--error-color);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -64,11 +64,9 @@
 }
 
 .form--auth__errorMessage > h3{
-    color: bla;
     font-size: 1rem;
     margin: 0;
-    margin-bottom: 1rem;
-    
+    margin-bottom: 1rem;    
 }
 
 @media (min-width: 667px) {

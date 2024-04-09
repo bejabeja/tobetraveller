@@ -7,6 +7,8 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
   --main-color: #646cff;
+  --white-color: #fff;
+  --error-color: rgba(179, 63, 64, 0.6);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -39,16 +41,17 @@ button,
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  color: white; 
+  color: var(--white-color); 
   background-color: #1a1a1a;
+  border-color: var(--main-color);
   cursor: pointer;
   text-decoration: none;
-  transition: border-color 0.25s;
+  transition: background-color 0.25s;
 }
   
 button:hover,
 .main--button:hover {
-  border-color: var(--main-color);
+  background-color: var(--main-color);
 }
 
 button:focus,
