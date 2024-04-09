@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import DashboardLayout from '../../layout/Layout';
 import './Login.css';
 import { useAuth } from '../../auth/AuthProvider';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ButtonLink from '../../components/ButtonLink';
 import SpinnerLoader from '../../components/SpinnerLoader';
+import Layout from '../../layout/Layout';
 
 const SignUp = () => {
     const [email, setEmail] = useState('')
@@ -73,7 +73,7 @@ const SignUp = () => {
     }
 
     return (
-        <DashboardLayout>
+        <Layout>
             <section className='section'>
                 <form className='form--auth'>
                     <h1 className='form--auth__title'>Signup</h1>
@@ -117,13 +117,13 @@ const SignUp = () => {
                                     className={inputErrorClass}
                                 ></input>
                             </div>
-                            <ButtonLink onClick={handleSubmit} className='primary-button' text='Create user'></ButtonLink>
+                            <ButtonLink onClick={handleSubmit} className='main--button' text='Create user'></ButtonLink>
                         </>
                     }
                     <Link to='/login' className='form--auth__link'>Already have an account?</Link>
                 </form>
             </section>
-        </DashboardLayout>
+        </Layout>
     );
 };
 

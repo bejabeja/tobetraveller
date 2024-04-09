@@ -4,7 +4,7 @@ import Navbar from '../navbar/Navbar'
 
 const Layout = ({ children }) => {
     return (
-        <section className='main-app-container scrollable-div '>
+        <section className='main-app-container'>
             <Navbar></Navbar>
             {children}
         </section>

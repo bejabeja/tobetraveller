@@ -9,21 +9,10 @@
     gap: 1rem;
   }
 
-.scrollable-div {
-    overflow-y: scroll; 
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.scrollable-div::-webkit-scrollbar {
-    display: none; 
-}
-
-
 @media (min-width: 767px) {
   .main-app-container {
-    height: 100%;
     margin-top: 1rem;
     margin-bottom: 5rem;
+    
   }
 }

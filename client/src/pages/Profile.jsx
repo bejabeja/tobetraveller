@@ -37,13 +37,13 @@ const Profile = () => {
       <div className='profile--buttons'>
         <ButtonLink
           onClick={handleNewTrip}
-          className={`primary-button ${newTrip ? 'trip-active-button' : ''}`}
+          className={`main--button ${newTrip ? 'active-button' : ''}`}
           text='Plan a new trip'
         >
         </ButtonLink>
         {/* <ButtonLink
           onClick={handleAllTrips}
-          className='primary-button' text='See all my trips'>
+          className='main--button' text='See all my trips'>
         </ButtonLink> */}
       </div>
 
@@ -78,7 +78,7 @@ const Profile = () => {
           {placeToGo && travelDays &&
             <ButtonLink
               href={`/trip/create/${placeToGo}/${travelDays}`}
-              className={`primary-button`}
+              className={`main--button`}
               text='Create trip'
             ></ButtonLink>
 

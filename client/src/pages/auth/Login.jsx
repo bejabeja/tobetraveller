@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DashboardLayout from '../../layout/Layout';
+import Layout from '../../layout/Layout';
 import './Login.css'
 import { useAuth } from '../../auth/AuthProvider';
 import { useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
@@ -63,7 +63,7 @@ const Login = () => {
     };
 
     return (
-        <DashboardLayout>
+        <Layout>
             <section className='section'>
 
                 <form className='form--auth'>
@@ -97,8 +97,7 @@ const Login = () => {
                                 ></input>
                             </div>
 
-                            <ButtonLink onClick={handleLogin} className='primary-button' text='Login'></ButtonLink>
-
+                            <ButtonLink onClick={handleLogin} className='main--button' text='Login'></ButtonLink>
                         </>
                     }
 
@@ -106,7 +105,7 @@ const Login = () => {
 
                 </form>
             </section>
-        </DashboardLayout>
+        </Layout>
     );
 };
 

@@ -1,11 +1,11 @@
 import React from "react";
-import DashboardLayout from "../layout/Layout";
+import Layout from "../layout/Layout";
 
 const NotFound = () => {
     return (
-        <DashboardLayout>
+        <Layout>
             <div className="section">NotFound</div>
-        </DashboardLayout>
+        </Layout>
     )
 };
 

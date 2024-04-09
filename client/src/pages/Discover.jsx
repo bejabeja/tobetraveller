@@ -1,24 +1,44 @@
 import React, { useState, useEffect } from 'react'
 import './Discover.css'
-import Card from '../components/Card'
 import Layout from '../layout/Layout'
 import { getPlaces } from '../services/places'
 
 const Discover = () => {
-  const [selectData, setSelectData] = useState([])
+  const [citiesData, setcitiesData] = useState([])
 
   useEffect(() => {
-    getPlaces().then((places) => setSelectData(places))
+    getPlaces().then((data) => setcitiesData(data))
   }, [])
 
 
   return (
     <Layout>
-      <section className='section-discover section'>
-        {selectData?.map((place, index) => (
-          <Card key={index} id={place.id} countryName={place.countryName} cityName={place.cityName} countryText={place.countryText} countryCode={place.countryCode}></Card>
-        ))}
-      </section>
+      <main className='products'>
+        <ul>
+          {citiesData?.map((place, index) => (
+
+            <>
+              <li key={place.id}>
+                <div>
+                  <img
+                    src={place.cityThumbnail}
+                    alt={place.cityName}
+                  ></img>
+                  <div>
+                    <strong>{place.cityName}</strong> - ${place.countryName}
+                    <p>{place.cityDescription}</p>
+                  </div>
+                </div>
+                <div>
+                  <button>Button
+                    {/* {isFav ? <RemoveFromFavIcon></RemoveFromFavIcon> : <AddToFavIcon></AddToFavIcon>} */}
+                  </button>
+                </div>
+              </li>
+            </>
+          ))}
+        </ul>
+      </main>
     </Layout>
   )
 }

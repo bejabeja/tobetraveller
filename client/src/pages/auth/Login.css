@@ -45,12 +45,12 @@
     border: 2px solid rgba(179, 63, 64, 0.8);
 }
 
-.primary-button {
-    font-size: 1rem;
-}
-
 .form--auth__link {
     color: #fff;
+}
+
+.form--auth__link:hover {
+    color: #646cff;
 }
 
 .form--auth__errorMessage {
