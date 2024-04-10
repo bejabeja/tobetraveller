@@ -47,12 +47,15 @@ button,
   border-color: var(--main-color);
   cursor: pointer;
   text-decoration: none;
-  transition: background-color 0.25s;
+  transition: border-color 0.25s;
 }
 
 button:hover,
 .main--button:hover {
-  background-color: var(--main-color);
+  /* background-color: var(--main-color); */
+  /* border-color: #ffcf64; amarilllo */
+  border-color: #64ffcb;
+  /* border-color: #e0e0e0; plata */
 }
 
 button:focus,
