@@ -15,14 +15,14 @@
                     "type": "Monument",
                     "description": "Iconic symbol of Paris and one of the most recognizable structures in the world.",
                     "opening_hours": "9:00 AM - 11:45 PM",
-                    "thumbnail": "https://www.example.com/eiffel_tower_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/532826/pexels-photo-532826.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 },
                 {
                     "name": "Louvre Museum",
                     "type": "Museum",
                     "description": "One of the largest and most visited art museums in the world, home to the Mona Lisa and other masterpieces.",
                     "opening_hours": "9:00 AM - 6:00 PM",
-                    "thumbnail": "https://www.example.com/louvre_museum_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/2363/france-landmark-lights-night.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 }
             ]
         },
@@ -34,21 +34,21 @@
             "countryDescription": "The United States of America, commonly known as the United States or America, is a country primarily located in North America. It is known for its cultural, economic, and political influence worldwide.",
             "currency": "United States Dollar (USD)",
             "cityDescription": "New York City, often referred to simply as NYC, is the most populous city in the United States. It's known for its iconic skyline, diverse culture, and bustling atmosphere.",
-            "cityThumbnail": "https://images.pexels.com/photos/290386/pexels-photo-290386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "cityThumbnail": "https://images.pexels.com/photos/421927/pexels-photo-421927.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             "pointsOfInterest": [
                 {
                     "name": "Statue of Liberty",
                     "type": "Monument",
                     "description": "Iconic symbol of freedom and democracy, a gift from France to the United States.",
                     "opening_hours": "8:30 AM - 4:30 PM",
-                    "thumbnail": "https://www.example.com/statue_of_liberty_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/290386/pexels-photo-290386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`"
                 },
                 {
                     "name": "Central Park",
                     "type": "Park",
                     "description": "The largest urban park in New York City, featuring lakes, trails, and recreational areas.",
                     "opening_hours": "Always open",
-                    "thumbnail": "https://www.example.com/central_park_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/327502/pexels-photo-327502.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 }
             ]
         },
@@ -67,14 +67,14 @@
                     "type": "Monument",
                     "description": "Historic amphitheater used for public spectacles and gladiatorial contests in ancient Rome.",
                     "opening_hours": "8:30 AM - 7:00 PM",
-                    "thumbnail": "https://www.example.com/colosseum_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/2678456/pexels-photo-2678456.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 },
                 {
                     "name": "Trevi Fountain",
                     "type": "Fountain",
                     "description": "The largest Baroque fountain in Rome, known for tossing coins to ensure a return to the city.",
                     "opening_hours": "Always open",
-                    "thumbnail": "https://www.example.com/trevi_fountain_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/4846245/pexels-photo-4846245.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 }
             ]
         },
@@ -119,14 +119,14 @@
                     "type": "Landmark",
                     "description": "Iconic clock tower and symbol of London, located at the north end of the Palace of Westminster.",
                     "opening_hours": "Not open to the public",
-                    "thumbnail": "https://www.example.com/big_ben_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/769041/pexels-photo-769041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 },
                 {
                     "name": "British Museum",
                     "type": "Museum",
                     "description": "One of the world's largest and most comprehensive museums, showcasing artifacts from around the globe.",
                     "opening_hours": "10:00 AM - 5:30 PM",
-                    "thumbnail": "https://www.example.com/british_museum_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/8804235/pexels-photo-8804235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 }
             ]
         },
@@ -145,14 +145,14 @@
                     "type": "Landmark",
                     "description": "Iconic performing arts center and architectural masterpiece, situated on Sydney Harbour.",
                     "opening_hours": "Varies by event",
-                    "thumbnail": "https://www.example.com/sydney_opera_house_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/11360219/pexels-photo-11360219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 },
                 {
                     "name": "Bondi Beach",
                     "type": "Beach",
                     "description": "Famous stretch of golden sand and world-renowned surf destination, attracting visitors from around the globe.",
                     "opening_hours": "Always open",
-                    "thumbnail": "https://www.example.com/bondi_beach_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/785065/pexels-photo-785065.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 }
             ]
         },
@@ -171,14 +171,14 @@
                     "type": "Monument",
                     "description": "Iconic Art Deco statue of Jesus Christ, located atop the Corcovado mountain with panoramic views of the city.",
                     "opening_hours": "8:00 AM - 7:00 PM",
-                    "thumbnail": "https://www.example.com/christ_the_redeemer_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/2818895/pexels-photo-2818895.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 },
                 {
                     "name": "Copacabana Beach",
                     "type": "Beach",
                     "description": "World-famous beach stretching for 4 km along the coast, known for its golden sands, bustling promenade, and lively atmosphere.",
                     "opening_hours": "Always open",
-                    "thumbnail": "https://www.example.com/copacabana_beach_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/9478900/pexels-photo-9478900.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 }
             ]
         },
@@ -197,14 +197,14 @@
                     "type": "Landmark",
                     "description": "Tallest building in the world, offering breathtaking views of the city skyline from its observation decks.",
                     "opening_hours": "8:30 AM - 11:00 PM",
-                    "thumbnail": "https://www.example.com/burj_khalifa_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/47227/pexels-photo-47227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 },
                 {
                     "name": "The Dubai Mall",
                     "type": "Shopping Mall",
                     "description": "Largest mall in the world by total area, featuring over 1,200 shops, an indoor aquarium, and an ice rink.",
                     "opening_hours": "10:00 AM - 12:00 AM",
-                    "thumbnail": "https://www.example.com/dubai_mall_thumbnail.jpg"
+                    "thumbnail": "https://images.pexels.com/photos/18669645/pexels-photo-18669645/free-photo-of-hall-in-dubai-mall.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 }
             ]
         }
