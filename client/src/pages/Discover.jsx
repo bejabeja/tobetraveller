@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './Discover.css'
 import Layout from '../layout/Layout'
 import { getPlaces } from '../services/places'
+import ButtonLink from '../components/ButtonLink'
 
 const Discover = () => {
   const [citiesData, setcitiesData] = useState([])
@@ -13,14 +14,14 @@ const Discover = () => {
 
   return (
     <Layout>
-      <main className='products'>
+      <main className='cities'>
         <ul>
           {citiesData?.map((place) => (
 
             <>
-              <button>
+              <ButtonLink href={`/discover/${place.id}`} className='main--button'>
                 <li key={place.id}>
-                  <div className='product-content'>
+                  <div className='cities-content'>
                     <img
                       src={place.cityThumbnail}
                       alt={place.cityName}
@@ -31,12 +32,12 @@ const Discover = () => {
                     </div>
                   </div>
                 </li>
-              </button>
+              </ButtonLink >
             </>
           ))}
         </ul>
       </main>
-    </Layout>
+    </Layout >
   )
 }
 

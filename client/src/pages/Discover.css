@@ -1,11 +1,11 @@
-.products {
+.cities {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.products ul {
+.cities ul {
   display: grid;
   grid-template-columns: repeat(auto-fit,
       minmax(200px,
@@ -13,12 +13,12 @@
   gap: 1rem;
 }
 
-.products li {
+.cities li {
   min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: rem;
+  gap: 1rem;
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
   border-radius: 4px;
   background: #111;
@@ -26,22 +26,22 @@
   padding: 1rem;
 }
 
-.products li .product-content {
+.cities li .cities-content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.products h3 {
+.cities h3 {
   margin: 0;
 }
 
-.products span {
+.cities span {
   font-size: 1rem;
   opacity: .9;
 }
 
-.products img {
+.cities img {
   border-radius: 4px;
   width: 100%;
   aspect-ratio: 16/9;

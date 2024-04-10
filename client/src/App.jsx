@@ -4,7 +4,7 @@ import Login from './pages/auth/Login';
 import SignUp from './pages/auth/SignUp';
 import ProtectedRoute from './components/ProtectedRoute';
 import Discover from './pages/Discover';
-import Place from './pages/Place';
+import City from './pages/City';
 import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
@@ -18,9 +18,12 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/discover" element={<Discover />} />
-      <Route path="/discover/:name" element={<ProtectedRoute><Place /></ProtectedRoute>} />
+      {/* <Route path="/discover/:cityName/:id" element={<ProtectedRoute><Place /></ProtectedRoute>} /> */}
+      <Route path="/discover/:id" element={<City />} />
+
       <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
       <Route path="/trip/create/:placeToGo/:travelDays" element={<ProtectedRoute><CreateTrip /></ProtectedRoute>} />
+
 
       {/* <Route path="/profile" element={<Layout><Profile /></Layout>} /> */}
       {/* <Route path="/trip/create/:placeToGo/:travelDays" element={<Layout><CreateTrip /> </Layout>} /> */}

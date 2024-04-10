@@ -8,6 +8,7 @@
   background-color: #242424;
   --main-color: #646cff;
   --white-color: #fff;
+  --black-color: #000;
   --error-color: rgba(179, 63, 64, 0.6);
 
   font-synthesis: none;

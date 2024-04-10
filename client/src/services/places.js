@@ -5,3 +5,9 @@ export const getPlaces = async () => {
     const { cities } = await res.json()
     return cities
 }
+
+export const getCity = async (id) => {
+    const res = await fetch(`${PLACES_ENDPOINT}/${id}`)
+    const city = await res.json()
+    return city
+}
