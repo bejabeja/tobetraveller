@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './Discover.css'
 import Layout from '../layout/Layout'
-import { getPlaces } from '../services/places'
+import { getCities } from '../services/cities.js'
 import ButtonLink from '../components/ButtonLink'
 
 const Discover = () => {
   const [citiesData, setcitiesData] = useState([])
 
   useEffect(() => {
-    getPlaces().then((data) => setcitiesData(data))
+    getCities().then((data) => setcitiesData(data))
   }, [])
 
 
@@ -16,19 +16,19 @@ const Discover = () => {
     <Layout>
       <main className='cities'>
         <ul>
-          {citiesData?.map((place) => (
+          {citiesData?.map((city) => (
 
             <>
-              <ButtonLink href={`/discover/${place.id}`} className='main--button'>
-                <li key={place.id}>
+              <ButtonLink href={`/discover/${city.id}`} className='main--button'>
+                <li key={city.id}>
                   <div className='cities-content'>
                     <img
-                      src={place.cityThumbnail}
-                      alt={place.cityName}
+                      src={city.cityThumbnail}
+                      alt={city.cityName}
                     ></img>
                     <div>
-                      <strong>{place.cityName}</strong> - {place.countryName}
-                      <p>{place.cityDescription}</p>
+                      <strong>{city.cityName}</strong> - {city.countryName}
+                      <p>{city.cityDescription}</p>
                     </div>
                   </div>
                 </li>

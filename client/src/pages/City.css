@@ -16,7 +16,7 @@
 }
 
 .city img {
-    border-radius: 50px;
+    border-radius: 4px;
     width: 100%;
     aspect-ratio: 16/9;
     display: block;

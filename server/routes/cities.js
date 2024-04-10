@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
         return res.status(404).json(
             jsonResponse(
                 404,
-                { error: 'Place not found' }
+                { error: 'City not found' }
             )
         )
     }
