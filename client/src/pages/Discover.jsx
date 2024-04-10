@@ -18,23 +18,20 @@ const Discover = () => {
           {citiesData?.map((place) => (
 
             <>
-              <li key={place.id}>
-                <div className='product-content'>
-                  <img
-                    src={place.cityThumbnail}
-                    alt={place.cityName}
-                  ></img>
-                  <div>
-                    <strong>{place.cityName}</strong> - ${place.countryName}
-                    <p>{place.cityDescription}</p>
+              <button>
+                <li key={place.id}>
+                  <div className='product-content'>
+                    <img
+                      src={place.cityThumbnail}
+                      alt={place.cityName}
+                    ></img>
+                    <div>
+                      <strong>{place.cityName}</strong> - {place.countryName}
+                      <p>{place.cityDescription}</p>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <button>GO
-                    {/* {isFav ? <RemoveFromFavIcon></RemoveFromFavIcon> : <AddToFavIcon></AddToFavIcon>} */}
-                  </button>
-                </div>
-              </li>
+                </li>
+              </button>
             </>
           ))}
         </ul>

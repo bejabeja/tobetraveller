@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
                 "countryDescription": "The United States of America, commonly known as the United States or America, is a country primarily located in North America. It is known for its cultural, economic, and political influence worldwide.",
                 "currency": "United States Dollar (USD)",
                 "cityDescription": "New York City, often referred to simply as NYC, is the most populous city in the United States. It's known for its iconic skyline, diverse culture, and bustling atmosphere.",
-                "cityThumbnail": "https://images.pexels.com/photos/532826/pexels-photo-532826.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "cityThumbnail": "https://images.pexels.com/photos/290386/pexels-photo-290386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 "points_of_interest": [
                     {
                         "name": "Statue of Liberty",
@@ -64,7 +64,7 @@ router.get('/', (req, res) => {
                 "countryDescription": "Italy, officially the Italian Republic, is a country consisting of a peninsula delimited by the Alps and surrounded by several islands. It is known for its art, culture, history, and cuisine.",
                 "currency": "Euro (EUR)",
                 "cityDescription": "Rome, the capital city of Italy, is a treasure trove of history, art, and architecture. It's home to iconic landmarks such as the Colosseum, the Vatican City, and the Trevi Fountain.",
-                "cityThumbnail": "https://www.example.com/rome_thumbnail.jpg",
+                "cityThumbnail": "https://images.pexels.com/photos/2678456/pexels-photo-2678456.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 "points_of_interest": [
                     {
                         "name": "Colosseum",
@@ -90,7 +90,7 @@ router.get('/', (req, res) => {
                 "countryDescription": "Japan is an island country in East Asia known for its distinct culture, advanced technology, and rich history. Tokyo, the capital city, is a bustling metropolis famous for its skyscrapers, shopping districts, and cultural landmarks.",
                 "currency": "Japanese Yen (JPY)",
                 "cityDescription": "Tokyo, the capital city of Japan, is a vibrant and dynamic metropolis that seamlessly blends modernity with tradition. From neon-lit streets and towering skyscrapers to serene temples and tranquil gardens, Tokyo offers a diverse range of experiences for visitors.",
-                "cityThumbnail": "https://www.example.com/tokyo_thumbnail.jpg",
+                "cityThumbnail": "https://images.pexels.com/photos/2506923/pexels-photo-2506923.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 "points_of_interest": [
                     {
                         "name": "Tokyo Tower",
@@ -116,7 +116,7 @@ router.get('/', (req, res) => {
                 "countryDescription": "The United Kingdom (UK), made up of England, Scotland, Wales, and Northern Ireland, is an island nation in northwestern Europe. London, the capital city, is a global financial hub and cultural center known for its historic landmarks, diverse communities, and vibrant arts scene.",
                 "currency": "British Pound Sterling (GBP)",
                 "cityDescription": "London, the capital city of the United Kingdom, is a melting pot of cultures and a city steeped in history. From iconic landmarks such as Big Ben and the Tower of London to world-class museums and theaters, London offers endless opportunities for exploration and discovery.",
-                "cityThumbnail": "https://www.example.com/london_thumbnail.jpg",
+                "cityThumbnail": "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 "points_of_interest": [
                     {
                         "name": "Big Ben",
@@ -142,7 +142,7 @@ router.get('/', (req, res) => {
                 "countryDescription": "Australia is a vast and diverse country located in the Southern Hemisphere, known for its stunning landscapes, unique wildlife, and laid-back lifestyle. Sydney, the largest city, is famous for its iconic landmarks, beautiful beaches, and vibrant culture.",
                 "currency": "Australian Dollar (AUD)",
                 "cityDescription": "Sydney, the capital city of New South Wales, is a dynamic and cosmopolitan metropolis with something for everyone. From the iconic Sydney Opera House and Harbour Bridge to the beautiful Bondi Beach and bustling markets, Sydney offers a mix of attractions that cater to every taste.",
-                "cityThumbnail": "https://www.example.com/sydney_thumbnail.jpg",
+                "cityThumbnail": "https://images.pexels.com/photos/995765/pexels-photo-995765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 "points_of_interest": [
                     {
                         "name": "Sydney Opera House",
@@ -168,7 +168,7 @@ router.get('/', (req, res) => {
                 "countryDescription": "Brazil, officially the Federative Republic of Brazil, is the largest country in both South America and Latin America. It is known for its diverse culture, natural beauty, and vibrant festivals. Rio de Janeiro, the second-largest city, is famous for its stunning beaches, lively nightlife, and iconic landmarks.",
                 "currency": "Brazilian Real (BRL)",
                 "cityDescription": "Rio de Janeiro, often simply referred to as Rio, is a city of contrasts, where lush mountains meet pristine beaches and bustling urban life coexists with tranquil natural surroundings. From the iconic Christ the Redeemer statue to the vibrant Carnival celebrations, Rio offers a unique and unforgettable experience for visitors.",
-                "cityThumbnail": "https://www.example.com/rio_de_janeiro_thumbnail.jpg",
+                "cityThumbnail": "https://images.pexels.com/photos/2876407/pexels-photo-2876407.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 "points_of_interest": [
                     {
                         "name": "Christ the Redeemer",
@@ -194,7 +194,7 @@ router.get('/', (req, res) => {
                 "countryDescription": "The United Arab Emirates (UAE) is a federation of seven emirates located on the southeastern coast of the Arabian Peninsula. It is known for its modern architecture, luxury shopping, and vibrant nightlife. Dubai, the largest and most populous city, is a global hub for business, tourism, and entertainment.",
                 "currency": "United Arab Emirates Dirham (AED)",
                 "cityDescription": "Dubai, the city of superlatives, is a futuristic metropolis where skyscrapers pierce the sky and artificial islands dot the coastline. From the towering Burj Khalifa and luxurious shopping malls to the traditional souks and desert adventures, Dubai offers a unique blend of modernity and tradition.",
-                "cityThumbnail": "https://www.example.com/dubai_thumbnail.jpg",
+                "cityThumbnail": "https://images.pexels.com/photos/2115367/pexels-photo-2115367.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 "points_of_interest": [
                     {
                         "name": "Burj Khalifa",
