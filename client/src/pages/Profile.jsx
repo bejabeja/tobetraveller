@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { useAuth } from "../auth/AuthProvider";
 import ButtonLink from "../components/ButtonLink"
 import './Profile.css'
+import avatar from '../img/favicon-avatar.ico'
 
 
 const Profile = () => {
   const [newTrip, setNewTrip] = useState(false)
   const [allTrips, setAllTrips] = useState(false)
-  const [createTrip, setCreateTrip] = useState(false)
 
   const [tripInfo, setTripInfo] = useState({ placeToGo: '', travelDays: '' })
   const { placeToGo, travelDays } = tripInfo
@@ -23,17 +23,22 @@ const Profile = () => {
     setNewTrip(true)
   }
 
-  async function handleAllTrips(e) {
-    e.preventDefault()
-    setNewTrip(false)
-    setAllTrips(true)
-  }
-
   return (
-    <section className='section--profile section'>
-      <div>Hello traveller {user.username}, how are you today?</div>
-      {/* <div>How are you today? </div> */}
-      {/* <div>Tell me more about your travel</div> */}
+    <main className='profile'>
+      <section>
+        <h1>Hello traveller! Welcome to your profile, this is your data</h1>
+        <div className='profile--info'>
+          <img src={avatar}></img>
+          <div>
+            <p>Name: {user.username}</p>
+            <p>Email: {user.email}</p>
+          </div>
+
+        </div>
+
+        <h1>How are you today {user.username} ?</h1>
+      </section>
+
       <div className='profile--buttons'>
         <ButtonLink
           onClick={handleNewTrip}
@@ -41,10 +46,7 @@ const Profile = () => {
           text='Plan a new trip'
         >
         </ButtonLink>
-        {/* <ButtonLink
-          onClick={handleAllTrips}
-          className='main--button' text='See all my trips'>
-        </ButtonLink> */}
+
       </div>
 
       {newTrip &&
@@ -88,7 +90,7 @@ const Profile = () => {
 
 
 
-    </section >
+    </main >
   )
 }
 

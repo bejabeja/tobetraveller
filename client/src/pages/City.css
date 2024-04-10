@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    text-align: left;
+    /* text-align: left; */
 }
 
 .city section {

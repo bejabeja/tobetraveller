@@ -1,7 +1,24 @@
-.section--profile {
+.profile--info {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 2rem 0;
+    border: 1px dotted var(--main-color);
+    border-radius: 4px;
     text-align: center;
-    align-items: center;
+    justify-content: center;
 }
+
+.profile--info img {
+    max-width: 100px;
+    max-height: 100px;
+    display: block;
+}
+
+.profile--info div {
+    text-align: left;
+}
+
 
 .profile--buttons {
     display: flex;
