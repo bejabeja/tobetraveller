@@ -31,8 +31,8 @@ const Navbar = () => {
           <li className={location.pathname === '/share' ? 'navbar-link--active' : 'navbar-link'}>
             <Link to="/share"><ShareIcon></ShareIcon></Link>
           </li> */}
-          <li className={location.pathname === '/profile' ? 'navbar-link--active' : 'navbar-link'}>
-            <Link to="/profile"><ProfileIcon></ProfileIcon></Link>
+          <li className={location.pathname === '/private-profile' ? 'navbar-link--active' : 'navbar-link'}>
+            <Link to="/private-profile"><ProfileIcon></ProfileIcon></Link>
           </li>
           {isAuthenticated &&
             <li className='navbar-link'>

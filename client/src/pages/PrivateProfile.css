@@ -1,33 +1,45 @@
-.profile--info {
+.private-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.private-profile--header {
+    display: flex;
+    flex-direction: column;
+    border: 1px dotted var(--main-color);
+    border-radius: 4px;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.private-profile--info {
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    padding: 2rem 0;
-    border: 1px dotted var(--main-color);
-    border-radius: 4px;
     text-align: center;
     justify-content: center;
+    align-items: center;
 }
 
-.profile--info img {
+.private-profile--info img {
     max-width: 100px;
     max-height: 100px;
     display: block;
 }
 
-.profile--info div {
+.private-profile--info div {
     text-align: left;
 }
 
-
-.profile--buttons {
+.private-profile--buttons {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
 }
 
-.form-profile {
+.form-private-profile {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -72,9 +84,18 @@
     color: var(--main-color);
 }
 
+
+.private-profile--socialnetwork {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+
 @media (min-width: 667px) {
 
-    .form-profile {
+    .form-private-profile {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -86,7 +107,7 @@
         align-items: center;
     }
 
-    .profile--buttons {
+    .private-profile--buttons {
         display: flex;
         flex-direction: row;
         justify-content: center;

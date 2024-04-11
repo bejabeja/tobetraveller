@@ -7,7 +7,7 @@ import Discover from './pages/Discover';
 import City from './pages/City';
 import NotFound from './pages/NotFound';
 import Home from './pages/Home';
-import Profile from './pages/Profile';
+import PrivateProfile from './pages/PrivateProfile';
 import Layout from './layout/Layout';
 
 import CreateTrip from './pages/trip/CreateTrip';
@@ -20,11 +20,11 @@ const App = () => {
       <Route path="/discover" element={<Discover />} />
       <Route path="/discover/:id" element={<City />} />
 
-      <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+      <Route path="/private-profile" element={<ProtectedRoute><PrivateProfile /></ProtectedRoute>} />
       <Route path="/trip/create/:placeToGo/:travelDays" element={<ProtectedRoute><CreateTrip /></ProtectedRoute>} />
 
 
-      {/* <Route path="/profile" element={<Layout><Profile /></Layout>} /> */}
+      {/* <Route path="/private-profile" element={<Layout><PrivateProfile /></Layout>} /> */}
       {/* <Route path="/trip/create/:placeToGo/:travelDays" element={<Layout><CreateTrip /> </Layout>} /> */}
 
       <Route path="/login" element={<Login />} />
