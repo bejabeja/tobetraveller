@@ -18,7 +18,7 @@ const Login = () => {
     const inputErrorClass = errorResponse ? 'form--auth__input-group-input input-error' : 'form--auth__input-group-input'
 
     if (auth.isAuthenticated) {
-        return <Navigate to='/'></Navigate>
+        return <Navigate to='/private-profile'></Navigate>
     }
 
     const handleLogin = (e) => {

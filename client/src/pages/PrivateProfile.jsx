@@ -74,7 +74,7 @@ const PrivateProfile = () => {
         </div>
 
       </section>
-      <section>
+      <section className='private-profile--section'>
         <h1>How are you today? Do you wanna plan a trip?</h1>
         <ButtonLink
           onClick={handleNewTrip}
@@ -122,14 +122,12 @@ const PrivateProfile = () => {
           </div>
         }
       </section>
-      <section>
+      <section className='private-profile--section'>
         <h1> Would you like to add some favs?</h1>
 
-        <p>Currently you have 0 travels on favs!</p>
-        <ButtonLink href='/discover' className='main--button' text='Start'> </ButtonLink>
+        <p>Currently you have <strong>0 trips</strong> on favs!</p>
+        <ButtonLink href='/discover' className='main--button' text='Add fav'> </ButtonLink>
       </section>
-
-
     </main >
   )
 }

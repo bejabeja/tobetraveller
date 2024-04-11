@@ -19,7 +19,7 @@ const Discover = () => {
           {citiesData?.map((city) => (
 
             <>
-              <ButtonLink href={`/discover/${city.id}`} className='main--button'>
+              <ButtonLink href={`/discover/${city.id}`} className='card--button'>
                 <li key={city.id}>
                   <div className='cities-content'>
                     <img
