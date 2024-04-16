@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     < Layout>
-      <main className='home'>
+      <main className='home no-scroll'>
         <a href='/discover'>
           <img src={logo}></img>
         </a>
