@@ -18,9 +18,8 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
-  box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
   border-radius: 4px;
-  background: #1a1a1a;
+  background: var(--main-color);
   color: var(--white-color);
   padding: 1rem;
 }
@@ -64,23 +63,26 @@
 }
 
 .cities--filters select {
-  border: 1px dashed var(--main-color);
-  background-color: var(--black-color);
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
   border-radius: 4px;
-
+  padding-right: 2rem;
+  text-align: left;
 }
 
 .cities--filters select>* {
-  /* color: #000; */
   border: 1px dashed var(--main-color);
   border-radius: 4px;
   padding: 10px;
 }
 
 .cities--filters select option:checked {
-  color: #000;
-  background-color: var(--main-color);
+  color: var(--main-color);
+  background-color: var(--brand-color);
   padding: 10px;
   border-radius: 4px;
+}
 
+.cities--filters select:focus-visible {
+  outline: none;
 }

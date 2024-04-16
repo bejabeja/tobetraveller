@@ -37,7 +37,7 @@
 
 .form--auth__input-group-input {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--secondary-color);
     border-radius: 8px;
 }
 
@@ -46,11 +46,11 @@
 }
 
 .form--auth__link {
-    color: var(--white-color);
+    color: var(--main-color);
 }
 
 .form--auth__link:hover {
-    color: var(--main-color);
+    color: var(--secondary-color);
 }
 
 .form--auth__errorMessage {

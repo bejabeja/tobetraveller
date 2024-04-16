@@ -2,7 +2,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* text-align: left; */
 }
 
 .city section {
@@ -38,7 +37,8 @@
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
     border-radius: 4px;
     padding: 1rem;
-    background: #111;
+    background: var(--main-color);
+    color: var(--white-color);
     text-align: center;
     justify-content: space-between;
 }
