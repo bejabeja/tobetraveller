@@ -1,8 +1,7 @@
 .cities {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
 .cities ul {
@@ -48,4 +47,40 @@
   display: block;
   object-fit: cover;
   background: var(--white-color);
+}
+
+
+.cities--filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cities--filters>div {
+  display: flex;
+  gap: 1rem;
+}
+
+.cities--filters select {
+  border: 1px dashed var(--main-color);
+  background-color: var(--black-color);
+  border-radius: 4px;
+
+}
+
+.cities--filters select>* {
+  /* color: #000; */
+  border: 1px dashed var(--main-color);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.cities--filters select option:checked {
+  color: #000;
+  background-color: var(--main-color);
+  padding: 10px;
+  border-radius: 4px;
+
 }
