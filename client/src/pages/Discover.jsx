@@ -1,54 +1,28 @@
-import React, { useState, useEffect, useId } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Discover.css'
 import Layout from '../layout/Layout'
 import { getCities } from '../services/cities.js'
 import ButtonLink from '../components/ButtonLink'
+import { useFilters } from '../hooks/useFilters.js'
+import Filters from '../components/Filters.jsx'
 
 const Discover = () => {
-  const [citiesData, setcitiesData] = useState([])
-  const [filters, setFilters] = useState({
-    currency: 'all',
-    country: 'all'
-  })
+  const { filterCities } = useFilters()
+  const [initialAllCities, setInitialAllCities] = useState([])
 
-  const currencyFilterId = useId()
+  const filteredCities = filterCities(initialAllCities)
 
   useEffect(() => {
-    getCities().then((data) => setcitiesData(data))
+    getCities().then((data) => setInitialAllCities(data))
   }, [])
-
-  function filterCities() {
-    return citiesData.filter(city => {
-      return (filters.currency === 'all' || city.currency === filters.currency)
-    })
-  }
-
-  const handleChangeCurrency = (event) => {
-    setFilters(prevState => ({
-      ...prevState,
-      currency: event.target.value
-    }))
-  }
-
 
   return (
     <Layout>
       <main className='cities'>
-        <section className='cities--filters'>
-          <div>
-            <label htmlFor={currencyFilterId}>Currency</label>
-            <select id={currencyFilterId} onChange={handleChangeCurrency}>
-              <option value='all'>All</option>
-              <option value='EUR'>EUR</option>
-              <option value='AUD'>AUD</option>
-              <option value='USD'>USD</option>
-            </select>
-          </div>
-        </section>
+        <Filters></Filters>
         <section>
           <ul>
-            {filterCities()?.map((city) => (
-
+            {filteredCities?.map((city) => (
               <>
                 <ButtonLink href={`/discover/${city.id}`} className='card--button'>
                   <li key={city.id}>
