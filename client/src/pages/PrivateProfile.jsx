@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useAuth } from "../auth/AuthProvider";
 import ButtonLink from "../components/ButtonLink"
 import './PrivateProfile.css'
-import avatar from '../img/favicon-avatar.ico'
+import avatar from '../icons/favicon-avatar.ico'
 
 
 const PrivateProfile = () => {
