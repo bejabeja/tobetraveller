@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { useContext, createContext, useState } from 'react'
+import { createContext, useState } from 'react'
 
-const AuthContext = createContext({
+export const AuthContext = createContext({
     isAuthenticated: false,
     getAccesToken: () => { },
     saveUser: (userData) => { },
@@ -138,5 +138,3 @@ export function AuthProvider({ children }) {
         </AuthContext.Provider>
     )
 }
-
-export const useAuth = () => useContext(AuthContext)

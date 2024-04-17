@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useAuth } from "../auth/AuthProvider";
+import { useAuth } from "../hooks/useAuth.js";
 import ButtonLink from "../components/ButtonLink"
 import './PrivateProfile.css'
 import avatar from '../icons/favicon-avatar.ico'

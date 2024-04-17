@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../../layout/Layout';
 import './Login.css'
-import { useAuth } from '../../auth/AuthProvider';
+import { useAuth } from '../../hooks/useAuth.js';
 import { useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
 import ButtonLink from '../../components/ButtonLink'
 import SpinnerLoader from '../../components/SpinnerLoader';

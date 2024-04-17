@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../auth/AuthProvider";
+import { useAuth } from "../hooks/useAuth.js";
 import Layout from "../layout/Layout";
 
 export default function ProtectedRoute({ children }) {

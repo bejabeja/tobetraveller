@@ -8,7 +8,7 @@ import ProfileIcon from '../icons/ProfileIcon'
 import ShareIcon from '../icons/ShareIcon'
 import LogOutIcon from '../icons/LogOutIcon'
 import SignoutLink from '../components/SignoutLink'
-import { useAuth } from '../auth/AuthProvider'
+import { useAuth } from '../hooks/useAuth.js'
 
 const Navbar = () => {
   const location = useLocation()

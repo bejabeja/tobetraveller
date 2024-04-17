@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "../auth/AuthProvider";
+import { useAuth } from "../hooks/useAuth.js";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignoutLink = ({ children }) => {
