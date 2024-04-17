@@ -21,7 +21,8 @@ const App = () => {
       <Route path="/discover/:id" element={<City />} />
 
       <Route path="/private-profile" element={<ProtectedRoute><PrivateProfile /></ProtectedRoute>} />
-      <Route path="/trip/create/:placeToGo/:travelDays" element={<ProtectedRoute><CreateTrip /></ProtectedRoute>} />
+      {/* <Route path="/trip/create/:placeToGo/:travelDays" element={<ProtectedRoute><CreateTrip /></ProtectedRoute>} /> */}
+      <Route path="/trip/create" element={<ProtectedRoute><CreateTrip /></ProtectedRoute>} />
 
 
       {/* <Route path="/private-profile" element={<Layout><PrivateProfile /></Layout>} /> */}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useAuth } from "../hooks/useAuth.js";
 import ButtonLink from "../components/ButtonLink"
 import './PrivateProfile.css'
@@ -6,31 +6,21 @@ import avatar from '../icons/favicon-avatar.ico'
 
 
 const PrivateProfile = () => {
-  const [newTrip, setNewTrip] = useState(false)
-  const [allTrips, setAllTrips] = useState(false)
 
-  const [tripInfo, setTripInfo] = useState({ placeToGo: '', travelDays: '' })
-  const { placeToGo, travelDays } = tripInfo
 
   const auth = useAuth()
   const user = auth.getUser()
-
-  console.log(user)
-
-  async function handleNewTrip(e) {
-    e.preventDefault()
-    setAllTrips(false)
-    setNewTrip(true)
-  }
 
   return (
     <main className='private-profile'>
       <h1>Hello traveller {user.username}! Welcome to your profile,</h1>
       <section className='private-profile--buttons'>
         <ButtonLink
-          onClick={handleNewTrip}
-          className={`main--button ${newTrip ? 'active-button' : ''}`}
+          href='/trip/create'
+          // onClick={handleNewTrip}
+          // className={`main--button ${newTrip ? 'active-button' : ''}`}
           text='Plan a new trip'
+          className='main--button'
         >
         </ButtonLink>
         <ButtonLink href='/discover' className='main--button' text='Add favs'> </ButtonLink>
@@ -73,54 +63,6 @@ const PrivateProfile = () => {
           </div>
         </div>
 
-      </section>
-      <section className='private-profile--section'>
-        <h1>How are you today? Do you wanna plan a trip?</h1>
-        <ButtonLink
-          onClick={handleNewTrip}
-          className={`main--button ${newTrip ? 'active-button' : ''}`}
-          text='Plan a new trip'
-        >
-        </ButtonLink>
-
-        {newTrip &&
-          <div className='newtrip--form'>
-            <form className='form-private-profile'>
-
-              <div className={`input-container ${placeToGo ? 'has-value' : ''}`}>
-                <input
-                  type="text"
-                  id="input"
-                  value={placeToGo}
-                  onChange={(e) => { setTripInfo({ ...tripInfo, placeToGo: e.target.value }) }}
-                  required
-                />
-                <label htmlFor="input">Where to go?</label>
-              </div>
-
-              <div className={`input-container ${travelDays ? 'has-value' : ''}`}>
-                <input
-                  type="text"
-                  id="input"
-                  value={travelDays}
-                  onChange={(e) => { setTripInfo({ ...tripInfo, travelDays: e.target.value }) }}
-                  required
-                />
-                <label htmlFor="input">How many days?</label>
-              </div>
-
-
-            </form>
-            {placeToGo && travelDays &&
-              <ButtonLink
-                href={`/trip/create/${placeToGo}/${travelDays}`}
-                className={`main--button`}
-                text='Create trip'
-              ></ButtonLink>
-
-            }
-          </div>
-        }
       </section>
       <section className='private-profile--section'>
         <h1> Would you like to add some favs?</h1>
