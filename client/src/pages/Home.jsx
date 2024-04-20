@@ -2,7 +2,7 @@ import React from 'react'
 import './Home.css'
 import ButtonLink from '../components/ButtonLink'
 import Layout from '../layout/Layout'
-import logo from '../logos/tobetraveller3black.png'
+import logo from '../logos/g5.png'
 
 const Home = () => {
 

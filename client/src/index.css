@@ -8,7 +8,9 @@
   /* background-color: #242424; */
   /* --main-color: #646cff; */
   background-color: var(--brand-color);
-  --main-color: #032924ff;
+  /* --primary-color: #032924; */
+  --main-color: #04203bff;
+
   --brand-color: #c1e7fdff;
   --secondary-color: #40897fff;
   --white-color: #fff;
