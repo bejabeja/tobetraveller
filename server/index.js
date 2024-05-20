@@ -25,6 +25,7 @@ app.use('/api/refresh-token', require('./routes/refreshToken'));
 app.use('/api/user', authenticate, require('./routes/user')); //ruta protegida
 app.use('/api/signout', require('./routes/signout'))
 app.use('/api/cities', require('./routes/cities'))
+app.use('/api/favs', require('./routes/favs'))
 
 
 const PORT = process.env.PORT || 3001;

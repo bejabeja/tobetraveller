@@ -23,4 +23,4 @@ This project is currently under development and is in its early stages. Some fun
 
 ## Preview
 
-[T0BEATRAVELLER](https://tobetraveller-client.vercel.app/)
+[T0BEATRAVELLER](https://www.tobeatraveller.com/)
