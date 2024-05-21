@@ -1,13 +1,45 @@
 const { jsonResponse } = require('../lib/jsonResponse');
-
 const router = require('express').Router();
 const client = require('./database');
+
+router.get('/', async (req, res) => {
+    try {
+        // Extract user_id from query
+        const { user_id } = req.query;
+
+        // Retrieve favorite cities
+        const { rows } = await client.query(
+            'SELECT favorite_cities FROM users WHERE user_id = $1', [user_id]
+        );
+
+        // user exists and has favorite cities
+        if (rows.length > 0 && rows[0].favorite_cities) {
+            const favoriteCities = rows[0].favorite_cities;
+
+            return res.status(200).json(
+                jsonResponse(
+                    200,
+                    { favs: favoriteCities }
+                )
+            );
+        }
+    } catch (error) {
+        console.error('Error fetching favorite cities:', error.message);
+        return res.status(500).json(
+            jsonResponse(
+                500,
+                { message: 'Internal server error' }
+            )
+        );
+    }
+})
+
 
 router.post('/', async (req, res) => {
     try {
         // Extract data from body
         const { city_id, user_id } = req.body;
-        
+
         // user exist?
         const userExists = await client.query('SELECT 1 FROM users WHERE user_id = $1', [user_id]);
         if (userExists.rows.length === 0) {

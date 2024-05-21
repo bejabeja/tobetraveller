@@ -29,7 +29,6 @@ router.post('/', async (req, res) => {
     }
 
     const findUserName = await client.query('SELECT * FROM users WHERE username=$1', [username])
-    console.log(findUserName.rows[0])
 
     if (findUserName.rows.length > 0) {
         const user = findUserName.rows[0]
