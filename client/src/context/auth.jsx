@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { createContext, useState } from 'react'
+import { createContext, useState } from 'react';
+import getFavs from '../services/getFavs';
 
 export const AuthContext = createContext()
 
@@ -12,6 +13,21 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         checkAuth()
     }, [])
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            getFavs({ user_id: user?.user_id })
+                .then(favs => {
+                    setFavs(favs);
+                })
+                .catch(err => {
+                    console.error("Error fetching favorites:", err);
+                    setFavs([]);
+                });
+        } else {
+            setFavs([]);
+        }
+    }, [isAuthenticated, user, setFavs]);
 
     async function requestNewAccessToken(refreshToken) {
         try {
@@ -98,7 +114,6 @@ export function AuthProvider({ children }) {
         localStorage.setItem('token', JSON.stringify(refreshToken))
         setIsAuthenticated(true)
         setUser(userInfo)
-
     }
 
     function getAccesToken() {
