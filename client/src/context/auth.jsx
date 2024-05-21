@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { createContext, useState } from 'react';
 import getFavs from '../services/getFavs';
+import getUserInfo from '../services/getUser';
 
 export const AuthContext = createContext()
 
@@ -46,32 +47,6 @@ export function AuthProvider({ children }) {
                     throw new Error(json.error)
                 }
                 return json.accessToken
-            } else {
-                throw new Error(response.statusText)
-            }
-
-        } catch (error) {
-            console.log(error)
-            return null
-        }
-    }
-
-    async function getUserInfo(accesToken) {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/user`, {
-                method: 'GET',
-                headers: {
-                    'Content-type': 'application/json',
-                    'Authorization': `Bearer ${accesToken}`
-                }
-            })
-
-            if (response.ok) {
-                const json = await response.json()
-                if (json.error) {
-                    throw new Error(json.error)
-                }
-                return json.body
             } else {
                 throw new Error(response.statusText)
             }
