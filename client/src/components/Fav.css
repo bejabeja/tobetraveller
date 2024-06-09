@@ -1,9 +1,11 @@
 .fav-button {
+    display: flex;
+    justify-content: center;
     background: rgba(255, 172, 172, .3);
     border: 0;
     border-radius: 100px;
     cursor: pointer;
-    width: fit-content;
+    width: 1px;
 }
 
 .fav-button:hover {

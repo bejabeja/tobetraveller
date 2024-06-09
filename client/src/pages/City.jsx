@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCity } from "../services/cities.js";
-import './City.css'
+import './City.css';
 import Layout from "../layout/Layout";
+import Fav from '../components/Fav.jsx';
 
 const City = () => {
     const { id } = useParams()
@@ -12,12 +13,14 @@ const City = () => {
         getCity(id).then((data) => setCity(data))
     }, [])
 
-    console.log(city.pointsOfInterest)
-
     return (
         <Layout>
             <main className="city">
                 <section>
+                    <div className="city-buttons">
+                        <Fav id={parseInt(id, 10)}></Fav>
+                    </div>
+
                     <img src={city.cityThumbnail}></img>
                     <h1>{city.cityName}</h1>
                     <p>{city.cityDescription}</p>
@@ -44,8 +47,6 @@ const City = () => {
                     <h1>{city.countryName}</h1>
                     <p>{city.countryDescription}</p>
                 </section>
-
-
             </main>
         </Layout>
     )

@@ -9,12 +9,33 @@ import Filters from '../components/Filters.jsx'
 const Discover = () => {
   const { filterCities } = useFilters()
   const [initialAllCities, setInitialAllCities] = useState([])
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
   const filteredCities = filterCities(initialAllCities)
 
   useEffect(() => {
-    getCities().then((data) => setInitialAllCities(data))
-  }, [])
+    const fetchCities = async () => {
+      try {
+        const data = await getCities();
+        setInitialAllCities(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCities();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <Layout>

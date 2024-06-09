@@ -39,10 +39,8 @@ const Login = () => {
                 })
 
                 if (response.ok) {
-                    console.log("Login succesful")
                     setErrorResponse('')
                     const json = await response.json()
-                    console.log(json)
 
                     if (json.body.accesToken && json.body.refreshToken) {
                         auth.saveUser(json)
@@ -50,7 +48,6 @@ const Login = () => {
                     }
 
                 } else {
-                    console.log("Something went wrong")
                     const json = await response.json()
                     setErrorResponse(json.body.error)
                 }

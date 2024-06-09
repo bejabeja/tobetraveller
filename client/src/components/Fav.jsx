@@ -4,18 +4,26 @@ import { useNavigate } from 'react-router-dom';
 import './Fav.css'
 
 const Fav = ({ id }) => {
-    const { isAuthenticated, addFav } = useAuth()
+    const { isAuthenticated, addFav, favs, deleteFav } = useAuth()
     const navigate = useNavigate()
+    const isFaved = favs?.some(favId => favId === id)
 
     const handleClick = () => {
         if (!isAuthenticated) {
             return navigate("/login")
         }
-        addFav({ city_id: parseInt(id, 10) })
+        if (isFaved) {
+            deleteFav({ city_id: parseInt(id, 10) });
+        } else {
+            addFav({ city_id: parseInt(id, 10) });
+        }
     }
 
+    const [label, emoji] = isFaved ? ['Remove city from favorites', '💔'] : ['Add city to favorites', '❤️']
+
+
     return <button onClick={handleClick} className="fav-button">
-        <span aria-label="Fav city" role="img"> ❤️ </span>
+        <span aria-label={label} role="img"> {emoji} </span>
     </button>;
 };
 
