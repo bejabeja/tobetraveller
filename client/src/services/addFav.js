@@ -1,5 +1,8 @@
+const FAVS_API = `${process.env.REACT_APP_API_URL}/favs`
+
+
 export default function addFav({ city_id, user_id }) {
-    return fetch(`${process.env.REACT_APP_API_URL}/favs`, {
+    return fetch(FAVS_API, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
