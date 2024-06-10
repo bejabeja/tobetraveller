@@ -8,8 +8,11 @@ import avatar from '../icons/favicon-avatar.ico'
 const PrivateProfile = () => {
 
 
-  const auth = useAuth()
-  const user = auth.getUser()
+  const { getUser, favs } = useAuth()
+
+  const user = getUser()
+
+  console.log(user, favs)
 
   return (
     <main className='private-profile'>
@@ -39,7 +42,7 @@ const PrivateProfile = () => {
         <div className='private-profile--socialnetwork'>
           <div>
             <p>Trips</p>
-            <p>{user.followers}</p>
+            <p>0</p>
           </div>
           <div>
             <p>Followers</p>
@@ -51,15 +54,15 @@ const PrivateProfile = () => {
           </div>
           <div>
             <p>Favs</p>
-            <p>{user.followers}</p>
+            <p>{favs.length}</p>
           </div>
           <div>
             <p>Posts</p>
-            <p>{user.followers}</p>
+            <p>0</p>
           </div>
           <div>
             <p>Comments</p>
-            <p>{user.followers}</p>
+            <p>0</p>
           </div>
         </div>
 
@@ -67,7 +70,7 @@ const PrivateProfile = () => {
       <section className='private-profile--section'>
         <h1> Would you like to add some favs?</h1>
 
-        <p>Currently you have <strong>0 trips</strong> on favs!</p>
+        <p>Currently you have <strong>{favs.length} trips</strong> on favs!</p>
         <ButtonLink href='/discover' className='main--button' text='Add fav'> </ButtonLink>
       </section>
     </main >
