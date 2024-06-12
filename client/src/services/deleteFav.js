@@ -1,4 +1,4 @@
-const FAVS_API = `${process.env.REACT_APP_API_URL}/favs/`
+const FAVS_API = `${process.env.REACT_APP_API_URL}/favs`
 
 
 export default function deleteFav({ city_id, user_id }) {
