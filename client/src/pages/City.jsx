@@ -17,10 +17,10 @@ const City = () => {
         <Layout>
             <main className="city">
                 <section>
-                    <div className="city-buttons">
+                    {false && <div className="city-buttons">
                         <Fav id={parseInt(id, 10)}></Fav>
                     </div>
-
+                    }
                     <img src={city.cityThumbnail}></img>
                     <h1>{city.cityName}</h1>
                     <p>{city.cityDescription}</p>
