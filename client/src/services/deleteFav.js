@@ -1,8 +1,5 @@
-const FAVS_API = `${process.env.REACT_APP_API_URL}/favs`
-
-
 export default function deleteFav({ city_id, user_id }) {
-    return fetch(FAVS_API, {
+    return fetch(`${process.env.REACT_APP_API_URL}/favs`, {
         method: 'DELETE',
         headers: {
             "Content-Type": "application/json"
