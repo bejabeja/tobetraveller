@@ -1,10 +1,11 @@
-const router = require('express').Router();
-const { generateAccessToken } = require('../auth/generateTokens');
-const getTokenFromHeader = require('../auth/getTokenFromHeader');
-const { verifyRefreshTokens } = require('../auth/verifyTokens');
-const { jsonResponse } = require('../lib/jsonResponse');
-const client = require('./database');
+import { Router } from 'express';
+import { generateAccessToken } from '../auth/generateTokens.js';
+import getTokenFromHeader from '../auth/getTokenFromHeader.js';
+import { verifyRefreshTokens } from '../auth/verifyTokens.js';
+import { jsonResponse } from '../lib/jsonResponse.js';
+import client from './database.js';
 
+const router = Router();
 
 router.post('/', async (req, res) => {
     const refreshToken = getTokenFromHeader(req.headers)
@@ -39,4 +40,4 @@ router.post('/', async (req, res) => {
     }
 })
 
-module.exports = router
+export default router;

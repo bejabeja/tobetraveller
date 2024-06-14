@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const { jsonResponse } = require('../lib/jsonResponse');
-const bcrypt = require('bcrypt');
-const client = require('./database');
-const { generateAccessToken, generateRefreshToken } = require('../auth/generateTokens');
+import express from 'express';
+import { jsonResponse } from '../lib/jsonResponse.js';
+import bcrypt from 'bcrypt';
+import client from './database.js';
+import { generateAccessToken, generateRefreshToken } from '../auth/generateTokens.js';
 
+const router = express.Router();
 async function refreshTokenS(user) {
     const refreshTokenS = generateRefreshToken(user);
     try {
@@ -63,4 +63,4 @@ router.post('/', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

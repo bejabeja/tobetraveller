@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken')
+import jwt from 'jsonwebtoken'
 
 function verifyAccessTokens(token) {
     return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
@@ -14,4 +14,4 @@ function verifyRefreshTokens(token) {
     }
 }
 
-module.exports = { verifyAccessTokens, verifyRefreshTokens }
+export { verifyAccessTokens, verifyRefreshTokens };

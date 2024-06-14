@@ -1,6 +1,6 @@
 //class middleware
-const getTokenFromHeader = require("./getTokenFromHeader")
-const { verifyAccessTokens } = require("./verifyTokens")
+import getTokenFromHeader from "./getTokenFromHeader.js";
+import { verifyAccessTokens } from "./verifyTokens.js";
 
 function authenticate(req, res, next) {
     const token = getTokenFromHeader(req.headers)
@@ -28,4 +28,4 @@ function authenticate(req, res, next) {
 
 }
 
-module.exports = authenticate
+export default authenticate;

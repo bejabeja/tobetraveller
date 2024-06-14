@@ -1,8 +1,8 @@
-const { jsonResponse } = require('../lib/jsonResponse');
+import express from 'express';
+import { jsonResponse } from '../lib/jsonResponse.js';
+import citiesData from '../mocks/cities.json' assert { type: 'json' };
 
-const router = require('express').Router();
-
-const citiesData = require('../mocks/cities.json')
+const router = express.Router();
 
 router.get('/', (req, res) => {
     res.send(citiesData);
@@ -25,7 +25,4 @@ router.get('/:id', (req, res) => {
     res.send(city);
 })
 
-
-
-
-module.exports = router
+export default router;

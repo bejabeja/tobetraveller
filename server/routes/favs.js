@@ -1,6 +1,7 @@
-const { jsonResponse } = require('../lib/jsonResponse');
-const router = require('express').Router();
-const client = require('./database');
+import { jsonResponse } from '../lib/jsonResponse.js';
+import express from 'express';
+const router = express.Router();
+import client from './database.js';
 
 router.get('/', async (req, res) => {
     console.log('API GETFAVS: ', req.query.user_id)
@@ -105,5 +106,4 @@ router.delete('/', async (req, res) => {
     }
 });
 
-
-module.exports = router
+export default router;

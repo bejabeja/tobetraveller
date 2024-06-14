@@ -12,4 +12,4 @@ function getTokenFromHeader(headers) {
 
 }
 
-module.exports = getTokenFromHeader
+export default getTokenFromHeader;

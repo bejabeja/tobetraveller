@@ -1,5 +1,8 @@
-const { Pool } = require('pg');
-require('dotenv/config');
+import pkg from 'pg';
+const { Pool } = pkg;
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const client = new Pool({
     connectionString: process.env.POSTGRES_URL,
@@ -124,4 +127,4 @@ createPostsTable();
 createCommentsTable();
 createRelationshipsTable();
 
-module.exports = client;
+export default client;

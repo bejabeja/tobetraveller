@@ -1,22 +1,23 @@
-const jwt = require('jsonwebtoken')
+import jwt from 'jsonwebtoken';
 
-function sign(payload, isAccesToken) {
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
+const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
+
+function sign(payload, isAccessToken) {
     return jwt.sign(
         payload,
-        isAccesToken ? process.env.ACCESS_TOKEN_SECRET : process.env.REFRESH_TOKEN_SECRET,
+        isAccessToken ? ACCESS_TOKEN_SECRET : REFRESH_TOKEN_SECRET,
         {
             algorithm: "HS256",
             expiresIn: 3600
         }
-    )
+    );
 }
 
-function generateAccessToken(user) {
-    return sign({ user }, true)
+export function generateAccessToken(user) {
+    return sign({ user }, true);
 }
 
-function generateRefreshToken(user) {
-    return sign({ user }, false)
+export function generateRefreshToken(user) {
+    return sign({ user }, false);
 }
-
-module.exports = { generateAccessToken, generateRefreshToken }

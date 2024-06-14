@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const { jsonResponse } = require('../lib/jsonResponse');
-const bcrypt = require('bcrypt');
-const client = require('./database');
+import express from 'express';
+import { jsonResponse } from '../lib/jsonResponse.js';
+import bcrypt from 'bcrypt';
+import client from './database.js';
 
+const router = express.Router();
 
 router.post('/', async (req, res) => {
     const { username, email, password } = req.body;
@@ -52,4 +52,4 @@ router.post('/', async (req, res) => {
 
 });
 
-module.exports = router;
+export default router;
