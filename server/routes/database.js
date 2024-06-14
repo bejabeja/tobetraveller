@@ -20,7 +20,7 @@ async function createUsersTable() {
                     password VARCHAR(255),
                     followers INT DEFAULT 0,
                     following INT DEFAULT 0,
-                    favorite_cities INTEGER[]
+                    favorite_cities INTEGER[] DEFAULT '{}'::INTEGER[]
                 )
               `;
 

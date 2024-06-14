@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
         const { rows } = await client.query(
             'SELECT * FROM users WHERE user_id = $1', [user_id]
         );
-        console.log('Query Result: ', rows);
         // user exists and has favorite cities
         if (rows.length > 0 && rows[0].favorite_cities) {
             const favoriteCities = rows[0].favorite_cities;

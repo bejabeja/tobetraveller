@@ -54,7 +54,7 @@ const PrivateProfile = () => {
           </div>
           <div>
             <p>Favs</p>
-            <p>{favs.length}</p>
+            <p>{user.favorite_cities.length}</p>
           </div>
           <div>
             <p>Posts</p>

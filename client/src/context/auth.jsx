@@ -16,15 +16,9 @@ export function AuthProvider({ children }) {
     }, [])
 
     useEffect(() => {
+
         if (isAuthenticated) {
-            getFavs({ user_id: user?.user_id })
-                .then(favs => {
-                    setFavs(favs);
-                })
-                .catch(err => {
-                    console.error("Error fetching favorites:", err);
-                    setFavs([]);
-                });
+            setFavs(user.favorite_cities);
         } else {
             setFavs([]);
         }
