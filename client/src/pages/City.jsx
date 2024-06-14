@@ -17,7 +17,7 @@ const City = () => {
         <Layout>
             <main className="city">
                 <section>
-                    {false && <div className="city-buttons">
+                    {true && <div className="city-buttons">
                         <Fav id={parseInt(id, 10)}></Fav>
                     </div>
                     }
