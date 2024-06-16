@@ -2,7 +2,7 @@ const CITIES_ENDPOINT = `${process.env.REACT_APP_API_URL}/cities`;
 
 export const getCities = async () => {
     const res = await fetch(CITIES_ENDPOINT)
-    const { cities } = await res.json()
+    const cities = await res.json()
     return cities
 }
 
