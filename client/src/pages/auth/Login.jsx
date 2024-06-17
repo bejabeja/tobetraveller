@@ -5,6 +5,7 @@ import { useAuth } from '../../hooks/useAuth.js';
 import { useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
 import ButtonLink from '../../components/ButtonLink'
 import SpinnerLoader from '../../components/SpinnerLoader';
+import login from '../../services/login.js';
 
 const Login = () => {
     const [username, setUsername] = useState('')
@@ -27,36 +28,15 @@ const Login = () => {
         setLoading(true);
         setTimeout(async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
-                    method: 'POST',
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        username,
-                        password
-                    })
-                })
-
-                if (response.ok) {
-                    setErrorResponse('')
-                    const json = await response.json()
-
-                    if (json.body.accesToken && json.body.refreshToken) {
-                        auth.saveUser(json)
-                        goTo(state?.pathname ?? '/private-profile')
-                    }
-
-                } else {
-                    const json = await response.json()
-                    setErrorResponse(json.body.error)
-                }
+                const response = await login(username, password)
+                auth.saveUser(response)
+                goTo(state?.pathname ?? '/private-profile')
             } catch (error) {
                 console.log(error)
+                setErrorResponse(error.message);
             }
             setLoading(false);
         }, 2000);
-
     };
 
     return (
