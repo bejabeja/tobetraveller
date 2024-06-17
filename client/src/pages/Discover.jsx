@@ -5,13 +5,14 @@ import { getCities } from '../services/cities.js'
 import ButtonLink from '../components/ButtonLink'
 import { useFilters } from '../hooks/useFilters.js'
 import Filters from '../components/Filters.jsx'
+import SpinnerLoader from '../components/SpinnerLoader.jsx'
 
 const Discover = () => {
   const { filterCities } = useFilters()
   const [initialAllCities, setInitialAllCities] = useState([])
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   const filteredCities = filterCities(initialAllCities)
 
   useEffect(() => {
@@ -26,11 +27,15 @@ const Discover = () => {
       }
     };
 
-    fetchCities();
+
+    setTimeout(() => {
+      fetchCities();
+    }, 1000);
+
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <SpinnerLoader />;
   }
 
   if (error) {
