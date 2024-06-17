@@ -5,7 +5,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import ButtonLink from '../../components/ButtonLink';
 import SpinnerLoader from '../../components/SpinnerLoader';
 import Layout from '../../layout/Layout';
-import signup from '../../services/sigup.js';
+import signup from '../../services/signup.js';
 
 const SignUp = () => {
     const [email, setEmail] = useState('')
