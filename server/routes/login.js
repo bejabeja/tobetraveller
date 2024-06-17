@@ -1,14 +1,16 @@
 import express from 'express';
 import { jsonResponse } from '../lib/jsonResponse.js';
 import bcrypt from 'bcrypt';
-import client from '../config/database.js';
 import { generateAccessToken, generateRefreshToken } from '../auth/generateTokens.js';
+import { setToken } from '../repositories/authRepository.js';
+import { getUserByUsername } from '../repositories/userRepository.js';
+
 
 const router = express.Router();
 async function refreshTokenS(user) {
     const refreshTokenS = generateRefreshToken(user);
     try {
-        await client.query('INSERT INTO tokens (refresh_token) VALUES ($1)', [refreshTokenS]);
+        await setToken(refreshTokenS);
         return refreshTokenS;
     } catch (error) {
         console.log(error)
@@ -28,10 +30,9 @@ router.post('/', async (req, res) => {
         )
     }
 
-    const findUserName = await client.query('SELECT * FROM users WHERE username=$1', [username])
+    const user = await getUserByUsername(username)
 
-    if (findUserName.rows.length > 0) {
-        const user = findUserName.rows[0]
+    if (user) {
         const matchPassword = await bcrypt.compare(password, user.password)
 
         if (matchPassword) {

@@ -2,6 +2,7 @@ import express from 'express';
 import { jsonResponse } from '../lib/jsonResponse.js';
 import bcrypt from 'bcrypt';
 import client from '../config/database.js';
+import { getUserByUsername, createNewUser } from '../repositories/userRepository.js';
 
 const router = express.Router();
 
@@ -16,8 +17,8 @@ router.post('/', async (req, res) => {
         );
     }
 
-    const existingUser = await client.query('SELECT * FROM users WHERE username = $1', [username]);
-    if (existingUser.rows.length > 0) {
+    const existingUser = await getUserByUsername(username);
+    if (existingUser) {
         return res.status(400).json(
             jsonResponse(
                 400,
@@ -38,7 +39,7 @@ router.post('/', async (req, res) => {
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        await client.query('INSERT INTO users (email, username, password) VALUES ($1, $2, $3)', [email, username, hashedPassword]);
+        await createNewUser(email, username, hashedPassword)
         return res.status(200).json(
             jsonResponse(
                 200,
