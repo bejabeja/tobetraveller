@@ -44,7 +44,7 @@ const Login = () => {
 
                     if (json.body.accesToken && json.body.refreshToken) {
                         auth.saveUser(json)
-                        goTo(state?.pathname ?? '/')
+                        goTo(state?.pathname ?? '/private-profile')
                     }
 
                 } else {
