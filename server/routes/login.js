@@ -1,9 +1,10 @@
 import express from 'express';
-import { jsonResponse } from '../lib/jsonResponse.js';
+import { jsonResponse } from '../utils/jsonResponse.js';
 import bcrypt from 'bcrypt';
 import { generateAccessToken, generateRefreshToken } from '../auth/generateTokens.js';
 import { setToken } from '../repositories/authRepository.js';
 import { getUserByUsername } from '../repositories/userRepository.js';
+import { USER_NOT_FOUND, FIELDS_REQUIRED } from '../utils/constantsErrors.js';
 
 
 const router = express.Router();
@@ -25,7 +26,7 @@ router.post('/', async (req, res) => {
         return res.status(400).json(
             jsonResponse(
                 400,
-                { error: "Fields are required" }
+                { error: FIELDS_REQUIRED }
             )
         )
     }
@@ -58,7 +59,7 @@ router.post('/', async (req, res) => {
         return res.status(400).json(
             jsonResponse(
                 400,
-                { error: 'User not found' }
+                { error: USER_NOT_FOUND }
             )
         )
     }

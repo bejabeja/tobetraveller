@@ -1,4 +1,4 @@
-import { jsonResponse } from '../lib/jsonResponse.js';
+import { jsonResponse } from '../utils/jsonResponse.js';
 import express from 'express';
 const router = express.Router();
 

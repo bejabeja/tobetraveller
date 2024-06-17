@@ -1,8 +1,8 @@
 import express from 'express';
-import { jsonResponse } from '../lib/jsonResponse.js';
+import { jsonResponse } from '../utils/jsonResponse.js';
 import bcrypt from 'bcrypt';
-import client from '../config/database.js';
 import { getUserByUsername, createNewUser } from '../repositories/userRepository.js';
+import { INTERNAL_SERVER_ERROR, FIELDS_REQUIRED } from '../utils/constantsErrors.js';
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
         return res.status(400).json(
             jsonResponse(
                 400,
-                { error: "Fields are required" }
+                { error: FIELDS_REQUIRED }
             )
         );
     }
@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
         );
     } catch (error) {
         console.error('Error executing PostgreSQL query:', error);
-        return res.status(500).json({ error: 'Internal Server Error' });
+        return res.status(500).json({ error: INTERNAL_SERVER_ERROR });
     }
 
 });

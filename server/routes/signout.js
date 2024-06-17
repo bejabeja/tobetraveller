@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import getTokenFromHeader from '../auth/getTokenFromHeader.js';
-import { jsonResponse } from '../lib/jsonResponse.js';
+import { jsonResponse } from '../utils/jsonResponse.js';
 import { removeToken } from '../repositories/authRepository.js';
 
 const router = Router();

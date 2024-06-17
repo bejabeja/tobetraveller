@@ -1,7 +1,8 @@
-import { jsonResponse } from '../lib/jsonResponse.js';
+import { jsonResponse } from '../utils/jsonResponse.js';
 import express from 'express';
 const router = express.Router();
 import { getUserBy, updateUserFavs, getUserFavs } from '../repositories/userRepository.js';
+import { INTERNAL_SERVER_ERROR, USER_NOT_FOUND } from '../utils/constantsErrors.js';
 
 router.get('/', async (req, res) => {
     try {
@@ -27,7 +28,7 @@ router.get('/', async (req, res) => {
         return res.status(500).json(
             jsonResponse(
                 500,
-                { message: 'Internal server error' }
+                { message: INTERNAL_SERVER_ERROR }
             )
         );
     }
@@ -41,7 +42,7 @@ router.post('/', async (req, res) => {
         const user = await getUserBy(user_id);
         if (!user) {
             return res.status(404).json(
-                jsonResponse(404, { message: 'User not found' })
+                jsonResponse(404, { message: USER_NOT_FOUND })
             );
         }
 
@@ -62,7 +63,7 @@ router.post('/', async (req, res) => {
     } catch (error) {
         console.error('Error adding favorite city:', error.message);
         return res.status(500).json(
-            jsonResponse(500, { message: 'Internal server error' })
+            jsonResponse(500, { message: INTERNAL_SERVER_ERROR })
         );
     }
 });
@@ -83,7 +84,7 @@ router.delete('/', async (req, res) => {
     } catch (error) {
         console.error('Error deleting favorite city:', error.message);
         return res.status(500).json(
-            jsonResponse(500, { message: 'Internal server error' })
+            jsonResponse(500, { message: INTERNAL_SERVER_ERROR })
         );
     }
 });
