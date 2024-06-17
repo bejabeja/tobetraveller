@@ -1,7 +1,7 @@
 import { jsonResponse } from '../lib/jsonResponse.js';
 import express from 'express';
 const router = express.Router();
-import { getUserBy, updateUserFavs, getUserFavs } from '../infrastructure/userRepository.js';
+import { getUserBy, updateUserFavs, getUserFavs } from '../repositories/userRepository.js';
 
 router.get('/', async (req, res) => {
     try {
