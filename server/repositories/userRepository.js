@@ -1,4 +1,4 @@
-import client from '../routes/database.js';
+import client from '../config/database.js';
 
 
 async function getUserBy(user_id) {

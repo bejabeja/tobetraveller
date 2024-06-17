@@ -3,7 +3,7 @@ import { generateAccessToken } from '../auth/generateTokens.js';
 import getTokenFromHeader from '../auth/getTokenFromHeader.js';
 import { verifyRefreshTokens } from '../auth/verifyTokens.js';
 import { jsonResponse } from '../lib/jsonResponse.js';
-import client from './database.js';
+import client from '../config/database.js';
 
 const router = Router();
 

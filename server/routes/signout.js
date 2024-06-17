@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import getTokenFromHeader from '../auth/getTokenFromHeader.js'; 
-import { jsonResponse } from '../lib/jsonResponse.js'; 
-import client from './database.js'; 
+import getTokenFromHeader from '../auth/getTokenFromHeader.js';
+import { jsonResponse } from '../lib/jsonResponse.js';
+import client from '../config/database.js';
 
 const router = Router();
 

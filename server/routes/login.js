@@ -1,7 +1,7 @@
 import express from 'express';
 import { jsonResponse } from '../lib/jsonResponse.js';
 import bcrypt from 'bcrypt';
-import client from './database.js';
+import client from '../config/database.js';
 import { generateAccessToken, generateRefreshToken } from '../auth/generateTokens.js';
 
 const router = express.Router();
