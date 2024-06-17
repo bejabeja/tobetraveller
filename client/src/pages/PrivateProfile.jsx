@@ -6,14 +6,9 @@ import avatar from '../icons/favicon-avatar.ico'
 
 
 const PrivateProfile = () => {
-
-
   const { getUser, favs } = useAuth()
 
   const user = getUser()
-
-  console.log(user, favs)
-
   return (
     <main className='private-profile'>
       <h1>Hello traveller {user.username}! Welcome to your profile,</h1>
@@ -27,8 +22,14 @@ const PrivateProfile = () => {
         >
         </ButtonLink>
         <ButtonLink href='/discover' className='main--button' text='Add favs'> </ButtonLink>
-        <ButtonLink href='' className='main--button' text='Post in forum'> </ButtonLink>
-        <ButtonLink href='/' className='main--button' text='Add your status'> </ButtonLink>
+
+        {/* FF => FEATURE FLAG */}
+        {false &&
+          <>
+            <ButtonLink href='' className='main--button' text='Post in forum'> </ButtonLink>
+            <ButtonLink href='/' className='main--button' text='Add your status'> </ButtonLink>
+          </>
+        }
 
       </section>
       <section className='private-profile--header'>
@@ -44,26 +45,38 @@ const PrivateProfile = () => {
             <p>Trips</p>
             <p>0</p>
           </div>
-          <div>
-            <p>Followers</p>
-            <p>{user.followers}</p>
-          </div>
-          <div>
-            <p>Following</p>
-            <p>{user.following}</p>
-          </div>
+
+          {/* FF => FEATURE FLAG */}
+          {true &&
+            <>
+              <div>
+                <p>Followers</p>
+                <p>{user.followers}</p>
+              </div>
+              <div>
+                <p>Following</p>
+                <p>{user.following}</p>
+              </div>
+            </>}
+
           <div>
             <p>Favs</p>
             <p>{user.favorite_cities.length}</p>
           </div>
-          <div>
-            <p>Posts</p>
-            <p>0</p>
-          </div>
-          <div>
-            <p>Comments</p>
-            <p>0</p>
-          </div>
+
+          {/* FF => FEATURE FLAG */}
+          {true &&
+            <>
+              <div>
+                <p>Posts</p>
+                <p>0</p>
+              </div>
+              <div>
+                <p>Comments</p>
+                <p>0</p>
+              </div>
+            </>}
+
         </div>
 
       </section>
