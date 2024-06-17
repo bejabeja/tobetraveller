@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import './Login.css';
 import { useAuth } from '../../hooks/useAuth.js';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import ButtonLink from '../../components/ButtonLink';
 import SpinnerLoader from '../../components/SpinnerLoader';
 import Layout from '../../layout/Layout';
+import signup from '../../services/sigup.js';
 
 const SignUp = () => {
     const [email, setEmail] = useState('')
@@ -24,10 +24,8 @@ const SignUp = () => {
         return <Navigate to='/private-profile'></Navigate>
     }
 
-
     const handleSubmit = async (e) => {
         e.preventDefault()
-
         setErrorResponse('')
 
         if (password !== repeatPassword) {
@@ -36,41 +34,18 @@ const SignUp = () => {
         }
 
         setLoading(true)
+
         setTimeout(async () => {
             try {
-                await axiosPostData()
+                await signup(username, email, password)
+                goTo('/login')
             } catch (error) {
-                console.log(error)
+                setErrorResponse(error.message)
             }
 
             setLoading(false)
         }, 2000)
-
     };
-
-
-    const axiosPostData = async () => {
-        const postData = {
-            username: username,
-            email: email,
-            password: password
-        }
-
-        try {
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, postData)
-            if (response.status === 200) {
-                console.log("User created successfully")
-                setErrorResponse('')
-                goTo('/login')
-            } else {
-                console.log("Something went wrong")
-                setErrorResponse(response.data.error)
-            }
-        } catch (error) {
-            console.log("Network error:", error.response.data.body.error)
-            setErrorResponse(error.response.data.body.error)
-        }
-    }
 
     return (
         <Layout>

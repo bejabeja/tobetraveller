@@ -30,7 +30,7 @@ const Discover = () => {
 
     setTimeout(() => {
       fetchCities();
-    }, 1000);
+    }, 500);
 
   }, []);
 
