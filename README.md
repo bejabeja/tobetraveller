@@ -15,10 +15,11 @@ This project is currently under development and is in its early stages. Some fun
 
 - **React.js**: For building the interactive user interface.
 - **Node.js**: Backend server-side operations and scripting.
+- **Express**: To create web servers and APIs by handling routes, HTTP requests, and middleware.
 - **CSS3**: For website design and styles.
 - **Git**: For version control of the project.
 - **Vercel**: For deployment and hosting of the website in production.
-- **PostgreSQL**: Database management and storage.
+- **PostgreSQL**: Database management and storage. (Supabase)
 
 
 ## Preview
