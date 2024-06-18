@@ -1,0 +1,10 @@
+.PHONY: start-client start-server start
+
+start-client:
+	cd client && npm start
+
+start-server:
+	cd server && npm start
+
+start: start-client start-server
+	wait
