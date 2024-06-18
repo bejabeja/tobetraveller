@@ -8,3 +8,7 @@ start-server:
 
 start: start-client start-server
 	wait
+
+
+#lsof -i :3001 //check port
+#kill -9 (PIDNUMBER) //kill port

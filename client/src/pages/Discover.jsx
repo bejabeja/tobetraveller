@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Discover.css'
 import Layout from '../layout/Layout'
-import { getCities } from '../services/cities.js'
+import { getAllCities } from '../services/cities.js'
 import ButtonLink from '../components/ButtonLink'
 import { useFilters } from '../hooks/useFilters.js'
 import Filters from '../components/Filters.jsx'
@@ -18,7 +18,7 @@ const Discover = () => {
   useEffect(() => {
     const fetchCities = async () => {
       try {
-        const data = await getCities();
+        const data = await getAllCities();
         setInitialAllCities(data);
       } catch (error) {
         setError(error.message);
@@ -53,12 +53,12 @@ const Discover = () => {
                 <li>
                   <div className='cities-content'>
                     <img
-                      src={city.cityThumbnail}
-                      alt={city.cityName}
+                      src={city.city_thumbnail}
+                      alt={city.city_name}
                     ></img>
                     <div>
-                      <strong>{city.cityName}</strong> - {city.countryName}
-                      <p>{city.cityDescription}</p>
+                      <strong>{city.city_name}</strong> - {city.country_name}
+                      <p>{city.city_description}</p>
                     </div>
                   </div>
                 </li>

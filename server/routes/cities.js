@@ -4,9 +4,26 @@ import { getAllCities, getCityById } from '../repositories/citiesRepository.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    const cities = getAllCities()
-    res.send(cities);
+router.get('/', async (req, res) => {
+    try {
+        const cities = await getAllCities()
+  
+        return res.status(200).json(
+            jsonResponse(
+                200,
+                cities
+            )
+        )
+    } catch (error) {
+        console.error('Error fetching cities:', error.message);
+
+        return res.status(200).json(
+            jsonResponse(
+                500,
+                { message: INTERNAL_SERVER_ERROR }
+            )
+        );
+    }
 })
 
 router.get('/:id', (req, res) => {
