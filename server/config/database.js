@@ -117,14 +117,64 @@ async function createRelationshipsTable() {
 
         console.log('Table "relationships" created successfully');
     } catch (error) {
-        console.error('Error creating followers table:', error);
+        console.error('Error creating relationships table:', error);
     }
 }
+
+async function createCitiesTable() {
+    try {
+        await client.connect();
+        const query = `
+        CREATE TABLE IF NOT EXISTS cities (
+            id SERIAL PRIMARY KEY,
+            city_name VARCHAR(100),
+            country_name VARCHAR(100),
+            country_code VARCHAR(10),
+            country_description TEXT,
+            currency VARCHAR(10),
+            city_description TEXT,
+            city_thumbnail TEXT
+        );
+        `
+        await client.query(query);
+
+        console.log('Table "Cities" created successfully');
+    } catch (error) {
+        console.error('Error creating Cities table:', error);
+    }
+}
+
+
+async function createPointOfInterestTable() {
+    try {
+        await client.connect();
+        const query = `
+            CREATE TABLE IF NOT EXISTS points_of_interest (
+                id SERIAL PRIMARY KEY,
+                city_id INTEGER REFERENCES cities(id),
+                name VARCHAR(100),
+                type VARCHAR(50),
+                description TEXT,
+                opening_hours VARCHAR(50),
+                thumbnail TEXT
+            );
+        `
+        await client.query(query);
+
+        console.log('Table "PointOfInterest" created successfully');
+    } catch (error) {
+        console.error('Error creating PointOfInterest table:', error);
+    }
+}
+
+
 
 createUsersTable();
 createTokensTable();
 createPostsTable();
 createCommentsTable();
 createRelationshipsTable();
+createCitiesTable();
+createPointOfInterestTable();
 
 export default client;
