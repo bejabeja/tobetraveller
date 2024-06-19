@@ -41,7 +41,10 @@
 
 .cities img {
   border-radius: 4px;
-  width: 100%;
+  /* width: 100%; */
+  max-width: 350px;
+  /* Tamaño máximo deseado */
+  height: auto;
   aspect-ratio: 16/9;
   display: block;
   object-fit: cover;
