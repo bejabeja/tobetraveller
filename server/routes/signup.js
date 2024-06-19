@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
         return res.status(400).json(
             jsonResponse(
                 400,
-                { error: FIELDS_REQUIRED }
+                { message: FIELDS_REQUIRED }
             )
         );
     }
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
         return res.status(400).json(
             jsonResponse(
                 400,
-                { error: 'Username already exist' }
+                { message: 'Username already exist' }
             )
         )
     }
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
         return res.status(400).json(
             jsonResponse(
                 400,
-                { error: "Introduce a valid email" }
+                { message: "Introduce a valid email" }
             )
         );
     }
@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
         );
     } catch (error) {
         console.error('Error executing PostgreSQL query:', error);
-        return res.status(500).json({ error: INTERNAL_SERVER_ERROR });
+        return res.status(500).json({ message: INTERNAL_SERVER_ERROR });
     }
 
 });

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { createContext, useState } from 'react';
-import getFavs from '../services/getFavs';
 import getUserInfo from '../services/getUser';
 
 export const AuthContext = createContext()
@@ -46,7 +45,7 @@ export function AuthProvider({ children }) {
             }
 
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             return null
         }
     }
