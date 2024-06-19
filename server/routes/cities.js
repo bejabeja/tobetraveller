@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
         const cities = await getAllCities()
-  
+
         return res.status(200).json(
             jsonResponse(
                 200,
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     } catch (error) {
         console.error('Error fetching cities:', error.message);
 
-        return res.status(200).json(
+        return res.status(500).json(
             jsonResponse(
                 500,
                 { message: INTERNAL_SERVER_ERROR }
@@ -26,20 +26,35 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
     const cityId = parseInt(req.params.id)
-    const city = getCityById(cityId)
 
-    if (!city) {
-        return res.status(404).json(
+    try {
+        const city = await getCityById(cityId)
+        if (!city) {
+            return res.status(404).json(
+                jsonResponse(
+                    404,
+                    { message: 'City not found' }
+                )
+            )
+        }
+
+        return res.status(200).json(
             jsonResponse(
-                404,
-                { error: 'City not found' }
+                200,
+                city
+            )
+        )
+
+    } catch (error) {
+        return res.status(500).json(
+            jsonResponse(
+                500,
+                { message: INTERNAL_SERVER_ERROR }
             )
         )
     }
-
-    res.send(city);
 })
 
 export default router;

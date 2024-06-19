@@ -18,7 +18,18 @@ export const getAllCities = async () => {
 }
 
 export const getCity = async (id) => {
-    const res = await fetch(`${CITIES_ENDPOINT}/${id}`)
-    const city = await res.json()
-    return city
+    return fetch(`${CITIES_ENDPOINT}/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => {
+            if (!res.ok) throw new Error('Response get city is not ok');
+            return res.json();
+        })
+        .then(res => {
+            const city = res.body;
+            return city;
+        });
 }
