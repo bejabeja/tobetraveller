@@ -1,4 +1,4 @@
-export default function getFavs({ user_id }) {
+export default function getFavs(user_id) {
     return fetch(`${process.env.REACT_APP_API_URL}/favs?user_id=${user_id}`, {
         method: 'GET',
         headers: {

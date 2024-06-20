@@ -32,8 +32,17 @@ async function getUserFavs(user_id) {
     return rows[0].favorite_cities;
 }
 
+async function getAllFavsInfoFromUser(user_id) {
+    const userFavs = await getUserFavs(user_id)
+    const { rows } = await client.query(
+        'SELECT * FROM cities WHERE id = ANY($1)', [userFavs]
+    );
+
+    return rows;
+}
+
 async function createNewUser(email, username, hashedPassword) {
     await client.query('INSERT INTO users (email, username, password) VALUES ($1, $2, $3)', [email, username, hashedPassword]);
 }
 
-export { getUserBy, updateUserFavs, getUserFavs, getUserByUsername, createNewUser };
+export { getUserBy, updateUserFavs, getUserFavs, getUserByUsername, createNewUser, getAllFavsInfoFromUser };

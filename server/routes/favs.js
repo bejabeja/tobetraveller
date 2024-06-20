@@ -1,20 +1,19 @@
 import { jsonResponse } from '../utils/jsonResponse.js';
 import express from 'express';
 const router = express.Router();
-import { getUserBy, updateUserFavs, getUserFavs } from '../repositories/userRepository.js';
+import { getUserBy, updateUserFavs, getUserFavs, getAllFavsInfoFromUser } from '../repositories/userRepository.js';
 import { INTERNAL_SERVER_ERROR, USER_NOT_FOUND } from '../utils/constantsErrors.js';
 
 router.get('/', async (req, res) => {
     try {
         const { user_id } = req.query;
-        const user = await getUserBy(user_id);
-        // user exists and has favorite cities
-        if (user.length > 0) {
-            const favoriteCities = user[0].favorite_cities;
+        const favsCities = await getAllFavsInfoFromUser(user_id);
+        if (favsCities) {
+
             return res.status(200).json(
                 jsonResponse(
                     200,
-                    { favs: favoriteCities }
+                    { favs: favsCities }
                 )
             );
         } else {
@@ -53,11 +52,14 @@ router.post('/', async (req, res) => {
             );
         }
 
+        // TODO: need a refactor, change column favs array to arrayofobjects
         const updatedCities = [...user.favorite_cities, city_id];
         await updateUserFavs(updatedCities, user_id)
+        const allUserFavs = await getAllFavsInfoFromUser(user_id)
+
 
         return res.status(201).json(
-            jsonResponse(201, { favs: updatedCities })
+            jsonResponse(201, { favs: allUserFavs })
         );
 
     } catch (error) {
@@ -76,9 +78,10 @@ router.delete('/', async (req, res) => {
         const updatedCities = favoriteCities.filter(id => id !== city_id);
 
         await updateUserFavs(updatedCities, user_id);
+        const allUserFavs = await getAllFavsInfoFromUser(user_id)
 
         return res.status(200).json(
-            jsonResponse(200, { favs: updatedCities })
+            jsonResponse(200, { favs: allUserFavs })
         );
 
     } catch (error) {

@@ -11,8 +11,8 @@ export const useAuth = () => {
         getRefreshToken,
         getUser,
         signOut,
-        favs,
-        setFavs
+        favsInfo,
+        setFavsInfo
     } = useContext(AuthContext)
 
     const user = getUser();
@@ -20,21 +20,29 @@ export const useAuth = () => {
 
     const addFav = useCallback((city_id) => {
         addFavService(city_id, user_id)
-            .then(favs => {
-                setFavs(favs);
-            })
-            .catch(err => {
-                console.error(err);
-            });
-    }, [user_id, setFavs]);
+            .then(favs => setFavsInfo(favs)
+            )
+            .catch(err => console.error(err));
+    }, [user_id, setFavsInfo]);
 
     const deleteFav = useCallback((city_id) => {
         deleteFavService(city_id, user_id)
-            .then(favs => setFavs(favs))
-            .catch(err => {
-                console.error(err);
-            });
-    }, [user_id, setFavs]);
+            .then(favs => {
+                setFavsInfo(favs)
+            })
+            .catch(err => console.error(err));
+    }, [user_id, setFavsInfo]);
 
-    return { addFav, deleteFav, favs, isAuthenticated, getAccesToken, saveUser, getRefreshToken, getUser, signOut };
+    return {
+        addFav,
+        deleteFav,
+        favsInfo,
+        setFavsInfo,
+        isAuthenticated,
+        getAccesToken,
+        saveUser,
+        getRefreshToken,
+        user,
+        signOut
+    };
 }

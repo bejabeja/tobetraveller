@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import './Fav.css'
 
 const Fav = ({ id }) => {
-    const { isAuthenticated, addFav, favs, deleteFav } = useAuth()
+    const { isAuthenticated, addFav, deleteFav, favsInfo } = useAuth()
     const navigate = useNavigate()
-    const isFaved = favs?.some(favId => favId === id)
+    const isFaved = favsInfo?.some(fav => fav.id === id)
 
     const handleClick = () => {
         if (!isAuthenticated) {

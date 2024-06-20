@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { createContext, useState } from 'react';
-import getUserInfo from '../services/getUser';
+import getUserInfo from '../services/getUser.js';
+import getAllFavsService from '../services/getAllFavs.js';
 
 export const AuthContext = createContext()
 
@@ -8,7 +9,7 @@ export function AuthProvider({ children }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [accesToken, setAccesToken] = useState('')
     const [user, setUser] = useState('')
-    const [favs, setFavs] = useState([])
+    const [favsInfo, setFavsInfo] = useState([])
 
     useEffect(() => {
         checkAuth()
@@ -17,11 +18,14 @@ export function AuthProvider({ children }) {
     useEffect(() => {
 
         if (isAuthenticated) {
-            setFavs(user.favorite_cities);
+            getAllFavsService(user.user_id)
+                .then(favs => setFavsInfo(favs))
+                .catch(err => console.log(err))
+
         } else {
-            setFavs([]);
+            setFavsInfo([]);
         }
-    }, [isAuthenticated, user, setFavs]);
+    }, [isAuthenticated, user, setFavsInfo]);
 
     async function requestNewAccessToken(refreshToken) {
         try {
@@ -117,8 +121,8 @@ export function AuthProvider({ children }) {
             getRefreshToken,
             getUser,
             signOut,
-            favs,
-            setFavs
+            favsInfo,
+            setFavsInfo
         }}>
             {children}
         </AuthContext.Provider>
