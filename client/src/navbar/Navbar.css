@@ -1,4 +1,5 @@
 .app-navbar {
+  z-index: 1000;
   height: fit-content;
   position: fixed;
   top: 16px;

@@ -80,7 +80,7 @@ const PrivateProfile = () => {
           </div>
 
           {/* FF => FEATURE FLAG */}
-          {true &&
+          {false &&
             <>
               <div>
                 <p>Posts</p>
@@ -103,7 +103,8 @@ const PrivateProfile = () => {
         {/* FF => FEATURE FLAG */}
         {true && favsInfo?.map((fav) => (
           <ButtonLink key={fav.id} href={`/discover/${fav.id}`} className='private-profile--fav-info'>
-            {fav.city_name}
+            <img src={fav.city_thumbnail}></img>
+            <p>{fav.city_name}</p>
           </ButtonLink>
         ))}
         <ButtonLink href='/discover' className='main--button' text='Add fav'> </ButtonLink>

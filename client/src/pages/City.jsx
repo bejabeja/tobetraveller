@@ -41,7 +41,6 @@ const City = () => {
         return <SpinnerLoader></SpinnerLoader>;
     }
 
-
     return (
         <Layout>
             <main className="city">
