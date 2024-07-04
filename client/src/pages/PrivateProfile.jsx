@@ -4,11 +4,11 @@ import ButtonLink from "../components/ButtonLink"
 import './PrivateProfile.css'
 import avatar from '../icons/favicon-avatar.ico'
 import getFavs from '../services/getAllFavs.js';
-import getTravels from '../services/getAllUserTravels.js';
+import UserTravels from '../components/privateProfile/UserTravels.jsx';
 
 
 const PrivateProfile = () => {
-  const { user, favsInfo, setFavsInfo, travels, setTravels } = useAuth()
+  const { user, favsInfo, setFavsInfo } = useAuth()
 
   useEffect(() => {
 
@@ -22,18 +22,6 @@ const PrivateProfile = () => {
     };
 
     fetchAllFavs();
-
-    const fetchAllTravels = async () => {
-      try {
-        const data = await getTravels(user.id);
-        setTravels(data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
-    fetchAllTravels()
-
   }, [])
 
   return (
@@ -121,19 +109,7 @@ const PrivateProfile = () => {
         {/* <ButtonLink href='/discover' className='main--button' text='Add fav'> </ButtonLink> */}
       </section>
 
-      <section className='private-profile--section'>
-        <h1> Private travels</h1>
-
-        <p>Currently you have <strong>{travels.length} travels</strong> created!</p>
-
-        {travels?.map((trav) => (
-          <ButtonLink key={trav.id} href={`/travels/${trav.id}`} className='private-profile--fav-info'>
-            <img src={trav.thumbnail}></img>
-            <p>{trav.title}</p>
-          </ButtonLink>
-        ))}
-        {/* <ButtonLink href='/trip/create ' className='main--button' text='Add fav'> </ButtonLink> */}
-      </section>
+      <UserTravels></UserTravels>
 
 
     </main >
