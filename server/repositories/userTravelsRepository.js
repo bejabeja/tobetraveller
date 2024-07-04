@@ -1,4 +1,4 @@
-import client from "../config/database";
+import client from "../config/database.js";
 
 async function getAllUserTravelsBy(userId) {
     const { rows } = await client.query(

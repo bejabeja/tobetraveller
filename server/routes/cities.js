@@ -1,6 +1,7 @@
 import express from 'express';
 import { jsonResponse } from '../utils/jsonResponse.js';
 import { getAllCities, getCityById } from '../repositories/citiesRepository.js';
+import { INTERNAL_SERVER_ERROR } from '../utils/constantsErrors.js';
 
 const router = express.Router();
 
