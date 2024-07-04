@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { useAuth } from "../../hooks/useAuth"
 import ButtonLink from "../ButtonLink"
 import getFavs from "../../services/getAllFavs"
+import '../../pages/PrivateProfile.css'
 
 
 const UserFavs = () => {

@@ -1,19 +1,28 @@
-import React, { useState } from "react";
-import './CreateTrip.css'
+import React, { useState, useEffect } from "react";
+import './CreateTravel.css'
 import ButtonLink from "../../components/ButtonLink";
 import logo from "../../logos/tobetraveller3black.png"
 
-const CreateTrip = (props) => {
+const CreateTravel = (props) => {
     const [newTrip, setNewTrip] = useState(false)
     const [allTrips, setAllTrips] = useState(false)
 
-    const [tripInfo, setTripInfo] = useState({ placeToGo: '', travelDays: '', headerImg: null })
-    const { placeToGo, travelDays } = tripInfo
+    const [tripInfo, setTripInfo] = useState({
+        destination: '',
+        travelDays: 0,
+        headerImg: null,
+        itinerary: {}
+    })
+    const { destination, travelDays } = tripInfo
 
-    async function handleNewTrip(e) {
-        e.preventDefault()
-        setAllTrips(false)
-        setNewTrip(true)
+    // async function handleNewTrip(e) {
+    //     e.preventDefault()
+    //     setAllTrips(false)
+    //     setNewTrip(true)
+    // }
+
+    const handleSaveTravelButtonClick = () => {
+        // createTravel()
     }
 
     function handleHeaderImageChange(e) {
@@ -35,20 +44,58 @@ const CreateTrip = (props) => {
         setTripInfo({ ...tripInfo, headerImg: null })
     }
 
-    const renderTripDays = () => {
-        const days = []
+    useEffect(() => {
+        const newItinerary = {};
         for (let i = 1; i <= travelDays; i++) {
-            days.push(
-                <div key={i}>
-                    <h2>Day {i}</h2>
-                    <form>
-
-                    </form>
-                </div>
-            )
+            newItinerary[`day${i}`] = tripInfo.itinerary[`day${i}`] || [{ activityId: 1, activity: '', notes: '' }];
         }
-        return days
-    }
+        setTripInfo(prev => ({ ...prev, itinerary: newItinerary }));
+    }, [travelDays]);
+
+
+    const handleTripItineraryChange = (day, index, field, value) => {
+        setTripInfo(prev => {
+            const dayActivities = [...prev.itinerary[day]];
+            dayActivities[index] = { ...dayActivities[index], [field]: value };
+            return { ...prev, itinerary: { ...prev.itinerary, [day]: dayActivities } };
+        });
+    };
+    const renderTripDays = () => (
+        Array.from({ length: travelDays }, (_, i) => {
+            const day = `day${i + 1}`;
+            return (
+                <div key={i}>
+                    <h2>Day {i + 1}</h2>
+                    {tripInfo.itinerary[day]?.map((activity, index) => (
+                        <form key={activity.activityId} className="day-form">
+                            <div className="input-container">
+                                <label htmlFor={`activity-${day}-${index}`}>Activity:</label>
+                                <input
+                                    type="text"
+                                    id={`activity-${day}-${index}`}
+                                    name={`activity-${day}-${index}`}
+                                    value={activity.activity}
+                                    onChange={(e) => handleTripItineraryChange(day, index, 'activity', e.target.value)}
+                                />
+                            </div>
+                            <div className="input-container">
+                                <label htmlFor={`notes-${day}-${index}`}>Notes:</label>
+                                <textarea
+                                    id={`notes-${day}-${index}`}
+                                    name={`notes-${day}-${index}`}
+                                    value={activity.notes}
+                                    onChange={(e) => handleTripItineraryChange(day, index, 'notes', e.target.value)}
+                                />
+                            </div>
+                        </form>
+                    ))}
+                </div>
+            );
+        })
+    );
+
+
+    console.log(tripInfo)
 
     return (
         <main className='create-trip'>
@@ -60,8 +107,8 @@ const CreateTrip = (props) => {
                         <input
                             type="text"
                             id="input"
-                            value={placeToGo}
-                            onChange={(e) => { setTripInfo({ ...tripInfo, placeToGo: e.target.value }) }}
+                            value={destination}
+                            onChange={(e) => { setTripInfo({ ...tripInfo, destination: e.target.value }) }}
                             required
                         />
                     </div>
@@ -79,7 +126,7 @@ const CreateTrip = (props) => {
 
 
                 </form>
-                {/* {placeToGo && travelDays &&
+                {/* {destination && travelDays &&
                         <ButtonLink
                             onClick={handleNewTrip}
                             className={`main--button`}
@@ -90,12 +137,12 @@ const CreateTrip = (props) => {
             </section >
 
             {
-                travelDays && placeToGo &&
+                travelDays && destination &&
                 <>
                     < section className="create-trip--header" >
                         <div className="create-trip--header-title">
                             <h1 > {travelDays} days in </h1>
-                            <h1> {placeToGo}</h1>
+                            <h1> {destination}</h1>
                         </div>
 
                         <div className="create-trip--header-img">
@@ -138,11 +185,19 @@ const CreateTrip = (props) => {
                             </div>
                         }
                     </section>
+                    <ButtonLink
+                        onClick={handleSaveTravelButtonClick}
+                        className='main--button'
+                    >
+                        Save itinerary
+                    </ButtonLink>
                 </>
             }
+
+
         </main >
     )
 
 };
 
-export default CreateTrip;
+export default CreateTravel;

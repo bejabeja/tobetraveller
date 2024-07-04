@@ -10,7 +10,7 @@ import Home from './pages/Home';
 import PrivateProfile from './pages/PrivateProfile';
 import Layout from './layout/Layout';
 
-import CreateTrip from './pages/trip/CreateTrip';
+import CreateTravel from './pages/trip/CreateTravel';
 
 
 const App = () => {
@@ -21,12 +21,12 @@ const App = () => {
       <Route path="/discover/:id" element={<City />} />
 
       <Route path="/private-profile" element={<ProtectedRoute><PrivateProfile /></ProtectedRoute>} />
-      {/* <Route path="/trip/create/:placeToGo/:travelDays" element={<ProtectedRoute><CreateTrip /></ProtectedRoute>} /> */}
-      <Route path="/trip/create" element={<ProtectedRoute><CreateTrip /></ProtectedRoute>} />
+      {/* <Route path="/trip/create/:placeToGo/:travelDays" element={<ProtectedRoute><CreateTravel /></ProtectedRoute>} /> */}
+      <Route path="/trip/create" element={<ProtectedRoute><CreateTravel /></ProtectedRoute>} />
 
 
       {/* <Route path="/private-profile" element={<Layout><PrivateProfile /></Layout>} /> */}
-      {/* <Route path="/trip/create/:placeToGo/:travelDays" element={<Layout><CreateTrip /> </Layout>} /> */}
+      {/* <Route path="/trip/create/:placeToGo/:travelDays" element={<Layout><CreateTravel /> </Layout>} /> */}
 
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
