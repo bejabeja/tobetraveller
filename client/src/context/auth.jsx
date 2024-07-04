@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { createContext, useState } from 'react';
 import getUserInfo from '../services/getUser.js';
 import getAllFavsService from '../services/getAllFavs.js';
+import getAllTravels from '../services/getAllUserTravels.js';
 
 export const AuthContext = createContext()
 
@@ -10,6 +11,8 @@ export function AuthProvider({ children }) {
     const [accesToken, setAccesToken] = useState('')
     const [user, setUser] = useState('')
     const [favsInfo, setFavsInfo] = useState([])
+    const [travels, setTravels] = useState([])
+
 
     useEffect(() => {
         checkAuth()
@@ -21,7 +24,9 @@ export function AuthProvider({ children }) {
             getAllFavsService(user.id)
                 .then(favs => setFavsInfo(favs))
                 .catch(err => console.log(err))
-
+            getAllTravels(user.id)
+                .then(travs => setTravels(travs))
+                .catch(err => console.log(err))
         } else {
             setFavsInfo([]);
         }
@@ -122,7 +127,9 @@ export function AuthProvider({ children }) {
             getUser,
             signOut,
             favsInfo,
-            setFavsInfo
+            setFavsInfo,
+            travels,
+            setTravels
         }}>
             {children}
         </AuthContext.Provider>

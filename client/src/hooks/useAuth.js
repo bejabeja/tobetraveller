@@ -12,7 +12,9 @@ export const useAuth = () => {
         getUser,
         signOut,
         favsInfo,
-        setFavsInfo
+        setFavsInfo,
+        travels,
+        setTravels
     } = useContext(AuthContext)
 
     const user = getUser();
@@ -38,6 +40,8 @@ export const useAuth = () => {
         deleteFav,
         favsInfo,
         setFavsInfo,
+        travels,
+        setTravels,
         isAuthenticated,
         getAccesToken,
         saveUser,
