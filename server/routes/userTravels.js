@@ -5,9 +5,9 @@ import { getAllUserTravelsBy } from '../repositories/userTravelsRepository.js';
 
 const router = express.Router();
 
-router.get('/:id', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const userId = parseInt(req.params.userId)
+        const userId = parseInt(req.query.userId)
         const travels = await getAllUserTravelsBy(userId);
 
         return res.status(200).json(
@@ -25,7 +25,6 @@ router.get('/:id', async (req, res) => {
                 { message: INTERNAL_SERVER_ERROR }
             )
         )
-
     }
 })
 
