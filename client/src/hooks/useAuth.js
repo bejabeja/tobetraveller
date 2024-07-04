@@ -16,22 +16,22 @@ export const useAuth = () => {
     } = useContext(AuthContext)
 
     const user = getUser();
-    const user_id = user?.user_id;
+    const userId = user?.id;
 
     const addFav = useCallback((city_id) => {
-        addFavService(city_id, user_id)
+        addFavService(city_id, userId)
             .then(favs => setFavsInfo(favs)
             )
             .catch(err => console.error(err));
-    }, [user_id, setFavsInfo]);
+    }, [userId, setFavsInfo]);
 
     const deleteFav = useCallback((city_id) => {
-        deleteFavService(city_id, user_id)
+        deleteFavService(city_id, userId)
             .then(favs => {
                 setFavsInfo(favs)
             })
             .catch(err => console.error(err));
-    }, [user_id, setFavsInfo]);
+    }, [userId, setFavsInfo]);
 
     return {
         addFav,

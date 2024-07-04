@@ -1,4 +1,4 @@
-export default function deleteFav({city_id}, user_id) {
+export default function deleteFav({city_id}, userId) {
     return fetch(`${process.env.REACT_APP_API_URL}/favs`, {
         method: 'DELETE',
         headers: {
@@ -6,7 +6,7 @@ export default function deleteFav({city_id}, user_id) {
         },
         body: JSON.stringify({
             city_id,
-            user_id
+            userId
         })
     })
         .then(res => {

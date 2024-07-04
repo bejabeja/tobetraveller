@@ -6,8 +6,8 @@ import { INTERNAL_SERVER_ERROR, USER_NOT_FOUND } from '../utils/constantsErrors.
 
 router.get('/', async (req, res) => {
     try {
-        const { user_id } = req.query;
-        const favsCities = await getAllFavsInfoFromUser(user_id);
+        const { userId } = req.query;
+        const favsCities = await getAllFavsInfoFromUser(userId);
         if (favsCities) {
 
             return res.status(200).json(
@@ -36,9 +36,9 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { city_id, user_id } = req.body;
+        const { city_id, userId } = req.body;
 
-        const user = await getUserBy(user_id);
+        const user = await getUserBy(userId);
         if (!user) {
             return res.status(404).json(
                 jsonResponse(404, { message: USER_NOT_FOUND })
@@ -54,8 +54,8 @@ router.post('/', async (req, res) => {
 
         // TODO: need a refactor, change column favs array to arrayofobjects
         const updatedCities = [...user.favorite_cities, city_id];
-        await updateUserFavs(updatedCities, user_id)
-        const allUserFavs = await getAllFavsInfoFromUser(user_id)
+        await updateUserFavs(updatedCities, userId)
+        const allUserFavs = await getAllFavsInfoFromUser(userId)
 
 
         return res.status(201).json(
@@ -72,13 +72,13 @@ router.post('/', async (req, res) => {
 
 router.delete('/', async (req, res) => {
     try {
-        const { city_id, user_id } = req.body;
+        const { city_id, userId } = req.body;
 
-        const favoriteCities = await getUserFavs(user_id);
+        const favoriteCities = await getUserFavs(userId);
         const updatedCities = favoriteCities.filter(id => id !== city_id);
 
-        await updateUserFavs(updatedCities, user_id);
-        const allUserFavs = await getAllFavsInfoFromUser(user_id)
+        await updateUserFavs(updatedCities, userId);
+        const allUserFavs = await getAllFavsInfoFromUser(userId)
 
         return res.status(200).json(
             jsonResponse(200, { favs: allUserFavs })

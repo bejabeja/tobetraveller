@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
     useEffect(() => {
 
         if (isAuthenticated) {
-            getAllFavsService(user.user_id)
+            getAllFavsService(user.id)
                 .then(favs => setFavsInfo(favs))
                 .catch(err => console.log(err))
 

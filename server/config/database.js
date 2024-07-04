@@ -20,7 +20,7 @@ client.connect()
 //         await client.connect();
 //         const query = `
 //                 CREATE TABLE IF NOT EXISTS users (
-//                     user_id SERIAL PRIMARY KEY, 
+//                     id SERIAL PRIMARY KEY, 
 //                     email VARCHAR(255), 
 //                     username VARCHAR(255) UNIQUE, 
 //                     password VARCHAR(255),
@@ -65,7 +65,7 @@ client.connect()
 //                     user_id INT NOT NULL,
 //                     content TEXT NOT NULL,
 //                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-//                     FOREIGN KEY (user_id) REFERENCES users(user_id)
+//                     FOREIGN KEY (user_id) REFERENCES users(id)
 //                 );
 //               `;
 
@@ -88,7 +88,7 @@ client.connect()
 //                     content TEXT NOT NULL,
 //                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 //                     FOREIGN KEY(post_id) REFERENCES posts(post_id),
-//                     FOREIGN KEY(user_id) REFERENCES users(user_id)
+//                     FOREIGN KEY(user_id) REFERENCES users(id)
 //                 );
 //               `;
 
@@ -110,8 +110,8 @@ client.connect()
 //                     following_id INT NOT NULL,
 //                     follow_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 //                     notifications_enabled BOOLEAN DEFAULT TRUE,
-//                     FOREIGN KEY (follower_id) REFERENCES users(user_id),
-//                     FOREIGN KEY (following_id) REFERENCES users(user_id),
+//                     FOREIGN KEY (follower_id) REFERENCES users(id),
+//                     FOREIGN KEY (following_id) REFERENCES users(id),
 //                     CONSTRAINT unique_relationship UNIQUE (follower_id, following_id)
 //                 );
 //               `;

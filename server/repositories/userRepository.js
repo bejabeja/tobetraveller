@@ -1,9 +1,9 @@
 import client from '../config/database.js';
 
 
-async function getUserBy(user_id) {
+async function getUserBy(userId) {
     const { rows } = await client.query(
-        'SELECT * FROM users WHERE user_id = $1', [user_id]
+        'SELECT * FROM users WHERE id = $1', [userId]
     );
     return rows[0]
 }
@@ -17,23 +17,23 @@ async function getUserByUsername(username) {
     return rows[0]
 }
 
-async function updateUserFavs(updatedCities, user_id) {
+async function updateUserFavs(updatedCities, userId) {
     await client.query(
-        'UPDATE users SET favorite_cities = $1 WHERE user_id = $2',
-        [updatedCities, user_id]
+        'UPDATE users SET favorite_cities = $1 WHERE id = $2',
+        [updatedCities, userId]
     );
 }
 
-async function getUserFavs(user_id) {
+async function getUserFavs(userId) {
     const { rows } = await client.query(
-        'SELECT favorite_cities FROM users WHERE user_id = $1', [user_id]
+        'SELECT favorite_cities FROM users WHERE id = $1', [userId]
     );
 
     return rows[0].favorite_cities;
 }
 
-async function getAllFavsInfoFromUser(user_id) {
-    const userFavs = await getUserFavs(user_id)
+async function getAllFavsInfoFromUser(userId) {
+    const userFavs = await getUserFavs(userId)
     const { rows } = await client.query(
         'SELECT * FROM cities WHERE id = ANY($1)', [userFavs]
     );

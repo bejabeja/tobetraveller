@@ -13,7 +13,7 @@ const PrivateProfile = () => {
 
     const fetchAllFavs = async () => {
       try {
-        const data = await getFavs(user.user_id);
+        const data = await getFavs(user.id);
         setFavsInfo(data);
       } catch (error) {
         console.log(error.message);
