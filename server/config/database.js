@@ -171,6 +171,32 @@ client.connect()
 // }
 
 
+// async function createUserTravelsTable() {
+//     try {
+//         await client.connect();
+//         const query = `
+//         CREATE TABLE IF NOT EXISTS user_travels (
+//             id SERIAL PRIMARY KEY,
+//             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+//             itinerary JSONB DEFAULT '[]'::jsonb,
+//             title TEXT NOT NULL,
+//             days INTEGER NOT NULL,
+//             user_id INTEGER NOT NULL,
+//             CONSTRAINT fk_user
+//                 FOREIGN KEY(user_id) 
+//                 REFERENCES users(id)
+//         );
+//         `
+
+//         await client.query(query);
+//         console.log('Table "UserTravels" created successfully');
+
+//     } catch (error) {
+//         console.error('Error creating UserTravels table:', error);
+//     }
+// }
+
+
 
 // createUsersTable();
 // createTokensTable();
@@ -179,5 +205,6 @@ client.connect()
 // createRelationshipsTable();
 // createCitiesTable();
 // createPointOfInterestTable();
+// createUserTravelsTable();
 
 export default client;
