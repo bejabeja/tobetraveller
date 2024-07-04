@@ -1,28 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useAuth } from "../hooks/useAuth.js";
 import ButtonLink from "../components/ButtonLink"
 import './PrivateProfile.css'
 import avatar from '../icons/favicon-avatar.ico'
-import getFavs from '../services/getAllFavs.js';
 import UserTravels from '../components/privateProfile/UserTravels.jsx';
+import UserFavs from '../components/privateProfile/UserFavs.jsx';
 
 
 const PrivateProfile = () => {
-  const { user, favsInfo, setFavsInfo } = useAuth()
-
-  useEffect(() => {
-
-    const fetchAllFavs = async () => {
-      try {
-        const data = await getFavs(user.id);
-        setFavsInfo(data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
-    fetchAllFavs();
-  }, [])
+  const { user, favsInfo } = useAuth()
 
   return (
     <main className='private-profile'>
@@ -95,20 +81,8 @@ const PrivateProfile = () => {
         </div>
 
       </section>
-      <section className='private-profile--section'>
-        <h1> Would you like to add some favs?</h1>
 
-        <p>Currently you have <strong>{favsInfo.length} trips</strong> on favs!</p>
-
-        {favsInfo?.map((fav) => (
-          <ButtonLink key={fav.id} href={`/discover/${fav.id}`} className='private-profile--fav-info'>
-            <img src={fav.city_thumbnail}></img>
-            <p>{fav.city_name}</p>
-          </ButtonLink>
-        ))}
-        {/* <ButtonLink href='/discover' className='main--button' text='Add fav'> </ButtonLink> */}
-      </section>
-
+      <UserFavs></UserFavs>
       <UserTravels></UserTravels>
 
 
