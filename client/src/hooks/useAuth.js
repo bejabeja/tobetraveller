@@ -38,8 +38,8 @@ export const useAuth = () => {
 
     const saveCity = useCallback((userTravel) => {
         saveUserCityService(userTravel, userId)
-            .then((travels) => {
-                setUserTravels(travels)
+            .then((userTravels) => {
+                setUserTravels(userTravels)
             })
             .catch(err => console.error(err))
     }, []

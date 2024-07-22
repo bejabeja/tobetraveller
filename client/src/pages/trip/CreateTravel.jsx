@@ -3,13 +3,14 @@ import './CreateTravel.css'
 import ButtonLink from "../../components/ButtonLink";
 import logo from "../../logos/tobetraveller3black.png";
 import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from 'react-router-dom';
 
 const CreateTravel = (props) => {
     const { saveCity } = useAuth()
 
     const [newTrip, setNewTrip] = useState(false)
     const [allTrips, setAllTrips] = useState(false)
-
+    const goTo = useNavigate()
     const [tripInfo, setTripInfo] = useState({
         destination: '',
         travelDays: 0,
@@ -24,8 +25,10 @@ const CreateTravel = (props) => {
     //     setNewTrip(true)
     // }
 
-    const handleSaveTravelButtonClick = () => {
-        saveCity(tripInfo)
+    const handleSaveTravelButtonClick = async () => {
+        const userTravel = tripInfo
+        await saveCity(userTravel)
+        goTo('/private-profile')
     }
 
     function handleHeaderImageChange(e) {
@@ -97,8 +100,6 @@ const CreateTravel = (props) => {
         })
     );
 
-
-    console.log(tripInfo)
 
     return (
         <main className='create-trip'>

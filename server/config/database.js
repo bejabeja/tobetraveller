@@ -182,6 +182,7 @@ client.connect()
 //             title TEXT NOT NULL,
 //             days INTEGER NOT NULL,
 //             user_id INTEGER NOT NULL,
+//             thumbnail TEXT DEFAULT null,
 //             CONSTRAINT fk_user
 //                 FOREIGN KEY(user_id) 
 //                 REFERENCES users(id)
