@@ -23,7 +23,7 @@ const UserFavs = () => {
 
     return (
         <section className='private-profile--section'>
-            <h1> Would you like to add some favs?</h1>
+            <h1> Favorite destinations</h1>
 
             <p>Currently you have <strong>{favsInfo.length} trips</strong> on favs!</p>
 
