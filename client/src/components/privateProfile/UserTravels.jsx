@@ -5,13 +5,13 @@ import getTravels from "../../services/getAllUserTravels";
 import ButtonLink from "../ButtonLink";
 
 const UserTravels = () => {
-    const { travels, setTravels, user } = useAuth()
+    const { userTravels, setUserTravels, user } = useAuth()
 
     useEffect(() => {
         const fetchAllTravels = async () => {
             try {
                 const data = await getTravels(user.id);
-                setTravels(data);
+                setUserTravels(data);
             } catch (error) {
                 console.log(error.message);
             }
@@ -25,9 +25,9 @@ const UserTravels = () => {
         <section className='private-profile--section'>
             <h1> Private travels</h1>
 
-            <p>Currently you have <strong>{travels.length} travels</strong> created!</p>
+            <p>Currently you have <strong>{userTravels.length} travels</strong> created!</p>
 
-            {travels?.map((trav) => (
+            {userTravels?.map((trav) => (
                 <ButtonLink key={trav.id} href={`/travels/${trav.id}`} className='private-profile--fav-info'>
                     <img src={trav.thumbnail}></img>
                     <p>{trav.title}</p>

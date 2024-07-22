@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import './CreateTravel.css'
 import ButtonLink from "../../components/ButtonLink";
-import logo from "../../logos/tobetraveller3black.png"
+import logo from "../../logos/tobetraveller3black.png";
+import { useAuth } from "../../hooks/useAuth";
 
 const CreateTravel = (props) => {
+    const { saveCity } = useAuth()
+
     const [newTrip, setNewTrip] = useState(false)
     const [allTrips, setAllTrips] = useState(false)
 
@@ -22,7 +25,7 @@ const CreateTravel = (props) => {
     // }
 
     const handleSaveTravelButtonClick = () => {
-        // createTravel()
+        saveCity(tripInfo)
     }
 
     function handleHeaderImageChange(e) {
@@ -137,7 +140,8 @@ const CreateTravel = (props) => {
             </section >
 
             {
-                travelDays && destination &&
+
+                travelDays > 0 && destination &&
                 <>
                     < section className="create-trip--header" >
                         <div className="create-trip--header-title">

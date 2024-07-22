@@ -2,6 +2,7 @@ import { useCallback, useContext } from "react"
 import { AuthContext } from '../context/auth.jsx'
 import addFavService from "../services/addFav.js"
 import deleteFavService from "../services/deleteFav.js"
+import saveUserCityService from "../services/saveUserTravels.js"
 
 export const useAuth = () => {
     const {
@@ -13,8 +14,8 @@ export const useAuth = () => {
         signOut,
         favsInfo,
         setFavsInfo,
-        travels,
-        setTravels
+        userTravels,
+        setUserTravels
     } = useContext(AuthContext)
 
     const user = getUser();
@@ -35,13 +36,24 @@ export const useAuth = () => {
             .catch(err => console.error(err));
     }, [userId, setFavsInfo]);
 
+    const saveCity = useCallback((userTravel) => {
+        saveUserCityService(userTravel, userId)
+            .then((travels) => {
+                setUserTravels(travels)
+            })
+            .catch(err => console.error(err))
+    }, []
+
+    )
+
     return {
         addFav,
         deleteFav,
         favsInfo,
         setFavsInfo,
-        travels,
-        setTravels,
+        userTravels,
+        setUserTravels,
+        saveCity,
         isAuthenticated,
         getAccesToken,
         saveUser,

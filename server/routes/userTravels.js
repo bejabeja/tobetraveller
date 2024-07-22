@@ -8,17 +8,17 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
         const userId = parseInt(req.query.userId)
-        const travels = await getAllUserTravelsBy(userId);
+        const userTravels = await getAllUserTravelsBy(userId);
 
         return res.status(200).json(
             jsonResponse(
                 200,
-                travels
+                userTravels
             )
         )
 
     } catch (error) {
-        console.log('Error fetching travels:', error);
+        console.log('Error fetching userTravels:', error);
         return res.status(500).json(
             jsonResponse(
                 500,

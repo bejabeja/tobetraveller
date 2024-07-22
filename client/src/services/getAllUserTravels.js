@@ -6,13 +6,11 @@ export default function getTravels(userId) {
         }
     })
         .then(res => {
-            if (!res.ok) throw new Error('Response get Travels is not ok');
+            if (!res.ok) throw new Error('Response get User Travels is not ok');
             return res.json();
         })
         .then(res => {
-            const travels = res.body;
-            console.log(travels)
-
-            return travels
+            const userTravels = res.body;
+            return userTravels
         })
 }
