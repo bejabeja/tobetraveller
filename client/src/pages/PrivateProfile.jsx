@@ -8,7 +8,7 @@ import UserFavs from '../components/privateProfile/UserFavs.jsx';
 
 
 const PrivateProfile = () => {
-  const { user, favsInfo } = useAuth()
+  const { user, favsInfo, userTravels } = useAuth()
 
   return (
     <main className='private-profile'>
@@ -43,12 +43,17 @@ const PrivateProfile = () => {
         </div>
         <div className='private-profile--socialnetwork'>
           <div>
-            <p>Trips</p>
-            <p>0</p>
+            <p>My Trips</p>
+            <p>{userTravels?.length}</p>
+          </div>
+
+          <div>
+            <p>Favs</p>
+            <p>{favsInfo.length}</p>
           </div>
 
           {/* FF => FEATURE FLAG */}
-          {true &&
+          {false &&
             <>
               <div>
                 <p>Followers</p>
@@ -59,11 +64,6 @@ const PrivateProfile = () => {
                 <p>{user.following}</p>
               </div>
             </>}
-
-          <div>
-            <p>Favs</p>
-            <p>{favsInfo.length}</p>
-          </div>
 
           {/* FF => FEATURE FLAG */}
           {false &&
