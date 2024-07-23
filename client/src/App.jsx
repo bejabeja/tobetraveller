@@ -9,6 +9,7 @@ import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 import PrivateProfile from './pages/PrivateProfile';
 import Layout from './layout/Layout';
+import CreatedTravelPreview from './components/privateProfile/CreatedTravelPreview';
 
 import CreateTravel from './pages/trip/CreateTravel';
 
@@ -21,6 +22,7 @@ const App = () => {
       <Route path="/discover/:id" element={<City />} />
 
       <Route path="/private-profile" element={<ProtectedRoute><PrivateProfile /></ProtectedRoute>} />
+      <Route path='/private-profile/created-travel/:id' element={<ProtectedRoute><CreatedTravelPreview></CreatedTravelPreview></ProtectedRoute>} />
       {/* <Route path="/trip/create/:placeToGo/:travelDays" element={<ProtectedRoute><CreateTravel /></ProtectedRoute>} /> */}
       <Route path="/trip/create" element={<ProtectedRoute><CreateTravel /></ProtectedRoute>} />
 

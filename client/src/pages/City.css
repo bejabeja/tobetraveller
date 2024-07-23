@@ -76,3 +76,7 @@
     text-align: center;
     text-transform: uppercase;
 }
+
+.created-travel li {
+    min-height: fit-content
+}
