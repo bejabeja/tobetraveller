@@ -36,10 +36,12 @@ const City = () => {
     return (
         <main className="city">
             <section>
-                <div className="city-buttons">
-                    <Fav id={parseInt(id, 10)}></Fav>
+                <div className="image-container">
+                    <div className="city-buttons">
+                        <Fav id={parseInt(id, 10)} />
+                    </div>
+                    <img src={city?.cityInfo?.cityThumbnail} alt={`${city?.cityInfo?.city_name} thumbnail`} loading="lazy"></img>
                 </div>
-                <img src={city?.cityInfo?.cityThumbnail} alt={`${city?.cityInfo?.city_name} thumbnail`} loading="lazy"></img>
                 <h1>{city?.cityInfo?.cityName}</h1>
                 <p>{city?.cityInfo?.cityDescription}</p>
             </section>

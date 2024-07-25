@@ -28,7 +28,9 @@ const UserTravels = () => {
 
             {userTravels?.map((trav) => (
                 <ButtonLink key={trav.id} href={`/private-profile/created-travel/${trav.id}`} className='private-profile--fav-info'>
-                    <img src={trav.thumbnail}></img>
+                    <div className="image-container">
+                        <img src={trav.thumbnail}></img>
+                    </div>
                     <p>{trav.title}</p>
                 </ButtonLink>
             ))}

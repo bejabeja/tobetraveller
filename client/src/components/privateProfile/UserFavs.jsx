@@ -29,7 +29,9 @@ const UserFavs = () => {
 
             {favsInfo?.map((fav) => (
                 <ButtonLink key={fav.id} href={`/discover/${fav.id}`} className='private-profile--fav-info'>
-                    <img src={fav.city_thumbnail}></img>
+                    <div className="image-container">
+                        <img src={fav.city_thumbnail}></img>
+                    </div>
                     <p>{fav.city_name}</p>
                 </ButtonLink>
             ))}

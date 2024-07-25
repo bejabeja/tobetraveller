@@ -3,6 +3,7 @@
     flex-direction: column;
     gap: 2rem;
     text-align: center;
+    padding: 1rem;
 }
 
 .private-profile--section {
@@ -20,7 +21,7 @@
     display: flex;
     flex-direction: column;
     border: 1px dotted var(--main-color);
-    border-radius: 4px;
+    border-radius: 12px;
     padding: 2rem;
     gap: 2rem;
 }
@@ -32,6 +33,7 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .private-profile--info img {
@@ -63,18 +65,33 @@
     flex-direction: row;
     gap: 1rem;
     background-color: var(--main-color);
-    width: 60%;
-    border-radius: 4px;
+    width: 100%;
+    border-radius: 12px;
     color: var(--white-color);
     padding: 15px;
     text-decoration: none;
     align-items: center;
     text-transform: uppercase;
     transition: background-color 0.5s, color 0.25s;
+    max-width: 500px;
+    max-height: 230px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.image-container {
+    flex-shrink: 0;
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 12px;
 }
 
 .private-profile--fav-info img {
-    width: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
 .private-profile--fav-info p {
@@ -84,4 +101,24 @@
 
 .private-profile--fav-info:hover {
     background-color: var(--secondary-color)
+}
+
+@media (max-width: 600px) {
+    .private-profile {
+        gap: 1rem;
+    }
+
+    .private-profile--info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .private-profile--fav-info {
+        flex-direction: column;
+        max-width: 90%;
+    }
+
+    .private-profile--fav-info img {
+        max-height: 150px;
+    }
 }
