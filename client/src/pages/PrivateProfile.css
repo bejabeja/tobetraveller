@@ -4,6 +4,8 @@
     gap: 2rem;
     text-align: center;
     padding: 1rem;
+    max-width: 750px;
+    margin: 0 auto;
 }
 
 .private-profile--section {
@@ -47,10 +49,10 @@
 }
 
 .private-profile--buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    display: flex;
+    flex-direction: row;
     gap: 1rem;
-    justify-items: center;
+    justify-content: center;
 }
 
 .private-profile--socialnetwork {
@@ -100,7 +102,7 @@
 }
 
 .private-profile--fav-info:hover {
-    background-color: var(--secondary-color)
+    background-color: var(--hover-color)
 }
 
 @media (max-width: 600px) {

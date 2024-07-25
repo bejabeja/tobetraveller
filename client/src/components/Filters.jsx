@@ -17,12 +17,14 @@ const Filters = () => {
     return <section className='cities--filters'>
         <div>
             <label htmlFor={currencyFilterId}>Currency</label>
-            <select id={currencyFilterId} onChange={handleChangeCurrency}>
-                <option value='all'>All</option>
-                <option value='EUR'>EUR</option>
-                <option value='AUD'>AUD</option>
-                <option value='USD'>USD</option>
-            </select>
+            <div className='custom-select'>
+                <select id={currencyFilterId} onChange={handleChangeCurrency}>
+                    <option value='all'>All</option>
+                    <option value='EUR'>EUR</option>
+                    <option value='AUD'>AUD</option>
+                    <option value='USD'>USD</option>
+                </select>
+            </div>
         </div>
     </section>;
 };

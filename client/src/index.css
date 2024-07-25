@@ -66,7 +66,7 @@ button,
   cursor: pointer;
   text-decoration: none;
   color: var(--main-color);
-  transition: border-color 0.25s, background-color 0.5s, color 0.25s;
+  transition: border-color 0.5s, background-color 0.5s, color 0.25s;
 }
 
 button,
@@ -76,8 +76,8 @@ button,
 
 button:hover,
 .main--button:hover {
-  border-color: var(--secondary-color);
-  background-color: var(--secondary-color);
+  border-color: var(--hover-color);
+  background-color: var(--hover-color);
   color: var(--white-color);
 }
 

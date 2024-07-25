@@ -55,40 +55,82 @@
 .cities--filters {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   font-size: 14px;
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .cities--filters>div {
   display: flex;
   gap: 1rem;
-}
-
-.cities--filters select {
-  border: 1px solid var(--main-color);
-  background-color: var(--main-color);
-  border-radius: 12px;
-  padding-right: 2rem;
+  align-items: center;
   text-align: left;
 }
 
-.cities--filters select>* {
-  border: 1px dashed var(--main-color);
-  border-radius: 12px;
-  padding: 10px;
+.cities--filters label {
+  font-size: 1rem;
 }
 
-.cities--filters select option:checked {
-  color: var(--main-color);
-  background-color: var(--brand-color);
-  padding: 10px;
-  border-radius: 12px;
+.custom-select {
+  min-width: 150px;
+  position: relative;
 }
 
-.cities--filters select:focus-visible {
+.custom-select select {
+  -webkit-appearance: none;
+  /* Safari */
+  -moz-appearance: none;
+  /* Firefox */
+  appearance: none;
+  /* Standard */
   outline: none;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.5em 5em 0.5em 1em;
+  border: 1px solid #caced1;
   border-radius: 12px;
+  cursor: pointer;
+
+}
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  position: absolute;
+  content: "";
+  right: 1rem;
+  pointer-events: none;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid #fff;
+  top: 40%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid #fff;
+  top: 55%;
+}
+
+.custom-select select option {
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+
+.custom-select select option:checked {
+  background-color: var(--brand-color);
+  color: var(--main-color);
+}
+
+.custom-select select:focus option:hover {
+  background-color: var(--hover-color);
+  color: var(--white-color);
 }
 
 @media (max-width: 768px) {

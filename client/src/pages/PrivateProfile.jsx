@@ -11,26 +11,7 @@ const PrivateProfile = () => {
   return (
     <main className='private-profile'>
       <h1>Hello traveller {user.username}! Welcome to your profile,</h1>
-      <section className='private-profile--buttons'>
-        <ButtonLink
-          href='/trip/create'
-          // onClick={handleNewTrip}
-          // className={`main--button ${newTrip ? 'active-button' : ''}`}
-          text='Plan a new trip'
-          className='main--button'
-        >
-        </ButtonLink>
-        <ButtonLink href='/discover' className='main--button' text='Add favs'> </ButtonLink>
 
-        {/* FF => FEATURE FLAG */}
-        {false &&
-          <>
-            <ButtonLink href='' className='main--button' text='Post in forum'> </ButtonLink>
-            <ButtonLink href='/' className='main--button' text='Add your status'> </ButtonLink>
-          </>
-        }
-
-      </section>
       <section className='private-profile--header'>
         <div className='private-profile--info'>
           <img src={avatar}></img>
@@ -77,6 +58,27 @@ const PrivateProfile = () => {
             </>}
 
         </div>
+
+      </section>
+
+      <section className='private-profile--buttons'>
+        <ButtonLink
+          href='/trip/create'
+          // onClick={handleNewTrip}
+          // className={`main--button ${newTrip ? 'active-button' : ''}`}
+          text='Plan a new trip'
+          className='main--button'
+        >
+        </ButtonLink>
+        <ButtonLink href='/discover' className='main--button' text='Add favs'> </ButtonLink>
+
+        {/* FF => FEATURE FLAG */}
+        {false &&
+          <>
+            <ButtonLink href='' className='main--button' text='Post in forum'> </ButtonLink>
+            <ButtonLink href='/' className='main--button' text='Add your status'> </ButtonLink>
+          </>
+        }
 
       </section>
     </main >
