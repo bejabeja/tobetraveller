@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import './CreateTravel.css'
 import ButtonLink from "../../components/ButtonLink";
-import logo from "../../logos/tobetraveller3black.png";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from 'react-router-dom';
 
 const CreateTravel = (props) => {
     const { saveCity } = useAuth()
-
-    const [newTrip, setNewTrip] = useState(false)
-    const [allTrips, setAllTrips] = useState(false)
     const goTo = useNavigate()
     const [tripInfo, setTripInfo] = useState({
         destination: '',
@@ -18,12 +14,6 @@ const CreateTravel = (props) => {
         itinerary: {}
     })
     const { destination, travelDays } = tripInfo
-
-    // async function handleNewTrip(e) {
-    //     e.preventDefault()
-    //     setAllTrips(false)
-    //     setNewTrip(true)
-    // }
 
     const handleSaveTravelButtonClick = async () => {
         const userTravel = tripInfo
@@ -70,32 +60,35 @@ const CreateTravel = (props) => {
         Array.from({ length: travelDays }, (_, i) => {
             const day = `day${i + 1}`;
             return (
-                <div key={i}>
-                    <h2>Day {i + 1}</h2>
-                    {tripInfo.itinerary[day]?.map((activity, index) => (
-                        <form key={activity.activityId} className="day-form">
-                            <div className="input-container">
-                                <label htmlFor={`activity-${day}-${index}`}>Activity:</label>
-                                <input
-                                    type="text"
-                                    id={`activity-${day}-${index}`}
-                                    name={`activity-${day}-${index}`}
-                                    value={activity.activity}
-                                    onChange={(e) => handleTripItineraryChange(day, index, 'activity', e.target.value)}
-                                />
-                            </div>
-                            <div className="input-container">
-                                <label htmlFor={`notes-${day}-${index}`}>Notes:</label>
-                                <textarea
-                                    id={`notes-${day}-${index}`}
-                                    name={`notes-${day}-${index}`}
-                                    value={activity.notes}
-                                    onChange={(e) => handleTripItineraryChange(day, index, 'notes', e.target.value)}
-                                />
-                            </div>
-                        </form>
-                    ))}
-                </div>
+                <>
+                    <div key={i}>
+                        <h2>Day {i + 1}</h2>
+                        {tripInfo.itinerary[day]?.map((activity, index) => (
+                            <form key={activity.activityId} className="day-form">
+                                <div className="input-container">
+                                    <label htmlFor={`activity-${day}-${index}`}>Activity:</label>
+                                    <input
+                                        type="text"
+                                        id={`activity-${day}-${index}`}
+                                        name={`activity-${day}-${index}`}
+                                        value={activity.activity}
+                                        onChange={(e) => handleTripItineraryChange(day, index, 'activity', e.target.value)}
+                                    />
+                                </div>
+                                <div className="input-container">
+                                    <label htmlFor={`notes-${day}-${index}`}>Notes:</label>
+                                    <textarea
+                                        id={`notes-${day}-${index}`}
+                                        name={`notes-${day}-${index}`}
+                                        value={activity.notes}
+                                        onChange={(e) => handleTripItineraryChange(day, index, 'notes', e.target.value)}
+                                    />
+                                </div>
+                            </form>
+                        ))}
+                    </div>
+                    <hr></hr>
+                </>
             );
         })
     );
@@ -127,8 +120,6 @@ const CreateTravel = (props) => {
                             required
                         />
                     </div>
-
-
                 </form>
                 {/* {destination && travelDays &&
                         <ButtonLink
@@ -141,7 +132,6 @@ const CreateTravel = (props) => {
             </section >
 
             {
-
                 travelDays > 0 && destination &&
                 <>
                     < section className="create-trip--header" >
@@ -160,20 +150,21 @@ const CreateTravel = (props) => {
                             />
                             {tripInfo.headerImg ?
                                 <img src={tripInfo.headerImg} alt="Uploaded" />
-                                : <img src={logo} alt="placeholder logo"></img>}
+                                :
+                                (
+                                    <div className="placeholder-img" onClick={handleAddImgButtonClick}>
+                                        <span>📷</span>
+                                        <p>Click to add an image</p>
+                                    </div>
+                                )
+                            }
                         </div>
                         <div className="create-trip--header-buttons">
-                            <ButtonLink
-                                onClick={handleAddImgButtonClick}
-                                className='main--button'
-                            >
+                            <ButtonLink onClick={handleAddImgButtonClick} className='main--button'>
                                 Upload Image
                             </ButtonLink>
                             {tripInfo.headerImg &&
-                                <ButtonLink
-                                    onClick={handleRemoveImgButtonClick}
-                                    className='main--button'
-                                >
+                                <ButtonLink onClick={handleRemoveImgButtonClick} className='main--button'>
                                     Remove Image
                                 </ButtonLink>
                             }
@@ -190,19 +181,13 @@ const CreateTravel = (props) => {
                             </div>
                         }
                     </section>
-                    <ButtonLink
-                        onClick={handleSaveTravelButtonClick}
-                        className='main--button'
-                    >
+                    <ButtonLink onClick={handleSaveTravelButtonClick} className='main--button'>
                         Save itinerary
                     </ButtonLink>
                 </>
             }
-
-
         </main >
     )
-
 };
 
 export default CreateTravel;
