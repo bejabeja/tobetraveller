@@ -23,14 +23,16 @@ const UserTravels = () => {
 
     return (
         <section className='private-profile--section'>
-            <h1> Plan a travel</h1>
+            <h1> My travels </h1>
             <p>Currently you have <strong>{userTravels?.length} travels</strong> created!</p>
 
             {userTravels?.map((trav) => (
                 <ButtonLink key={trav.id} href={`/private-profile/created-travel/${trav.id}`} className='private-profile--fav-info'>
-                    <div className="image-container">
-                        <img src={trav.thumbnail}></img>
-                    </div>
+                    {trav.thumbnail &&
+                        <div className="image-container">
+                            <img src={trav.thumbnail}></img>
+                        </div>
+                    }
                     <p>{trav.title}</p>
                 </ButtonLink>
             ))}
