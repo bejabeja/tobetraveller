@@ -3,8 +3,7 @@ import './Login.css';
 import { useAuth } from '../../hooks/useAuth.js';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import ButtonLink from '../../components/ButtonLink';
-import SpinnerLoader from '../../components/SpinnerLoader';
-import Layout from '../../layout/Layout';
+import SpinnerLoader from '../../components/spinnerLoader/SpinnerLoader';
 import signup from '../../services/signup.js';
 
 const SignUp = () => {
@@ -47,56 +46,53 @@ const SignUp = () => {
         }, 2000)
     };
 
+    if (loading) {
+        return <SpinnerLoader></SpinnerLoader>
+    }
+
     return (
-        <Layout>
-            <form className='form--auth'>
-                <h1 className='form--auth__title'>Signup</h1>
-                {loading ?
-                    <SpinnerLoader />
-                    : <>
-                        {errorResponse && <div className='form--auth__errorMessage'>{errorResponse}</div>}
-                        <div className='form--auth__input-group'>
-                            <label>Username</label>
-                            <input
-                                type='text'
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                className={inputErrorClass}
-                            ></input>
-                        </div>
-                        <div className='form--auth__input-group'>
-                            <label>Email</label>
-                            <input
-                                type='email'
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className={inputErrorClass}
-                            ></input>
-                        </div>
-                        <div className='form--auth__input-group'>
-                            <label>Password</label>
-                            <input
-                                type='password'
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className={inputErrorClass}
-                            ></input>
-                        </div>
-                        <div className='form--auth__input-group'>
-                            <label>Repeat Password</label>
-                            <input
-                                type='password'
-                                value={repeatPassword}
-                                onChange={(e) => setRepeatPassword(e.target.value)}
-                                className={inputErrorClass}
-                            ></input>
-                        </div>
-                        <ButtonLink onClick={handleSubmit} className='main--button' text='Create user'></ButtonLink>
-                    </>
-                }
-                <Link to='/login' className='form--auth__link'>Already have an account?</Link>
-            </form>
-        </Layout>
+        <form className='form--auth'>
+            <h1 className='form--auth__title'>Signup</h1>
+            {errorResponse && <div className='form--auth__errorMessage'>{errorResponse}</div>}
+            <div className='form--auth__input-group'>
+                <label>Username</label>
+                <input
+                    type='text'
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className={inputErrorClass}
+                ></input>
+            </div>
+            <div className='form--auth__input-group'>
+                <label>Email</label>
+                <input
+                    type='email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className={inputErrorClass}
+                ></input>
+            </div>
+            <div className='form--auth__input-group'>
+                <label>Password</label>
+                <input
+                    type='password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={inputErrorClass}
+                ></input>
+            </div>
+            <div className='form--auth__input-group'>
+                <label>Repeat Password</label>
+                <input
+                    type='password'
+                    value={repeatPassword}
+                    onChange={(e) => setRepeatPassword(e.target.value)}
+                    className={inputErrorClass}
+                ></input>
+            </div>
+            <ButtonLink onClick={handleSubmit} className='main--button' text='Create user'></ButtonLink>
+            <Link to='/login' className='form--auth__link'>Already have an account?</Link>
+        </form>
     );
 };
 

@@ -1,0 +1,14 @@
+.spinner-loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+}
+
+.spinner-loader {
+    display: flex;
+    flex-direction: column;
+    max-width: 150px;
+    box-shadow: none !important;
+}

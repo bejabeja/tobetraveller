@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import './Discover.css'
-import Layout from '../layout/Layout'
 import { getAllCities } from '../services/cities.js'
 import ButtonLink from '../components/ButtonLink'
 import { useFilters } from '../hooks/useFilters.js'
 import Filters from '../components/Filters.jsx'
-import SpinnerLoader from '../components/SpinnerLoader.jsx'
+import SpinnerLoader from '../components/spinnerLoader/SpinnerLoader.jsx'
 
 const Discover = () => {
   const { filterCities } = useFilters()
@@ -43,31 +42,29 @@ const Discover = () => {
   }
 
   return (
-    <Layout>
-      <main className='cities'>
-        <Filters></Filters>
-        <section>
-          <ul>
-            {filteredCities?.map((city) => (
-              <ButtonLink key={city.id} href={`/discover/${city.id}`} className='card--button'>
-                <li>
-                  <div className='cities-content'>
-                    <img
-                      src={city.city_thumbnail}
-                      alt={city.city_name}
-                    ></img>
-                    <div>
-                      <strong>{city.city_name}</strong> - {city.country_name}
-                      <p>{city.city_description}</p>
-                    </div>
+    <main className='cities'>
+      <Filters></Filters>
+      <section>
+        <ul>
+          {filteredCities?.map((city) => (
+            <ButtonLink key={city.id} href={`/discover/${city.id}`} className='card--button'>
+              <li>
+                <div className='cities-content'>
+                  <img
+                    src={city.city_thumbnail}
+                    alt={city.city_name}
+                  ></img>
+                  <div>
+                    <strong>{city.city_name}</strong> - {city.country_name}
+                    <p>{city.city_description}</p>
                   </div>
-                </li>
-              </ButtonLink >
-            ))}
-          </ul>
-        </section>
-      </main>
-    </Layout >
+                </div>
+              </li>
+            </ButtonLink >
+          ))}
+        </ul>
+      </section>
+    </main >
   )
 }
 

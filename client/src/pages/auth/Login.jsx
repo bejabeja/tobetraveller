@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import Layout from '../../layout/Layout';
 import './Login.css'
 import { useAuth } from '../../hooks/useAuth.js';
 import { useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
 import ButtonLink from '../../components/ButtonLink'
-import SpinnerLoader from '../../components/SpinnerLoader';
+import SpinnerLoader from '../../components/spinnerLoader/SpinnerLoader';
 import login from '../../services/login.js';
 
 const Login = () => {
@@ -39,47 +38,43 @@ const Login = () => {
         }, 2000);
     };
 
+    if (loading) {
+        return <SpinnerLoader></SpinnerLoader>
+    }
+
     return (
-        <Layout>
-            <form className='form--auth'>
-                <h1 className='form--auth__title'>Login</h1>
-                {loading ? <SpinnerLoader /> :
-                    <>
-                        {errorResponse &&
-                            <div className='form--auth__errorMessage'>
-                                <h3>Please correct the following</h3>
-                                <div>
-                                    {errorResponse}
-                                </div>
-                            </div>
-                        }
-                        <div className='form--auth__input-group'>
-                            <label>Username</label>
-                            <input
-                                type='text'
-                                value={username}
-                                onChange={(e) => { setUsername(e.target.value) }}
-                                className={inputErrorClass}
-                            ></input>
-                        </div>
-                        <div className='form--auth__input-group'>
-                            <label>Password</label>
-                            <input
-                                type='password'
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className={inputErrorClass}
-                            ></input>
-                        </div>
+        <form className='form--auth'>
+            <h1 className='form--auth__title'>Login</h1>
+            {errorResponse &&
+                <div className='form--auth__errorMessage'>
+                    <h3>Please correct the following</h3>
+                    <div>
+                        {errorResponse}
+                    </div>
+                </div>
+            }
+            <div className='form--auth__input-group'>
+                <label>Username</label>
+                <input
+                    type='text'
+                    value={username}
+                    onChange={(e) => { setUsername(e.target.value) }}
+                    className={inputErrorClass}
+                ></input>
+            </div>
+            <div className='form--auth__input-group'>
+                <label>Password</label>
+                <input
+                    type='password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={inputErrorClass}
+                ></input>
+            </div>
 
-                        <ButtonLink onClick={handleLogin} className='main--button' text='Login'></ButtonLink>
-                    </>
-                }
-
-                <Link to='/signup' className='form--auth__link'>Not a member yet?</Link>
-
-            </form>
-        </Layout>
+            <ButtonLink onClick={handleLogin} className='main--button' text='Login'></ButtonLink>
+            <Link to='/signup' className='form--auth__link'>Not a member yet?</Link>
+        </form>
     );
 };
 

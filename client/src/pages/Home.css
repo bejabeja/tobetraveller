@@ -6,6 +6,10 @@
 
 .home img {
     width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 /* .tittle-group {

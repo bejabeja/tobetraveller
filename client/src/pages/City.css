@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .city section {
@@ -13,10 +14,6 @@
 }
 
 .city-buttons {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: end; */
-
     position: absolute;
     top: 50px;
     right: 20px;
@@ -40,7 +37,6 @@
     aspect-ratio: 16/9;
     display: block;
     object-fit: cover;
-    background: var(--black-color);
 }
 
 .city ul {

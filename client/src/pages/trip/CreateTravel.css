@@ -6,6 +6,7 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    text-align: center;
 }
 
 .create-trip--header {
