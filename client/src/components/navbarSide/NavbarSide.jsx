@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './Navbar.css'
 import { useAuth } from '../../hooks/useAuth'
 import SingoutLink from '../../components/SignoutLink'
 import './NavbarSide.css'
