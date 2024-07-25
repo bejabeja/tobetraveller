@@ -1,10 +1,8 @@
 import React from 'react'
 import { useAuth } from "../hooks/useAuth.js";
-import ButtonLink from "../components/ButtonLink"
-import './PrivateProfile.css'
-import avatar from '../icons/favicon-avatar.ico'
-import UserTravels from '../components/privateProfile/UserTravels.jsx';
-import UserFavs from '../components/privateProfile/UserFavs.jsx';
+import ButtonLink from "../components/ButtonLink";
+import './PrivateProfile.css';
+import avatar from '../icons/favicon-avatar.ico';
 
 
 const PrivateProfile = () => {
@@ -81,11 +79,6 @@ const PrivateProfile = () => {
         </div>
 
       </section>
-
-      <UserFavs></UserFavs>
-      <UserTravels></UserTravels>
-
-
     </main >
   )
 }
