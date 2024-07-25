@@ -13,6 +13,7 @@
 
   --brand-color: #c1e7fdff;
   --secondary-color: #40897fff;
+  --hover-color: #053c5c;
   --white-color: #fff;
   --black-color: #000;
   --error-color: rgba(179, 63, 64, 0.6);
@@ -25,7 +26,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
-#root {
+/* #root {
   max-width: 600px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,11 +40,23 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+} */
+
+#root {
+  width: 100%;
+  /* max-width: 1200px; */
+  margin: auto;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  height: 100%;
 }
 
 button,
 .main--button {
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -82,7 +95,7 @@ button:focus-visible,
 }
 
 .card--button {
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -95,7 +108,8 @@ button:focus-visible,
   color: var(--white-color);
   background-color: var(--main-color);
   box-shadow: var(--box-shadow);
-
+  max-width: 400px;
+  text-align: center;
 }
 
 .card--button:hover {

@@ -36,7 +36,7 @@ const City = () => {
     return (
         <main className="city">
             <section>
-                <div className="image-container">
+                <div className="image-container-city">
                     <div className="city-buttons">
                         <Fav id={parseInt(id, 10)} />
                     </div>
