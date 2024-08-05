@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
     return (
         <section className="layout">
             <div className="leftSide">
-                <Link to="/"><img src={logo}></img></Link>
+                <Link to="/" className="layout-logo"><img src={logo}></img></Link>
                 <NavbarSide></NavbarSide>
             </div>
 

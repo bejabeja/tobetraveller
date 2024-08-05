@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* width: 275px; */
+    width: 100%;
 }
 
 .sidenav nav {
@@ -12,7 +12,7 @@
 .sidenav a {
     display: flex;
     align-items: center;
-    padding: 10px 0px 10px 20px;
+    padding: 15px 15px;
     text-decoration: none;
     color: var(--brand-color);
     font-size: 18px;
@@ -40,7 +40,7 @@
 @media (max-width: 900px) {
     .sidenav a {
         justify-content: center;
-        padding: 10px 5px;
+        padding: 10px 10px;
     }
 
     .sidenav a span {
@@ -50,5 +50,18 @@
     .leftSide a i {
         margin: 0;
         font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidenav nav {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .sidenav a {
+        padding: 15px 15px;
     }
 }
