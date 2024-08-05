@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import './Discover.css'
 import { getAllCities } from '../services/cities.js'
 import ButtonLink from '../components/ButtonLink'
@@ -7,12 +8,13 @@ import Filters from '../components/Filters.jsx'
 import SpinnerLoader from '../components/spinnerLoader/SpinnerLoader.jsx'
 
 const Discover = () => {
-  const { filterCities } = useFilters()
+  const { filterCities, setFilters } = useFilters()
   const [initialAllCities, setInitialAllCities] = useState([])
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const filteredCities = filterCities(initialAllCities)
+  const location = useLocation();
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -26,12 +28,15 @@ const Discover = () => {
       }
     };
 
-
     setTimeout(() => {
       fetchCities();
     }, 500);
 
   }, []);
+
+  useEffect(() => {
+    setFilters({ currency: 'all' })
+  }, [location, setFilters])
 
   if (loading) {
     return <SpinnerLoader />;
