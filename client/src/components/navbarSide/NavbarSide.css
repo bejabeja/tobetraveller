@@ -31,6 +31,11 @@
     font-size: 24px;
 }
 
+.navbarside-link--active {
+    background-color: var(--hover-color);
+    border-radius: 25px;
+}
+
 
 @media (max-width: 900px) {
     .sidenav a {
