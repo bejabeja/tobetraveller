@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import '../../pages/City.css';
 import { useAuth } from "../../hooks/useAuth";
 import SpinnerLoader from "../spinnerLoader/SpinnerLoader";
+import placeholderThumbnail from "../../logos/placeholderThumbnail.jpg"
 
 const CreatedTravelPreview = () => {
     const { id } = useParams()
@@ -33,7 +34,7 @@ const CreatedTravelPreview = () => {
                 {travel.thumbnail ? (
                     <img src={travel.thumbnail} alt={`${travel.title} thumbnail`} loading="lazy" />
                 ) : (
-                    <div>No thumbnail available</div>
+                    <img src={placeholderThumbnail} alt='placeholder thumbnail' loading="lazy" />
                 )}
                 <h1>{travel.title}</h1>
                 <p>Travel planed for {travel.days} <span>{travel.days === 1 ? 'day' : 'days'}</span></p>
