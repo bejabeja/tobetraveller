@@ -11,4 +11,11 @@
     flex-direction: column;
     max-width: 150px;
     box-shadow: none !important;
+    text-align: center;
+    justify-content: space-between;
+    gap: 5rem;
+}
+
+.spinner-loader p {
+    font-weight: bolder;
 }

@@ -66,7 +66,7 @@ const PrivateProfile = () => {
           href='/trip/create'
           // onClick={handleNewTrip}
           // className={`main--button ${newTrip ? 'active-button' : ''}`}
-          text='Plan a new trip'
+          text='Plan a trip'
           className='main--button'
         >
         </ButtonLink>
