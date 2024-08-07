@@ -29,6 +29,7 @@ import signoutRouter from './routes/signout.js';
 import citiesRouter from './routes/cities.js';
 import favsRouter from './routes/favs.js';
 import travelsRouter from './routes/userTravels.js';
+import itinerarioRouter from './routes/itinerario.js';
 
 app.use('/api/signup', signupRouter);
 app.use('/api/login', loginRouter);
@@ -38,6 +39,8 @@ app.use('/api/signout', signoutRouter);
 app.use('/api/cities', citiesRouter);
 app.use('/api/favs', favsRouter);
 app.use('/api/user-travels', travelsRouter)
+app.use('/api/itinerario', itinerarioRouter)
+
 
 
 const PORT = process.env.PORT || 3001;
