@@ -10,8 +10,7 @@ import { Link } from 'react-router-dom'
 const Home = () => {
 
   return (
-    <main className='home no-scroll'>
-
+    <main className='home'>
       <div className='home-maininfo'>
         <div className='home-leftinfo'>
           {/* <Link href='/discover'>

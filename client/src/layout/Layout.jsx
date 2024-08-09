@@ -31,9 +31,9 @@ const Layout = ({ children }) => {
                 <div className="middleSide">
                     {children}
                 </div>
-                {/* <div className="rightSide">
-                    5
-                </div> */}
+                <div className="rightSide">
+                    {/* 5 */}
+                </div>
                 {/* <div className="footer">
                     6
                 </div> */}

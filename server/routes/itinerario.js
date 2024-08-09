@@ -8,6 +8,7 @@ const API_KEY = process.env.API_KEY
 const API_URL_FOURSQUARE = `https://api.foursquare.com/v3/places/search`;
 
 // test: http://localhost:3001/api/itinerario?city=Barcelona&days=3
+// https://www.postman.com/foursquareapis/foursquare-places-api-v3-public/request/drws80w/get-place-photos
 
 router.get('/', async (req, res) => {
     const city = req.query.city;
@@ -68,7 +69,7 @@ const createItinerary = (places, days) => {
     for (let day = 1; day <= days; day++) {
         const inicio = (day - 1) * placesPerDay + Math.min(day - 1, extra);
         const fin = inicio + placesPerDay + (day <= extra ? 1 : 0);
-        itinerary[`Day ${day}`] = places.slice(inicio, fin).map(lugar => lugar.name);
+        itinerary[`Day ${day}`] = places.slice(inicio, fin).map(place => place.name);
     }
 
     return itinerary;

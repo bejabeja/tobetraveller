@@ -16,14 +16,14 @@
 
 .home-maininfo {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 3rem;
     text-align: start;
     align-items: center;
 }
 
 .home-leftinfo {
-    width: 80%;
+    max-width: 600px;
 }
 
 .home-leftinfo span {
