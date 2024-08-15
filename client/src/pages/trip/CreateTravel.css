@@ -7,6 +7,7 @@ h1 {
     flex-direction: column;
     gap: 2rem;
     text-align: center;
+    align-items: center;
 }
 
 .create-trip--header {
@@ -103,29 +104,82 @@ h1 {
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
+
 }
 
 .input-container input,
 .input-container textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
+
+    background-image: linear-gradient(#20aee3, #20aee3), linear-gradient(#bfbfbf, #bfbfbf);
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    float: none;
+    background-color: transparent;
+    background-position: center bottom, center calc(100% - 1px);
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    padding: 0;
+    transition: background-size 0s ease-out 0s;
+    color: var(--hover-color);
+    min-height: 35px;
+    display: initial;
     width: 100%;
     outline: none;
-    font-size: 1rem;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
+    font-size: 15px;
 }
 
-.input-container textarea {
-    resize: none;
-    height: 150px
+.input-container input:focus,
+.input-container textarea:focus {
+    background-size: 100% 2px, 100% 1px;
+    outline: none;
+    transition-duration: 0.3s;
+    color: #525252;
 }
 
-.input-container label {
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--hover-color);
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.tooltip-icon {
+    cursor: pointer;
+    font-size: 1.25rem;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 105%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -5px;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
 }
 
 
@@ -137,9 +191,12 @@ h1 {
 
 .create-trip--itinerary hr {
     border: none;
+    width: 600px;
     height: 1px;
+    max-width: 600px;
     margin: 20px 0;
-    background: linear-gradient(to right, transparent, var(--main-color), transparent);
+    /* background: linear-gradient(to right, transparent, var(--main-color), transparent); */
+    background-color: var(--main-color)
 }
 
 .create-trip--itinerary .day-form {
@@ -151,7 +208,7 @@ h1 {
 }
 
 @media (min-width: 667px) {
-    .create-trip--form {
+    /* .create-trip--form {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -167,5 +224,11 @@ h1 {
         display: flex;
         flex-direction: row;
         gap: 1rem;
+    } */
+}
+
+@media (max-width: 480px) {
+    .tooltip {
+        display: none;
     }
 }

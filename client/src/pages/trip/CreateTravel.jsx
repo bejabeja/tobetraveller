@@ -9,7 +9,7 @@ const CreateTravel = (props) => {
     const goTo = useNavigate()
     const [tripInfo, setTripInfo] = useState({
         destination: '',
-        travelDays: 0,
+        travelDays: '',
         headerImg: null,
         itinerary: {}
     })
@@ -73,6 +73,7 @@ const CreateTravel = (props) => {
                                         name={`activity-${day}-${index}`}
                                         value={activity.activity}
                                         onChange={(e) => handleTripItineraryChange(day, index, 'activity', e.target.value)}
+                                        autoComplete="off"
                                     />
                                 </div>
                                 <div className="input-container">
@@ -82,12 +83,13 @@ const CreateTravel = (props) => {
                                         name={`notes-${day}-${index}`}
                                         value={activity.notes}
                                         onChange={(e) => handleTripItineraryChange(day, index, 'notes', e.target.value)}
+                                        autoComplete="off"
                                     />
                                 </div>
                             </form>
                         ))}
                     </div>
-                    <hr></hr>
+                    {/* <hr></hr> */}
                 </>
             );
         })
@@ -100,35 +102,40 @@ const CreateTravel = (props) => {
                 <h1>Let`s plan a trip together!</h1>
                 <form className='create-trip--form'>
                     <div className='input-container'>
-                        <label htmlFor="input">Where to go?</label>
+                        <label htmlFor="input">Where do you want to go?
+                            <div className="tooltip">
+                                <span className="tooltip-icon"><i className="fas fa-exclamation-circle"></i></span>
+                                <span className="tooltip-text">Please enter the name of the city you want to travel to.</span>
+                            </div>
+                        </label>
                         <input
                             type="text"
                             id="input"
                             value={destination}
                             onChange={(e) => { setTripInfo({ ...tripInfo, destination: e.target.value }) }}
                             required
+                            autoComplete="off"
                         />
                     </div>
 
                     <div className='input-container'>
-                        <label htmlFor="input">How many days?</label>
+                        <label htmlFor="input">How many days?
+                            <div className="tooltip">
+                                <span className="tooltip-icon"><i className="fas fa-exclamation-circle"></i></span>
+                                <span className="tooltip-text">Please enter the number of travel days.</span>
+                            </div>
+                        </label>
                         <input
                             type="number"
                             id="input"
                             value={travelDays}
                             onChange={(e) => { setTripInfo({ ...tripInfo, travelDays: e.target.value }) }}
                             required
+                            min="0"
+                            autoComplete="off"
                         />
                     </div>
                 </form>
-                {/* {destination && travelDays &&
-                        <ButtonLink
-                            onClick={handleNewTrip}
-                            className={`main--button`}
-                            text='Create trip'
-                        ></ButtonLink>
-
-                    } */}
             </section >
 
             {
@@ -147,6 +154,7 @@ const CreateTravel = (props) => {
                                 style={{ display: 'none' }}
                                 onChange={handleHeaderImageChange}
                                 accept="image/*"
+                                autoComplete="off"
                             />
                             {tripInfo.headerImg ?
                                 <img src={tripInfo.headerImg} alt="Uploaded" />
