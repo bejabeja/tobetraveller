@@ -3,6 +3,7 @@ import './CreateTravel.css'
 import ButtonLink from "../../components/ButtonLink";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from 'react-router-dom';
+import Tooltip from "../../components/tooltip/Tooltip";
 
 const CreateTravel = (props) => {
     const { saveCity } = useAuth()
@@ -103,10 +104,7 @@ const CreateTravel = (props) => {
                 <form className='create-trip--form'>
                     <div className='input-container'>
                         <label htmlFor="input">Where do you want to go?
-                            <div className="tooltip">
-                                <span className="tooltip-icon"><i className="fas fa-exclamation-circle"></i></span>
-                                <span className="tooltip-text">Please enter the name of the city you want to travel to.</span>
-                            </div>
+                            <Tooltip tooltipText='Please enter the name of the city you want to travel to.'></Tooltip>
                         </label>
                         <input
                             type="text"
@@ -120,10 +118,7 @@ const CreateTravel = (props) => {
 
                     <div className='input-container'>
                         <label htmlFor="input">How many days?
-                            <div className="tooltip">
-                                <span className="tooltip-icon"><i className="fas fa-exclamation-circle"></i></span>
-                                <span className="tooltip-text">Please enter the number of travel days.</span>
-                            </div>
+                            <Tooltip tooltipText='Please enter the number of travel days.'></Tooltip>
                         </label>
                         <input
                             type="number"
