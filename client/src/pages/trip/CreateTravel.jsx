@@ -4,9 +4,11 @@ import ButtonLink from "../../components/ButtonLink";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from 'react-router-dom';
 import Tooltip from "../../components/tooltip/Tooltip";
+import { USER_GUEST } from "../../utils/constants";
+
 
 const CreateTravel = (props) => {
-    const { saveCity } = useAuth()
+    const { user, saveCity } = useAuth()
     const goTo = useNavigate()
     const [tripInfo, setTripInfo] = useState({
         destination: '',
@@ -17,9 +19,14 @@ const CreateTravel = (props) => {
     const { destination, travelDays } = tripInfo
 
     const handleSaveTravelButtonClick = async () => {
-        const userTravel = tripInfo
-        await saveCity(userTravel)
-        goTo('/private-profile')
+        if (user.username === USER_GUEST) {
+            return;
+        } else {
+            const userTravel = tripInfo
+            await saveCity(userTravel)
+            goTo('/private-profile')
+        }
+
     }
 
     function handleHeaderImageChange(e) {
@@ -187,6 +194,10 @@ const CreateTravel = (props) => {
                     <ButtonLink onClick={handleSaveTravelButtonClick} className='main--button'>
                         Save itinerary
                     </ButtonLink>
+                    {user.username === USER_GUEST &&
+                        <small>Create your own account to save your trips.</small>
+
+                    }
                 </>
             }
         </main >

@@ -5,6 +5,8 @@ import { useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
 import ButtonLink from '../../components/ButtonLink'
 import SpinnerLoader from '../../components/spinnerLoader/SpinnerLoader';
 import login from '../../services/login.js';
+import { USER_GUEST } from '../../utils/constants.js'
+
 
 const Login = () => {
     const [username, setUsername] = useState('')
@@ -21,13 +23,14 @@ const Login = () => {
         return <Navigate to='/private-profile'></Navigate>
     }
 
-    const handleLogin = (e) => {
+    const handleLogin = (e, isGuest = false) => {
         e.preventDefault()
         setErrorResponse('')
         setLoading(true);
         setTimeout(async () => {
             try {
-                const response = await login(username, password)
+                const user = isGuest ? { username: USER_GUEST, password: USER_GUEST } : { username, password };
+                const response = await login(user.username, user.password);
                 auth.saveUser(response)
                 goTo(state?.pathname ?? '/private-profile')
             } catch (error) {
@@ -73,7 +76,13 @@ const Login = () => {
             </div>
 
             <ButtonLink onClick={handleLogin} className='main--button' text='Login'></ButtonLink>
-            <Link to='/signup' className='form--auth__link'>Not a member yet?</Link>
+            <ButtonLink link='/signup' className='main--button' text='Register'></ButtonLink>
+
+            {/* <Link to='/signup' className='form--auth__link'>Not a member yet?</Link> */}
+
+            <Link onClick={(e) => handleLogin(e, true)} className='form--auth__link'>Login as a guest</Link>
+
+            {/* <Link onClick={(e) => handleLogin(e, true)} className='main--button' text='Login as a guest'></Link> */}
         </form>
     );
 };
