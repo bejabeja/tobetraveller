@@ -1,61 +1,11 @@
 import express from 'express';
-import { jsonResponse } from '../utils/jsonResponse.js';
-import { INTERNAL_SERVER_ERROR } from '../utils/constantsErrors.js'
-import { getAllUserTravelsBy, saveUserTravels } from '../repositories/userTravelsRepository.js';
-import { getUserBy } from '../repositories/userRepository.js';
+
+import { getUserTravels, saveUserTravel } from '../controllers/userTravels.controller.js';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-    try {
-        const userId = parseInt(req.query.userId)
-        const userTravels = await getAllUserTravelsBy(userId);
+router.get('/', getUserTravels)
 
-        return res.status(200).json(
-            jsonResponse(
-                200,
-                userTravels
-            )
-        )
-
-    } catch (error) {
-        console.log('Error fetching userTravels:', error);
-        return res.status(500).json(
-            jsonResponse(
-                500,
-                { message: INTERNAL_SERVER_ERROR }
-            )
-        )
-    }
-})
-
-router.post('/', async (req, res) => {
-    try {
-        const { userTravel, userId } = req.body
-
-        const user = await getUserBy(userId);
-        if (!user) {
-            return res.status(404).json(
-                jsonResponse(404, { message: USER_NOT_FOUND })
-            );
-        }
-
-        await saveUserTravels(userTravel, userId)
-
-        const allUserTravels = await getAllUserTravelsBy(userId)
-        return res.status(201).json(
-            jsonResponse(201, { userTravels: allUserTravels })
-        )
-
-    } catch (error) {
-        console.log('Error saving userTravels:', error);
-        return res.status(500).json(
-            jsonResponse(
-                500,
-                { message: INTERNAL_SERVER_ERROR }
-            )
-        )
-    }
-})
+router.post('/', saveUserTravel)
 
 export default router;
