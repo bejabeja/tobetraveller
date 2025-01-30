@@ -1,10 +1,8 @@
 import { Router } from 'express';
-import { generateAccessToken } from '../utils/tokens.js';
-import getTokenFromHeader from '../auth/getTokenFromHeader.js';
-import { verifyRefreshTokens } from '../auth/verifyTokens.js';
-import { jsonResponse } from '../utils/jsonResponse.js';
 import { getAllTokensBy } from '../repositories/authRepository.js';
 import { INTERNAL_SERVER_ERROR } from '../utils/constantsErrors.js';
+import { jsonResponse } from '../utils/jsonResponse.js';
+import { generateAccessToken, getTokenFromHeader, verifyRefreshTokens } from '../utils/tokens.js';
 
 const router = Router();
 

@@ -1,6 +1,5 @@
 //class middleware
-import getTokenFromHeader from "./getTokenFromHeader.js";
-import { verifyAccessTokens } from "./verifyTokens.js";
+import { getTokenFromHeader, verifyAccessTokens } from "../utils/tokens.js";
 
 function authenticate(req, res, next) {
     const token = getTokenFromHeader(req.headers)
