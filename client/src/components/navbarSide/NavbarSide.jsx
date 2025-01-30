@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
-import SingoutLink from '../../components/SignoutLink'
+import LogoutLink from '../LogoutLink'
 import './NavbarSide.css'
 
 const NavbarSide = () => {
@@ -37,7 +37,7 @@ const NavbarSide = () => {
                 {/* <Link to="#more"><i className="fas fa-ellipsis-h"></i><span>Más</span></Link> */}
 
                 {isAuthenticated &&
-                    <SingoutLink><i className="fas fa-sign-out-alt"></i><span>Exit</span></SingoutLink>
+                    <LogoutLink><i className="fas fa-sign-out-alt"></i><span>Exit</span></LogoutLink>
 
                 }
             </nav>

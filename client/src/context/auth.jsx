@@ -79,7 +79,7 @@ export function AuthProvider({ children }) {
         }
     }
 
-    function signOut() {
+    function logOut() {
         setIsAuthenticated(false)
         setAccesToken('')
         setUser(undefined)
@@ -125,7 +125,7 @@ export function AuthProvider({ children }) {
             saveUser,
             getRefreshToken,
             getUser,
-            signOut,
+            logOut,
             favsInfo,
             setFavsInfo,
             userTravels,

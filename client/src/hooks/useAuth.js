@@ -11,7 +11,7 @@ export const useAuth = () => {
         saveUser,
         getRefreshToken,
         getUser,
-        signOut,
+        logOut,
         favsInfo,
         setFavsInfo,
         userTravels,
@@ -59,6 +59,6 @@ export const useAuth = () => {
         saveUser,
         getRefreshToken,
         user,
-        signOut
+        logOut
     };
 }

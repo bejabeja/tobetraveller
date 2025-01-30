@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt';
-import { setToken } from '../repositories/authRepository.js';
+import { removeToken, setToken } from '../repositories/authRepository.js';
 import { createNewUser, getUserByUsername } from '../repositories/userRepository.js';
 import { FIELDS_REQUIRED, INTERNAL_SERVER_ERROR, USER_NOT_FOUND } from '../utils/constantsErrors.js';
 import { jsonResponse } from '../utils/jsonResponse.js';
-import { generateAccessToken, generateRefreshToken } from '../utils/tokens.js';
+import { generateAccessToken, generateRefreshToken, getTokenFromHeader } from '../utils/tokens.js';
 
 async function refreshTokenS(user) {
     const refreshTokenS = generateRefreshToken(user);
@@ -104,5 +104,21 @@ export const signup = async (req, res) => {
     } catch (error) {
         console.error('Error executing PostgreSQL query:', error);
         return res.status(500).json({ message: INTERNAL_SERVER_ERROR });
+    }
+}
+
+
+export const logout = async (req, res) => {
+    try {
+        const refreshToken = getTokenFromHeader(req.headers)
+        if (refreshToken) {
+            await removeToken(refreshToken)
+            res.status(200).json(jsonResponse(
+                200,
+                { message: 'Token deleted' }
+            ))
+        }
+    } catch (error) {
+        console.log(error)
     }
 }
