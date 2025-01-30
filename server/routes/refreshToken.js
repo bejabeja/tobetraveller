@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { generateAccessToken } from '../auth/generateTokens.js';
+import { generateAccessToken } from '../utils/tokens.js';
 import getTokenFromHeader from '../auth/getTokenFromHeader.js';
 import { verifyRefreshTokens } from '../auth/verifyTokens.js';
 import { jsonResponse } from '../utils/jsonResponse.js';
