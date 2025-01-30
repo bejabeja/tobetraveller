@@ -1,6 +1,6 @@
-import { getCities, getCityById } from "../repositories/cities.repository.js";
-import { jsonResponse } from "../utils/jsonResponse.js";
+import { getCities, getCityBy } from "../services/cities.service.js";
 import { INTERNAL_SERVER_ERROR } from "../utils/constantsErrors.js";
+import { jsonResponse } from "../utils/jsonResponse.js";
 
 export const getAllCities = async (req, res) => {
     try {
@@ -28,7 +28,7 @@ export const getCity = async (req, res) => {
     const cityId = parseInt(req.params.id)
 
     try {
-        const city = await getCityById(cityId)
+        const city = await getCityBy(cityId)
         if (!city) {
             return res.status(404).json(
                 jsonResponse(
