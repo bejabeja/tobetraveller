@@ -2,10 +2,20 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import morgan from 'morgan';
-import authenticate from './auth/authenticate.js'; // Adjust the path if necessary
+import authenticate from './auth/authenticate.js';
+
+import citiesRouter from './routes/cities.route.js';
+import favsRouter from './routes/favs.js';
+import itinerarioRouter from './routes/itinerario.js';
+import loginRouter from './routes/login.js';
+import logoutRouter from './routes/logout.js';
+import refreshTokenRouter from './routes/refreshToken.js';
+import signupRouter from './routes/signup.js';
+import userRouter from './routes/user.js';
+import travelsRouter from './routes/userTravels.js';
+
 
 dotenv.config();
-
 const app = express();
 
 app.use(morgan('dev'));
@@ -18,18 +28,8 @@ const corsOptions = {
   optionsSuccessStatus: 200
 };
 
-
 app.use(cors(corsOptions))
 
-import citiesRouter from './routes/cities.js';
-import favsRouter from './routes/favs.js';
-import itinerarioRouter from './routes/itinerario.js';
-import loginRouter from './routes/login.js';
-import logoutRouter from './routes/logout.js';
-import refreshTokenRouter from './routes/refreshToken.js';
-import signupRouter from './routes/signup.js';
-import userRouter from './routes/user.js';
-import travelsRouter from './routes/userTravels.js';
 
 app.use('/api/signup', signupRouter);
 app.use('/api/login', loginRouter);
