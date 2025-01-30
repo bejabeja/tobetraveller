@@ -156,7 +156,7 @@ client.connect()
 //                 id SERIAL PRIMARY KEY,
 //                 city_id INTEGER REFERENCES cities(id),
 //                 name VARCHAR(100),
-//                 type VARCHAR(50),
+//                 category VARCHAR(50),
 //                 description TEXT,
 //                 opening_hours VARCHAR(50),
 //                 thumbnail TEXT

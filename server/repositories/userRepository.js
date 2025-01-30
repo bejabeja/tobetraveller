@@ -1,4 +1,4 @@
-import client from '../config/database.js';
+import client from '../database/database.js';
 
 
 async function getUserBy(userId) {
@@ -45,4 +45,4 @@ async function createNewUser(email, username, hashedPassword) {
     await client.query('INSERT INTO users (email, username, password) VALUES ($1, $2, $3)', [email, username, hashedPassword]);
 }
 
-export { getUserBy, updateUserFavs, getUserFavs, getUserByUsername, createNewUser, getAllFavsInfoFromUser };
+export { createNewUser, getAllFavsInfoFromUser, getUserBy, getUserByUsername, getUserFavs, updateUserFavs };

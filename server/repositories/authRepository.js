@@ -1,4 +1,4 @@
-import client from '../config/database.js';
+import client from '../database/database.js';
 
 
 async function setToken(token) {
@@ -16,4 +16,5 @@ async function getAllTokensBy(token) {
 
 
 
-export { setToken, removeToken, getAllTokensBy };
+export { getAllTokensBy, removeToken, setToken };
+

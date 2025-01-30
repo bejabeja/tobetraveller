@@ -1,6 +1,6 @@
-import client from '../config/database.js';
+import client from "../database/database.js";
 
-async function getAllCities() {
+async function getCities() {
     const { rows } = await client.query('SELECT * FROM CITIES')
     return rows;
 }
@@ -67,4 +67,4 @@ async function getCityById(id) {
     }
 }
 
-export { getCityById, getAllCities };
+export { getCities, getCityById };
