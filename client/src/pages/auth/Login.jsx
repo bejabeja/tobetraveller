@@ -75,8 +75,8 @@ const Login = () => {
                 ></input>
             </div>
 
-            <ButtonLink onClick={handleLogin} className='main--button' text='Login'></ButtonLink>
-            <ButtonLink link='/signup' className='main--button' text='Register'></ButtonLink>
+            <ButtonLink href='/login' onClick={handleLogin} className='main--button' text='Login'></ButtonLink>
+            <ButtonLink href='/signup' className='main--button' text='Register'></ButtonLink>
 
             {/* <Link to='/signup' className='form--auth__link'>Not a member yet?</Link> */}
 
