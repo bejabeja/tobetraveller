@@ -1,7 +1,7 @@
+import { getUserBy } from '../repositories/user.repository.js';
+import { getAllUserTravelsBy, saveUserTravels } from '../repositories/userTravels.repository.js';
 import { INTERNAL_SERVER_ERROR } from '../utils/constantsErrors.js';
 import { jsonResponse } from '../utils/jsonResponse.js';
-import { getUserBy } from '../repositories/userRepository.js';
-import { getAllUserTravelsBy, saveUserTravels } from '../repositories/userTravelsRepository.js';
 
 export const getUserTravels = async (req, res) => {
     try {

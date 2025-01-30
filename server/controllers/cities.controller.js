@@ -1,4 +1,4 @@
-import { getCities, getCityById } from "../repositories/citiesRepository.js";
+import { getCities, getCityById } from "../repositories/cities.repository.js";
 import { jsonResponse } from "../utils/jsonResponse.js";
 import { INTERNAL_SERVER_ERROR } from "../utils/constantsErrors.js";
 

@@ -1,4 +1,4 @@
-import { getAllTokensBy } from '../repositories/authRepository.js';
+import { getAllTokensBy } from '../repositories/auth.repository.js';
 import { INTERNAL_SERVER_ERROR } from '../utils/constantsErrors.js';
 import { jsonResponse } from '../utils/jsonResponse.js';
 import { generateAccessToken, getTokenFromHeader, verifyRefreshTokens } from '../utils/tokens.js';

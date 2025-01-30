@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import { removeToken, setToken } from '../repositories/authRepository.js';
-import { createNewUser, getUserByUsername } from '../repositories/userRepository.js';
+import { removeToken, setToken } from '../repositories/auth.repository.js';
+import { createNewUser, getUserByUsername } from '../repositories/user.repository.js';
 import { FIELDS_REQUIRED, INTERNAL_SERVER_ERROR, USER_NOT_FOUND } from '../utils/constantsErrors.js';
 import { jsonResponse } from '../utils/jsonResponse.js';
 import { generateAccessToken, generateRefreshToken, getTokenFromHeader } from '../utils/tokens.js';

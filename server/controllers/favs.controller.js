@@ -1,4 +1,4 @@
-import { getAllFavsInfoFromUser, getUserBy, getUserFavs, updateUserFavs } from "../repositories/userRepository.js";
+import { getAllFavsInfoFromUser, getUserBy, getUserFavs, updateUserFavs } from "../repositories/user.repository.js";
 import { INTERNAL_SERVER_ERROR, USER_NOT_FOUND } from "../utils/constantsErrors.js";
 import { jsonResponse } from "../utils/jsonResponse.js";
 
