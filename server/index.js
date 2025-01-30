@@ -1,15 +1,15 @@
-import express from 'express';
 import cors from 'cors';
-// import bodyParser from 'body-parser';
-import authenticate from './auth/authenticate.js'; // Adjust the path if necessary
 import dotenv from 'dotenv';
+import express from 'express';
+import authenticate from './auth/authenticate.js'; // Adjust the path if necessary
+import morgan from 'morgan';
 
 dotenv.config();
 
 const app = express();
 
+app.use(morgan('dev'));
 app.use(express.json({ limit: '10mb' }));
-// app.use(bodyParser.json())
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 const corsOptions = {
@@ -21,15 +21,15 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-import signupRouter from './routes/signup.js';
-import loginRouter from './routes/login.js';
-import refreshTokenRouter from './routes/refreshToken.js';
-import userRouter from './routes/user.js';
-import signoutRouter from './routes/signout.js';
 import citiesRouter from './routes/cities.js';
 import favsRouter from './routes/favs.js';
-import travelsRouter from './routes/userTravels.js';
 import itinerarioRouter from './routes/itinerario.js';
+import loginRouter from './routes/login.js';
+import refreshTokenRouter from './routes/refreshToken.js';
+import signoutRouter from './routes/signout.js';
+import signupRouter from './routes/signup.js';
+import userRouter from './routes/user.js';
+import travelsRouter from './routes/userTravels.js';
 
 app.use('/api/signup', signupRouter);
 app.use('/api/login', loginRouter);
