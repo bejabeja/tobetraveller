@@ -56,12 +56,12 @@ const Discover = () => {
               <li>
                 <div className='cities-content'>
                   <img
-                    src={city.city_thumbnail}
-                    alt={city.city_name}
+                    src={city.thumbnail}
+                    alt={city.name}
                   ></img>
                   <div>
-                    <strong>{city.city_name}</strong> - {city.country_name}
-                    <p>{city.city_description}</p>
+                    <strong>{city.name}</strong> - {city.country}
+                    <p>{city.description}</p>
                   </div>
                 </div>
               </li>

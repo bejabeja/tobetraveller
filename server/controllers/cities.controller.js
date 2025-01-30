@@ -9,11 +9,13 @@ export default class CitiesController {
     async getAllCities(req, res) {
         try {
             const cities = await this.citiesService.getCities()
+            const citiesJSON = cities.map(city => city.toJSON());
 
+            console.log(citiesJSON);
             return res.status(200).json(
                 jsonResponse(
                     200,
-                    cities
+                    citiesJSON
                 )
             )
         } catch (error) {
@@ -45,7 +47,7 @@ export default class CitiesController {
             return res.status(200).json(
                 jsonResponse(
                     200,
-                    city
+                    city.toJSON()
                 )
             )
 

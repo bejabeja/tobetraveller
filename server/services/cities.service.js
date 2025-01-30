@@ -1,43 +1,55 @@
+import City from "../domain/entities/City.js";
+import PointOfInterest from "../domain/entities/PointOfInterest.js";
+
 export default class CitiesService {
     constructor(citiesRepository) {
         this.citiesRepository = citiesRepository;
     }
 
     async getCities() {
-        return await this.citiesRepository.getCities();
+        const cities = await this.citiesRepository.getCities();
+
+        const citiesMapped = cities.map(city => new City(
+            city.id,
+            city.city_name,
+            city.country_name,
+            city.country_code,
+            city.country_description,
+            city.currency,
+            city.city_thumbnail)
+        );
+        return citiesMapped;
     }
 
     async getCityBy(id) {
-        const city = await this.citiesRepository.getCityBy(id);
-        if (city.length === 0) {
+        const cityData = await this.citiesRepository.getCityBy(id);
+
+        if (cityData.length === 0) {
             return null; // No ciudad con el ID  
         }
 
-        const cityInfo = {
-            id: city[0].city_id,
-            cityName: city[0].city_name,
-            countryName: city[0].country_name,
-            countryCode: city[0].country_code,
-            countryDescription: city[0].country_description,
-            currency: city[0].currency,
-            cityDescription: city[0].city_description,
-            cityThumbnail: city[0].city_thumbnail,
-        };
+        const city = new City(
+            cityData[0].id,
+            cityData[0].city_name,
+            cityData[0].country_name,
+            cityData[0].country_code,
+            cityData[0].country_description,
+            cityData[0].currency,
+            cityData[0].city_thumbnail
+        );
 
-        const pointsOfInterest = city
-            .filter(row => row.poi_id !== null) // Excluye filas sin POI
-            .map(row => ({
-                id: row.poi_id,
-                name: row.poi_name,
-                type: row.poi_type,
-                description: row.poi_description,
-                openingHours: row.poi_opening_hours,
-                thumbnail: row.poi_thumbnail,
-            }));
+        const pointsOfInterest = cityData
+            .filter(row => row.poi_id !== null) // Filtramos las filas que tienen POIs
+            .map(row => new PointOfInterest(
+                row.poi_id,
+                row.poi_name,
+                row.poi_type,
+                row.poi_description,
+                row.poi_opening_hours,
+                row.poi_thumbnail
+            ));
 
-        return {
-            cityInfo,
-            pointsOfInterest,
-        };
+        city.pointsOfInterest = pointsOfInterest;
+        return city;
     }
 }
