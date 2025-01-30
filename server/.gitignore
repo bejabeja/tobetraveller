@@ -23,3 +23,7 @@ package-lock.json
 
 ../.idea
 ../.vscode
+
+database/config.js
+database/db.js
+database/db.sql
