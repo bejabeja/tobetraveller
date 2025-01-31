@@ -20,12 +20,12 @@ export default class FavsRepository extends FavsInterface {
         );
     }
 
-    async getAllFavsInfoFromUser(userId) {
-        const userFavs = await this.getUserFavs(userId)
-        if (userFavs.length === 0) return [];
+    async getCityInfoFavsUser(userId) {
+        const userFavsIds = await this.getUserFavs(userId)
+        if (userFavsIds.length === 0) return [];
 
         const { rows } = await client.query(
-            'SELECT * FROM cities WHERE id = ANY($1)', [userFavs]
+            'SELECT * FROM cities WHERE id = ANY($1)', [userFavsIds]
         );
 
         return rows;

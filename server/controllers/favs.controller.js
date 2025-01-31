@@ -14,7 +14,7 @@ export default class FavsController {
                 return res.status(400).json(jsonResponse(400, { message: USER_NOT_FOUND }));
             }
 
-            const favsCities = await this.favsService.getAllFavsInfoFromUser(userId);
+            const favsCities = await this.favsService.getCityInfoFavsUser(userId);
             return res.status(200).json(jsonResponse(200, { favs: favsCities }));
 
         } catch (error) {

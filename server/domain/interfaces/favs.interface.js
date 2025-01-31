@@ -7,7 +7,7 @@ export default class FavsInterface {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    async getAllFavsInfoFromUser(userId) {
+    async getCityInfoFavsUser(userId) {
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 }
