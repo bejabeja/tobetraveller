@@ -11,7 +11,6 @@ export default class CitiesController {
             const cities = await this.citiesService.getCities()
             const citiesJSON = cities.map(city => city.toJSON());
 
-            console.log(citiesJSON);
             return res.status(200).json(
                 jsonResponse(
                     200,

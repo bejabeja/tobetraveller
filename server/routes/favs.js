@@ -1,12 +1,19 @@
 import express from 'express';
-import { getFavs, removeFav, saveFav } from '../controllers/favs.controller.js';
+import FavsController from '../controllers/favs.controller.js';
+import FavsRepository from '../repositories/favs.repository.js';
+import FavsService from '../services/favs.service.js';
 const router = express.Router();
 
-router.get('/', getFavs);
 
+const favsRepository = new FavsRepository();
+// const userRepository = new UserRepository();
+const favsService = new FavsService(favsRepository);
+const favsController = new FavsController(favsService);
 
-router.post('/', saveFav);
+router.get('/', (req, res) => favsController.getFavs(req, res));
 
-router.delete('/', removeFav);
+router.post('/', (req, res) => favsController.saveFav(req, res));
+
+router.delete('/', (req, res) => favsController.removeFav(req, res));
 
 export default router;
