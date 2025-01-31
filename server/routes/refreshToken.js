@@ -1,9 +1,15 @@
 import { Router } from 'express';
-import { refreshTokens } from '../controllers/tokens.controller.js';
+import TokensController from '../controllers/tokens.controller.js';
+import AuthRepository from '../repositories/auth.repository.js';
 
 const router = Router();
 
-router.post('/', refreshTokens);
+const authRepository = new AuthRepository();
+const tokensController = new TokensController(authRepository);
+
+router.post('/', (req, res) => {
+    tokensController.refreshTokens(req, res);
+});
 
 
 export default router;
