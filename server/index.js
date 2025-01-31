@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import authenticate from './auth/authenticate.js';
 
 import citiesRouter from './routes/cities.route.js';
-import favsRouter from './routes/favs.js';
+import favsRouter from './routes/favs.route.js';
 import itinerarioRouter from './routes/itinerario.js';
 import loginRouter from './routes/login.js';
 import logoutRouter from './routes/logout.js';
