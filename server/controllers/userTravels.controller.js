@@ -1,6 +1,6 @@
 import { getUserBy } from '../repositories/user.repository.js';
 import { getAllUserTravelsBy, saveUserTravels } from '../repositories/userTravels.repository.js';
-import { INTERNAL_SERVER_ERROR } from '../utils/constantsErrors.js';
+import { INTERNAL_SERVER_ERROR, USER_PASSWORD_INCORRECT } from '../utils/constantsErrors.js';
 import { jsonResponse } from '../utils/jsonResponse.js';
 
 export const getUserTravels = async (req, res) => {
@@ -33,7 +33,7 @@ export const saveUserTravel = async (req, res) => {
         const user = await getUserBy(userId);
         if (!user) {
             return res.status(404).json(
-                jsonResponse(404, { message: USER_NOT_FOUND })
+                jsonResponse(404, { message: USER_PASSWORD_INCORRECT })
             );
         }
 

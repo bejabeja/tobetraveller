@@ -11,7 +11,10 @@ export default function login(username, password) {
     })
         .then(res => {
             if (!res.ok) {
-                throw new Error('Error during login. Please try again.');
+                return res.json().then(data => {
+                    console.log(data);
+                    throw new Error(data.body.error || 'Error login. Please try again.');
+                });
             }
             return res.json();
         })
@@ -21,4 +24,8 @@ export default function login(username, password) {
             }
             return res;
         })
+        .catch(error => {
+            console.error('Error occurred:', error.message);
+            throw error;
+        });
 }

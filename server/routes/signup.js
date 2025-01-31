@@ -1,8 +1,14 @@
-import express from 'express';
-import { signup } from '../controllers/auth.controller.js';
+import { Router } from 'express';
+import AuthController from '../controllers/auth.controller.js';
+import AuthRepository from '../repositories/auth.repository.js';
+import AuthService from '../services/auth.service.js';
 
-const router = express.Router();
+const router = Router();
 
-router.post('/', signup);
+const authRepository = new AuthRepository();
+const authService = new AuthService(authRepository);
+const authController = new AuthController(authService);
+
+router.post('/', (req, res) => authController.signup(req, res));
 
 export default router;

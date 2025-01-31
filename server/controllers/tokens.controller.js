@@ -1,4 +1,4 @@
-import { getAllTokensBy } from '../repositories/auth.repository.js';
+import AuthRepository from '../repositories/auth.repository.js';
 import { INTERNAL_SERVER_ERROR } from '../utils/constantsErrors.js';
 import { jsonResponse } from '../utils/jsonResponse.js';
 import { generateAccessToken, getTokenFromHeader, verifyRefreshTokens } from '../utils/tokens.js';
@@ -12,7 +12,7 @@ export const refreshTokens = async (req, res) => {
     }
 
     try {
-        const foundToken = await getAllTokensBy(refreshToken);
+        const foundToken = await AuthRepository.getAllTokens(refreshToken);
 
         if (!foundToken) {
             return res.status(401).json(jsonResponse(401, { message: 'Unauthorized: Token not found' }));

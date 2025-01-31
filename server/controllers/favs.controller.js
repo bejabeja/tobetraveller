@@ -1,4 +1,4 @@
-import { DATA_NOT_FOUND, INTERNAL_SERVER_ERROR, USER_NOT_FOUND } from "../utils/constantsErrors.js";
+import { DATA_NOT_FOUND, INTERNAL_SERVER_ERROR, USER_PASSWORD_INCORRECT } from "../utils/constantsErrors.js";
 import { jsonResponse } from "../utils/jsonResponse.js";
 
 export default class FavsController {
@@ -11,7 +11,7 @@ export default class FavsController {
             const { userId } = req.query;
 
             if (!userId) {
-                return res.status(400).json(jsonResponse(400, { message: USER_NOT_FOUND }));
+                return res.status(400).json(jsonResponse(400, { message: USER_PASSWORD_INCORRECT }));
             }
 
             const favsCities = await this.favsService.getCityInfoFavsUser(userId);

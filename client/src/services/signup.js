@@ -11,14 +11,14 @@ export default function signup(username, email, password) {
         .then(res => {
             if (!res.ok) {
                 return res.json().then(err => {
-                    throw new Error(err.body.message);
+                    throw new Error(err.body.error);
                 });
             }
             return res.json();
         })
         .then(res => {
             if (!res.body) {
-                throw new Error(res.body.message);
+                throw new Error(res.body.error);
             }
             return res;
         })
