@@ -1,5 +1,5 @@
 export default function saveUserTravels(userTravel, userId) {
-    return fetch(`${process.env.REACT_APP_API_URL}/user-travels`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/planned-travels`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"

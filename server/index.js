@@ -9,10 +9,10 @@ import favsRouter from './routes/favs.route.js';
 import itinerarioRouter from './routes/itinerario.js';
 import loginRouter from './routes/login.route.js';
 import logoutRouter from './routes/logout.js';
-import refreshTokenRouter from './routes/refreshToken.js';
+import refreshTokenRouter from './routes/refreshToken.route.js';
 import signupRouter from './routes/signup.route.js';
 import userRouter from './routes/user.js';
-import travelsRouter from './routes/userTravels.js';
+import travelsRouter from './routes/plannedTravels.route.js';
 
 
 dotenv.config();
@@ -38,7 +38,7 @@ app.use('/api/user', authenticate, userRouter); // Protected route
 app.use('/api/logout', logoutRouter);
 app.use('/api/cities', citiesRouter);
 app.use('/api/favs', favsRouter);
-app.use('/api/user-travels', travelsRouter)
+app.use('/api/planned-travels', travelsRouter)
 app.use('/api/itinerario', itinerarioRouter)
 
 

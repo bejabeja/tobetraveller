@@ -38,7 +38,12 @@ export function getTokenFromHeader(headers) {
 
 
 export function verifyAccessTokens(token) {
-    return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    try {
+        return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    } catch (error) {
+        console.error('Error verifying access token:', error.message);
+        return null;
+    }
 }
 
 
@@ -47,6 +52,6 @@ export function verifyRefreshTokens(token) {
         return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
     } catch (error) {
         console.error('Error verifying refresh token:', error.message);
-        return null;
+        return { error: 'Invalid refresh token' };
     }
 }

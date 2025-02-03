@@ -1,5 +1,5 @@
 export default function getTravels(userId) {
-    return fetch(`${process.env.REACT_APP_API_URL}/user-travels?userId=${userId}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}/planned-travels?userId=${userId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

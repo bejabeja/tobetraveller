@@ -13,7 +13,7 @@ const CreateTravel = (props) => {
     const [tripInfo, setTripInfo] = useState({
         destination: '',
         travelDays: '',
-        headerImg: null,
+        thumbnail: null,
         itinerary: {}
     })
     const { destination, travelDays } = tripInfo
@@ -34,7 +34,7 @@ const CreateTravel = (props) => {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setTripInfo({ ...tripInfo, headerImg: reader.result })
+                setTripInfo({ ...tripInfo, thumbnail: reader.result })
             };
             reader.readAsDataURL(file);
         }
@@ -45,7 +45,7 @@ const CreateTravel = (props) => {
     };
 
     const handleRemoveImgButtonClick = () => {
-        setTripInfo({ ...tripInfo, headerImg: null })
+        setTripInfo({ ...tripInfo, thumbnail: null })
     }
 
     useEffect(() => {
@@ -158,8 +158,8 @@ const CreateTravel = (props) => {
                                 accept="image/*"
                                 autoComplete="off"
                             />
-                            {tripInfo.headerImg ?
-                                <img src={tripInfo.headerImg} alt="Uploaded" />
+                            {tripInfo.thumbnail ?
+                                <img src={tripInfo.thumbnail} alt="Uploaded" />
                                 :
                                 (
                                     <div className="placeholder-img" onClick={handleAddImgButtonClick}>
@@ -173,7 +173,7 @@ const CreateTravel = (props) => {
                             <ButtonLink onClick={handleAddImgButtonClick} className='main--button'>
                                 Upload Image
                             </ButtonLink>
-                            {tripInfo.headerImg &&
+                            {tripInfo.thumbnail &&
                                 <ButtonLink onClick={handleRemoveImgButtonClick} className='main--button'>
                                     Remove Image
                                 </ButtonLink>
